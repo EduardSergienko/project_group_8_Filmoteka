@@ -1,0 +1,116 @@
+.header__library {
+  @media (min-device-pixel-ratio: 1),
+    (min-resolution: 96dpi),
+    (min-resolution: 1dppx) {
+    background-image: linear-gradient(
+        rgba(47, 48, 58, 0.4),
+        rgba(47, 48, 58, 0.4)
+      ),
+      url('../images/1x/library-header.jpg');
+  }
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: linear-gradient(
+        rgba(47, 48, 58, 0.4),
+        rgba(47, 48, 58, 0.4)
+      ),
+      url('../images/2x/library-header.jpg');
+  }
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @media (min-width: 320px) {
+    height: 230px;
+  }
+  @media (min-width: 768px) {
+    height: 219px;
+  }
+  @media (min-width: 1024px) {
+    height: 216px;
+  }
+
+  //   padding-top: 118px;
+  //   padding-bottom: 118px;
+  //   @media screen and (min-width: 1200px) {
+  //     padding-top: 200px;
+  //     padding-bottom: 200px;
+}
+
+//  @media (max-width: 480px) {
+//     @media (min-device-pixel-ratio: 1),
+//       (min-resolution: 96dpi),
+//       (min-resolution: 1dppx) {
+//       background-image: linear-gradient(
+//           rgba(47, 48, 58, 0.4),
+//           rgba(47, 48, 58, 0.4)
+//         ),
+//         url('../images/hero/mobile@1.jpg');
+//     }
+//   }
+//   @media (max-width: 480px) {
+//     @media (min-device-pixel-ratio: 2),
+//       (min-resolution: 192dpi),
+//       (min-resolution: 2dppx) {
+//       background-image: linear-gradient(
+//           rgba(47, 48, 58, 0.4),
+//           rgba(47, 48, 58, 0.4)
+//         ),
+//         url('../images/hero/mobile@2.jpg');
+//     }
+//   }
+//   @media (min-width: 481px) and (max-width: 768px) {
+//     @media (min-device-pixel-ratio: 1),
+//       (min-resolution: 96dpi),
+//       (min-resolution: 1dppx) {
+//       background-image: linear-gradient(
+//           rgba(47, 48, 58, 0.4),
+//           rgba(47, 48, 58, 0.4)
+//         ),
+//         url('../images/hero/tablet@1.jpg');
+//     }
+//   }
+//   @media (min-width: 481px) and (max-width: 768px) {
+//     @media (min-device-pixel-ratio: 2),
+//       (min-resolution: 192dpi),
+//       (min-resolution: 2dppx) {
+//       background-image: linear-gradient(
+//           rgba(47, 48, 58, 0.4),
+//           rgba(47, 48, 58, 0.4)
+//         ),
+//         url('../images/hero/tablet@2.jpg');
+//     }
+//   }
+//   @media (min-width: 769px) {
+//     @media (min-device-pixel-ratio: 1),
+//       (min-resolution: 96dpi),
+//       (min-resolution: 1dppx) {
+//       background-image: linear-gradient(
+//           rgba(47, 48, 58, 0.4),
+//           rgba(47, 48, 58, 0.4)
+//         ),
+//         url('../images/hero/desktop@1.jpg');
+//     }
+//   }
+//   @media (min-width: 769px) {
+//     @media (min-device-pixel-ratio: 2),
+//       (min-resolution: 192dpi),
+//       (min-resolution: 2dppx) {
+//       background-image: linear-gradient(
+//           rgba(47, 48, 58, 0.4),
+//           rgba(47, 48, 58, 0.4)
+//         ),
+//         url('../images/hero/desktop@2.jpg');
+//     }
+//   }
+
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   background-position: center;
+//   padding-top: 118px;
+//   padding-bottom: 118px;
+//   @media screen and (min-width: 1200px) {
+//     padding-top: 200px;
+//     padding-bottom: 200px;
+//   }
