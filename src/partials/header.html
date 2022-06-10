@@ -1,19 +1,21 @@
 <header class="main-page__header">
   <div class="header-container">
-    <div class="logo">
-      <svg width="24px" height="24px" class="logo-svg">
-        <use href="./images/main_page-header/icons.svg#icon-film-logo"></use>
-      </svg>
-      <p class="logo__text">Filmoteka</p>
-    </div>
-    <div class="pages">
-      <ul class="pages__list">
-        <li class="pages__list-item">Home</li>
-        <li class="pages__list-item">my library</li>
-      </ul>
-    </div>
+    <nav class="main-page__navigation">
+      <div class="header-logo">
+        <svg width="24px" height="24px" class="header-logo__svg">
+          <use href="./images/main_page-header/icons.svg#icon-film-logo"></use>
+        </svg>
+        <p class="header-logo__text">Filmoteka</p>
+      </div>
+      <div class="pages-container">
+        <ul class="pages__list">
+          <li class="pages__list-item">Home</li>
+          <li class="pages__list-item">my library</li>
+        </ul>
+      </div>
+    </nav>
     <div class="form-container">
-      <form class="search-form" id="search-form">
+      <form class="form-container_search" id="search-form">
         <input
           type="text"
           name="searchQuery"
