@@ -56,10 +56,9 @@
 
 .header-library__item {
   color: #fff;
-}
-
-.header-library__item:first-child {
-  padding-right: 39px;
+  &:first-child {
+    padding-right: 39px;
+  }
 }
 
 .header-library__button {
@@ -72,11 +71,10 @@
   line-height: 1.167;
   background-color: #fff0;
   border-style: none;
-}
-
-.header-library__button:hover,
-.header-library__button:focus {
-  color: #99f;
+  &:hover,
+  &:focus {
+    color: #99f;
+  }
 }
 
 .header-library__hero--list {
@@ -121,11 +119,10 @@
   color: #fff;
   border: 1px solid #fff;
   border-radius: 5px;
-}
-
-.header-library__hero--button:hover,
-.header-library__hero--button:focus {
-  background-color: #ff6b01;
-  border: none;
-  filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
+  &:hover,
+  &:focus {
+    background-color: #ff6b01;
+    border: none;
+    filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
+  }
 }

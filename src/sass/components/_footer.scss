@@ -1,4 +1,3 @@
-
 .footer {
 left: 0px;
 bottom: 0px;
@@ -6,66 +5,50 @@ height: 100px;
 width: 100%;
 padding-top: 30px;
 padding-bottom: 28px;
-
 background: var(--footer-background-color);
-
 text-align: center;
 flex-direction: column;
 align-items: center;
 display: flex;
 justify-content: center;
-   
 @media screen and (min-width: 768px) {
-
 display: flex;
 flex-direction: row;
 align-items: center;
 }
  }
-
-
-
 .footer__copyright {
 margin: 0;
 color: var(--footer-tex-color);
 font-weight: 400;
 font-size: 14px;
 line-height: 1.2;
-
 @media screen and (min-width: 768px) {
 margin: 0;
 font-size: 16px;
 }
 }
-
-
 .team__icon {
 width: 14px;
 height: 13px;
 margin-top: 1px;
 margin-left: 10px;
 }
-
-
 .team {
 margin-top: 10px;
 display: flex;
 justify-content: center;
-
 @media screen and (min-width: 768px) {
 margin: 0;
 margin-left: 3px;
 }
 }
-
 .team__text {
 margin-left: 10px;
 color: var(--footer-tex-color);
-
 font-weight: 400;
 font-size: 14px;
 line-height: 1.2;
-
 @media screen and (min-width: 768px) {
 font-size: 16px;
 }
@@ -73,22 +56,18 @@ font-size: 16px;
 .team__developed {
 margin: 0;
 color: var(--footer-tex-color);
-
 font-weight: 400;
 font-size: 14px;
 line-height: 1.2;
-
 @media screen and (min-width: 768px) {
 font-size: 16px;
 }
 }
-
 .team__link {
 color: var(--footer-tex-color);
 font-weight: 400;
 font-size: 14px;
 line-height: 1.2;
-
 @media screen and (min-width: 768px) {
 font-size: 16px;
 }
