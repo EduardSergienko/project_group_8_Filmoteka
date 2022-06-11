@@ -37,10 +37,10 @@ export default class FilmApiService {
   set qwery(newQwery) {
     this.searchingFilm = newQwery;
   }
-  get nexPage() {
+  get nextPage() {
     return this.page;
   }
-  set nexPage(newPage) {
+  set nextPage(newPage) {
     this.page = newPage;
   }
 }
