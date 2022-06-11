@@ -1,18 +1,27 @@
+.films {
+  padding: 20px 0;
+}
 .films-list {
-  display: flex;
-  flex-wrap: wrap;
-  margin: -11px -8px;
+  @media screen {
+  }
+  // display: flex;
+  // flex-wrap: wrap;
+  // margin: -11px -8px;
 }
 .films-list__card {
-  margin: 11px 8px;
+  margin-bottom: 20px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  // margin: 11px 8px;
 }
 .films-list__poster {
   border-radius: 5px;
   margin-bottom: 8px;
+  width: 280px;
+  height: 402px;
 }
 .film-info__name {
-  font-family: 'Roboto';
-  font-style: normal;
   font-weight: 500;
 
   line-height: 16px;
@@ -24,29 +33,29 @@
   display: flex;
 }
 .film-info__genre-year {
-  font-family: 'Roboto';
-  font-style: normal;
   font-weight: 500;
 
   line-height: 16px;
 
-  color: #ff6b08;
+  color: var(--complementary-text-color);
 }
 .film-info__rait {
   width: 36px;
   height: 16px;
-  font-family: 'Roboto';
-  font-style: normal;
+
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
-  background-color: #ff6b08;
+  background-color: var(--complementary-text-color);
   align-items: center;
 
   text-transform: uppercase;
-  color: #ffffff;
+  color: var(--secondary-text-color);
   display: flex;
   justify-content: center;
   border-radius: 5px;
   margin-left: 8px;
+}
+.rait-hidden {
+  opacity: 0;
 }

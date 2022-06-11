@@ -4,6 +4,7 @@ console.log(filmApiService);
 
 const filmsWrap = document.querySelector('.films-wrap');
 const filmList = document.querySelector('.films-list');
+const filmRait = document.querySelector('.film-info__rait');
 
 filmsWrap.addEventListener('DOMContentLoaded', showTranding);
 
@@ -12,7 +13,6 @@ async function showTranding() {
     const resolve = await filmApiService.fetchTranding();
     const genres = await filmApiService.getGenreName();
     const filmArray = resolve.data.results;
-
     const gengeArray = genres.data.genres;
 
     filmList.innerHTML = filmCardRender(filmArray, gengeArray);
@@ -27,7 +27,7 @@ function filmCardRender(arg, genresArrObj) {
       item => ` <li class="films-list__card">
       <img class = 'films-list__poster' src="https://image.tmdb.org/t/p/w500${
         item.poster_path
-      }" alt="" width="309" height="449" loading="lazy" />
+      }" alt=""  loading="lazy" />
 
   <div class="film-info">
   <h2 class="film-info__name">
@@ -40,14 +40,14 @@ function filmCardRender(arg, genresArrObj) {
       ).slice(0, 4)} 
       
     </p>
-   <div class = 'film-info__rait'>${item.vote_average}</div>
+   
     </div>
   </div>
 </li>`
     )
     .join('');
 }
-
+// ===<div class = 'film-info__rait'>${item.vote_average}</div>  -  Рейтинг всталять после года
 function getGenresNames(gengeArray, dataIds) {
   const genresNames = gengeArray
     .filter(genre => dataIds.includes(genre.id))
