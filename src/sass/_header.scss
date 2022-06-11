@@ -3,7 +3,7 @@
     url(../images/main_page-header/mobile/main-mobile.png);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 320px;
+    background-size: 320px 100%;
 
     @media (min-device-pixel-ratio: 2),
         (min-resolution: 192dpi),
@@ -15,7 +15,7 @@
     @media screen and (min-width:321px){
         background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
         url(../images/main_page-header/tablet/main-tablet.png);
-        background-size: 768px;
+        background-size: 768px 100%;
     
         @media (min-device-pixel-ratio: 2),
         (min-resolution: 192dpi),
@@ -29,7 +29,7 @@
    @media screen and (min-width:769px){
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
             url(../images/main_page-header/desktop/main-desktop.png);
-        background-size: 1024px;
+        background-size: 1024px 100%;
     
         @media (min-device-pixel-ratio: 2),
         (min-resolution: 192dpi),
