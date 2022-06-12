@@ -18,9 +18,8 @@ function onClickWatched(e) {
     refs.gallery.innerHTML = '';
     if (watched === null ) {
       
-   const message =
-    '<div class = "warning">Sorry, you did not add any movies to the list.<div>';
-  refs.gallery.insertAdjacentHTML('beforeend', message);
+        messageWarning();
+
   } else {
     // зробити рендер сітки
   }
@@ -34,12 +33,15 @@ function onClickQueue(e) {
 
     refs.gallery.innerHTML = '';
     if (queue === null) {
-      
-   const message =
-    '<div class = "warning">Sorry, you did not add any movies to the list.<div>';
-  refs.gallery.insertAdjacentHTML('beforeend', message);
+        messageWarning();  
+   
   } else {
     // зробити рендер сітки
   }
   return;
+};
+function messageWarning() {
+    const message =
+    '<p class = "warning">Sorry, you did not add any movies to the list.</p>';
+  refs.gallery.insertAdjacentHTML('beforeend', message);
 };
