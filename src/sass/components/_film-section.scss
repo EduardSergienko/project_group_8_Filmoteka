@@ -7,6 +7,9 @@
     flex-wrap: wrap;
     margin: -16px -16px;
   }
+  @media screen and (min-width: 1024px) {
+    margin: -11px -8px;
+  }
   // display: flex;
   // flex-wrap: wrap;
   // margin: -11px -8px;
@@ -19,6 +22,9 @@
   @media screen and (min-width: 768px) {
     margin: 16px 16px;
   }
+  @media screen and (min-width: 768px) {
+    margin: 11px 8px;
+  }
 }
 .films-list__poster {
   border-radius: 5px;
@@ -28,6 +34,10 @@
   @media screen and (min-width: 768px) {
     width: 336px;
     height: 455px;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 309px;
+    height: 449px;
   }
 }
 .film-info__name {
