@@ -1,10 +1,10 @@
 .main-page__header {
-    margin: 0 auto;
+    //margin: 0 auto;
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
         url(../images/mobile/Main-mobile.png);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 320px 100%;
+    background-size: cover;
 
     @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -16,7 +16,7 @@
     @media screen and (min-width:321px) {
         background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
             url(../images/tablet/Main-tablet.png);
-        background-size: 768px 100%;
+        background-size: cover;
 
         @media (min-device-pixel-ratio: 2),
         (min-resolution: 192dpi),
@@ -31,7 +31,7 @@
     @media screen and (min-width:769px) {
         background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
             url(../images/desktop/Main-desktop.png);
-        background-size: 1024px 100%;
+        background-size: cover;
 
         @media (min-device-pixel-ratio: 2),
         (min-resolution: 192dpi),
@@ -74,6 +74,13 @@
     font-weight: 500;
     font-size: 30px;
     line-height: 35px;
+    &__svg{
+        margin-right: 7px;
+        @media screen and (min-width:1024px){
+            margin-right: 10px;
+        }
+    }
+
 }
 
 .pages__list {
@@ -83,7 +90,7 @@
     list-style: none;
     font-weight: 500;
     font-size: 12px;
-    line-height: 14px;
+    line-height: 1.16;
 
     & li:not(:last-child) {
         margin-right: 39px;
@@ -91,9 +98,14 @@
 }
 
 .header-logo__text {
-    @media screen and (max-width:320px) {
+    font-family: Roboto;
+    color: rgba(255, 255, 255, 1);
+    font-weight: 500;
+    font-size: 30px;
+    @media screen and (max-width:767px) {
         display: none;
     }
+    
 }
 
 .form-container {
@@ -106,6 +118,11 @@
 }
 
 .form-container_search {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.14;
     display: flex;
     flex-direction: row;
     margin-bottom: 36px;
