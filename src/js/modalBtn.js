@@ -2,18 +2,71 @@ import { loadStorage, saveStorage, removeStorage } from './localStorage';
 
 // импорт галереи с модалки.addEventListener('click', addMoviesToList);
 
+// const BTN = document.querySelector('.btn');
+// BTN.addEventListener('click', addMoviesToList);
+
 const WATCHED = 'watched';
 const QUEUE = 'queue';
 
 function addMoviesToList(e) {
   //   e.preventDefault();
-  let movieId = e.target.dataset.id;
-  addWatchList(movieId);
+
+  //   let movieId = e.target.dataset.id;
+  addWatchList(m);
+  textModalBtn(m);
 }
 
-function addWatchList() {
-  //   const btnWatch = document.querySelector('удалить из листа');
-  // if (btnWatch.classList.contains('active'))
+async function textModalBtn(id) {
+  //   const btnQueue = document.querySelector('.btn');
+  const btnWatch = document.querySelector('.btn');
+  if (inLocalStorage(id, WATCHED)) {
+    // console.log('есть такой в watched');
+    btnWatch.textContent = 'Added to watched';
+    btnWatch.disabled = true;
+    function changeText() {
+      btnWatch.disabled = false;
+      btnWatch.textContent = 'Remove from watched';
+      btnWatch.classList.add('active');
+    }
+    setTimeout(changeText, 1000);
+  } else {
+    // console.log('нет такого в watched');
+    btnWatch.textContent = 'Add to watched';
+    btnWatch.classList.remove('active');
+    // console.log('удаляем класс active');
+    btnWatch.disabled = false;
+  }
+
+  //   if (inLocalStorage(id, QUEUE)) {
+  //     // console.log('есть такой в queue');
+  //     btnQueue.textContent = 'Added to queue';
+  //     btnQueue.disabled = true;
+  //     function changeText() {
+  //       btnQueue.disabled = false;
+  //       btnQueue.textContent = 'Remove from queue';
+  //       btnQueue.classList.add('active');
+  //     }
+  //     setTimeout(changeText, 1000);
+  //   } else {
+  //     // console.log('нет такого в queue');
+  //     btnQueue.textContent = 'Add to queue';
+  //     btnQueue.classList.remove('active');
+  //     btnQueue.disabled = false;
+  //   }
+}
+
+function inLocalStorage(id, key) {
+  let arrList = [];
+  let localListJson = loadStorage(key);
+  if (localListJson) {
+    arrList = [...localListJson];
+  }
+  const mapList = arrList.includes(id);
+  return mapList;
+}
+
+function addWatchList(id) {
+  const btnWatch = document.querySelector('.active');
   if (btnWatch) {
     removeFromWatchedList(id);
   } else {
@@ -24,41 +77,43 @@ function addWatchList() {
     }
 
     let queueList = [];
-    let localQueueListJson = loadStorage('queue');
+    let localQueueListJson = loadStorage(QUEUE);
     if (localQueueListJson) {
       queueList = [...localQueueListJson];
     }
-    let queueSet = new Set(queueList);
-    if (queueSet.has(id)) {
-      removeStorage('queue');
+    let queueSet = queueList.includes(id);
+    if (queueSet) {
+      // removeStorage(QUEUE);
       let index = queueList.indexOf(id);
       queueList.splice(index, 1);
-      saveStorage('queue', queueList);
+      saveStorage(QUEUE, queueList);
     }
 
     const watchSet = watchList.includes(id);
     if (watchSet) {
+      textModalBtn(id);
       console.log('уже есть такой фильм');
     } else {
       watchList.push(id);
       saveStorage(WATCHED, watchList);
+      textModalBtn(id);
     }
   }
 }
 
 // function addQueueList() {
-//   const btnQueue = document.querySelector('.btn__queue');
-//   if (btnQueue.classList.contains('active')) {
+//   const btnQueue = document.querySelector('.active');
+//   if (btnQueue) {
 //     removeFromQueueList(id);
 //   } else {
 //     let queueList = [];
-//     let localQueueListJson = load('queue');
+//     let localQueueListJson = loadStorage('queue');
 //     if (localQueueListJson) {
 //       queueList = [...localQueueListJson];
 //     }
 
 //     let watchList = [];
-//     let localWatchListJson = load('watched');
+//     let localWatchListJson = loadStorage('watched');
 //     if (localWatchListJson) {
 //       watchList = [...localWatchListJson];
 //     }
