@@ -1,0 +1,197 @@
+// basicLightbox
+// Vars ---------------------------------------------------------------- //
+$basicLightbox__background: rgba(0, 0, 0, 0.4) !default;
+$basicLightbox__zIndex: 1000 !default;
+$basicLightbox__duration: 0.4s !default;
+$basicLightbox__timing: ease !default;
+
+// basicLightbox ------------------------------------------------------- //
+.basicLightbox {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: $basicLightbox__background;
+  opacity: 0.01; // Start with .01 to avoid the repaint that happens from 0 to .01
+  transition: opacity $basicLightbox__duration $basicLightbox__timing;
+  z-index: $basicLightbox__zIndex;
+  will-change: opacity;
+
+  &--visible {
+    opacity: 1;
+  }
+
+  &__placeholder {
+    max-width: 100%;
+    transform: scale(0.9);
+    transition: transform $basicLightbox__duration $basicLightbox__timing;
+    z-index: 1;
+    will-change: transform;
+
+    > img:first-child:last-child,
+    > video:first-child:last-child,
+    > iframe:first-child:last-child {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      max-width: 95%;
+      max-height: 95%;
+    }
+
+    > video:first-child:last-child,
+    > iframe:first-child:last-child {
+      pointer-events: auto;
+    }
+
+    > img:first-child:last-child,
+    > video:first-child:last-child {
+      width: auto;
+      height: auto;
+    }
+  }
+
+  &--img &__placeholder,
+  &--video &__placeholder,
+  &--iframe &__placeholder {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  &--visible &__placeholder {
+    transform: scale(1);
+  }
+}
+
+.modal {
+  position: relative;
+
+  padding-top: 48px;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  background-color: #ffffff;
+
+  //   @include Animation(transform);
+
+  @media screen and (min-width: 310px) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 280px;
+    // width: 100%;
+
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  @media screen and (min-width: 734px) {
+    width: 704px;
+    // width: 100%;
+
+    padding-top: 40px;
+    padding-left: 36px;
+    padding-right: 72px;
+
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  @media screen and (min-width: 989px) {
+    width: 814px;
+    max-height: 558px;
+
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+.circle-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  // border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+
+  //   @include Animation(fill);
+
+  &:hover,
+  &:focus {
+    fill: blue;
+  }
+}
+.modal__circle-svg {
+  &:hover,
+  &:focus {
+    fill: blue;
+  }
+}
+
+.modal__wrapper {
+  @media screen and (min-width: 734px) {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media screen and (min-width: 989px) {
+    // width: 989px;
+  }
+}
+.modal-item:not(:last-child) {
+  @media screen and (min-width: 734px) {
+    margin-right: 68px;
+  }
+
+  @media screen and (min-width: 989px) {
+    margin-right: 16px;
+  }
+}
+.poster__modal {
+  @media screen and (max-width: 733px) {
+    margin-bottom: 20px;
+  }
+}
+.movie__poster {
+  border-radius: 5px;
+}
+.movie__title {
+  font-size: 20px;
+  line-height: 1.15em;
+
+  @media screen and (min-width: 989px) {
+    font-size: 30px;
+    line-height: 1.167em;
+  }
+}
+.movie-info__item {
+  display: flex;
+}
+.movie-info__param {
+  font-size: 12px;
+  line-height: 1.33em;
+  color: var(--modal-form-secondary-text-color);
+
+  @media screen and (min-width: 734px) {
+    // margin-right: 68px;
+  }
+
+  @media screen and (min-width: 989px) {
+    flex-basis: 32.6%;
+  }
+}
