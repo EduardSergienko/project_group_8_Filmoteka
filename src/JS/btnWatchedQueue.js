@@ -1,7 +1,3 @@
-import './JS/filmApiService';
-import './JS/showTrandingFilms';
-import './JS/renderCards';
-
 const refs = {
     watched: document.querySelector('.watched-js'),
     queue: document.querySelector('.queue-js'),
