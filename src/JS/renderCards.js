@@ -24,8 +24,8 @@ export function filmCardRender(arg, genresArrObj) {
     )
     .join('');
 }
-export function getGenresNames(gengeArray, dataIds) {
-  const genresNames = gengeArray
+export function getGenresNames(genreArray, dataIds) {
+  const genresNames = genreArray
     .filter(genre => dataIds.includes(genre.id))
     .map(genre => genre.name);
 
