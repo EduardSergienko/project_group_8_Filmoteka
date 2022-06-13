@@ -24,23 +24,28 @@ async function showTranding() {
 function filmCardRender(arg, genresArrObj) {
   return arg
     .map(
-      item => ` <li class="films-list__card">
-      <img class = 'films-list__poster' src="https://image.tmdb.org/t/p/w500${
-        item.poster_path
-      }" alt="" width="309" height="449" loading="lazy" />
-
+      item => `<li
+  class="films-list__card"
+  data-id="${item.id}"
+  data-media-type="${item.media_type}"
+>
+  <img
+    class="films-list__poster"
+    src="https://image.tmdb.org/t/p/w500${item.poster_path}"
+    alt=""
+    width="309"
+    height="449"
+    loading="lazy"
+  />
   <div class="film-info">
-  <h2 class="film-info__name">
-      ${item.original_title || item.name}  
-    </h2>
+    <h2 class="film-info__name">${item.original_title || item.name}</h2>
     <div class="film-info__wrap">
-    <p class="film-info__genre-year">
-      ${getGenresNames(genresArrObj, item.genre_ids)}  |  ${(
+      <p class="film-info__genre-year">
+        ${getGenresNames(genresArrObj, item.genre_ids)} | ${(
         item.first_air_date || item.release_date
-      ).slice(0, 4)} 
-      
-    </p>
-   <div class = 'film-info__rait'>${item.vote_average}</div>
+      ).slice(0, 4)}
+      </p>
+      <div class="film-info__rait">${item.vote_average}</div>
     </div>
   </div>
 </li>`

@@ -3,6 +3,8 @@ import axios, { Axios } from 'axios';
 export default class FilmApiService {
   constructor() {
     this.searchingFilm = '';
+    this.ID = '';
+    this.mediaType = 'movie';
     this.page = 1;
   }
   async fetchMovies() {
@@ -27,6 +29,14 @@ export default class FilmApiService {
     );
   }
 
+  async fetchMovieID() {
+    const BASE_URL = 'https://api.themoviedb.org/3/';
+    const API_KEY = 'api_key=5f364d2fc6b25c805674b50a1c63d59e';
+    return await axios.get(
+      `${BASE_URL}${this.mediaType}/${this.ID}?${API_KEY}&language=en-US`
+    );
+  }
+
   resetPage() {
     this.page = 1;
   }
@@ -42,5 +52,17 @@ export default class FilmApiService {
   }
   set nextPage(newPage) {
     this.page = newPage;
+  }
+  get queryID() {
+    return this.ID;
+  }
+  set queryID(newID) {
+    this.ID = newID;
+  }
+  get queryMediaType() {
+    return this.mediaType;
+  }
+  set queryMediaType(newMediaType) {
+    this.mediaType = newMediaType;
   }
 }
