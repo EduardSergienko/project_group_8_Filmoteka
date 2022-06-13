@@ -53,8 +53,13 @@ export default function initPagination(page, total_pages) {
       const genreArray = genres.data.genres;
 
       filmList.innerHTML = filmCardRender(filmArray, genreArray);
+      scrollToTop();
     } catch (error) {
       console.log(error);
     }
   });
+}
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
