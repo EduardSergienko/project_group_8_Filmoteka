@@ -1,0 +1,101 @@
+//Pagination div
+.tui-pagination.pagination-custom {
+  margin-bottom: 60px;
+}
+
+//Button First and Last
+.tui-page-btn.tui-first.custom-first,
+.tui-page-btn.tui-last.custom-last,
+.tui-page-btn.tui-is-disabled.tui-first,
+.tui-page-btn.tui-is-disabled.tui-last {
+  display: none;
+  background: none;
+}
+
+//Button Prev and Next
+.tui-page-btn.tui-prev.custom-prev,
+.tui-page-btn.tui-next.custom-next {
+  background-color: var(--footer-background-color);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: #f1f1f1;
+  }
+}
+
+//Dotters
+.tui-page-btn.tui-prev-is-ellip.tui-first-child,
+.tui-page-btn.tui-next-is-ellip.tui-last-child {
+  border: none;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: #f1f1f1;
+  }
+}
+
+//Button Prev and Next -is disabled
+.tui-page-btn.tui-prev.tui-is-disabled.custom-prev,
+.tui-page-btn.tui-next.tui-is-disabled.custom-next {
+  background-color: var(--footer-background-color);
+
+  & .tui-ico-prev.pagination__arrow,
+  .tui-ico-next.pagination__arrow {
+    opacity: 0.2;
+  }
+}
+
+//Button Arrow Icon
+.tui-pagination .tui-ico-next.pagination__arrow,
+.tui-pagination .tui-ico-prev.pagination__arrow {
+  width: 14px;
+  height: 14px;
+}
+
+//Button Dotters Icon
+.tui-pagination .tui-ico-ellip.dotte {
+  width: 14px;
+  height: 14px;
+}
+
+//Button background tui-pagnation
+.tui-pagination .tui-ico-next,
+.tui-pagination .tui-ico-prev,
+.tui-pagination .tui-ico-ellip {
+  background: none !important;
+  margin: 0 !important;
+}
+
+//Page Number
+.tui-pagination .tui-page-btn.tui-page-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 0;
+  border: none;
+  border-radius: 5px;
+
+  &.tui-is-selected {
+    border: none;
+    background-color: var(--complementary-text-color);
+  }
+}
