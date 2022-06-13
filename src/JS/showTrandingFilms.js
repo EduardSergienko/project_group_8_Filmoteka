@@ -11,7 +11,7 @@ const filmRait = document.querySelector('.film-info__rait');
 
 filmsWrap.addEventListener('DOMContentLoaded', showTranding);
 
-async function showTranding() {
+export async function showTranding() {
   try {
     const resolve = await filmApiService.fetchTranding();
     const genres = await filmApiService.getGenreName();
@@ -25,7 +25,5 @@ async function showTranding() {
     console.log(error);
   }
 }
-
-// ===<div class = 'film-info__rait'>${item.vote_average}</div>  -  Рейтинг всталять после года
-
 showTranding();
+// ===<div class = 'film-info__rait'>${item.vote_average}</div>  -  Рейтинг всталять после года
