@@ -16,15 +16,13 @@ export default class FilmApiService {
   async fetchTranding() {
     const BASE_URL = 'https://api.themoviedb.org/3/trending/all/day';
     const API_KEY = 'api_key=5f364d2fc6b25c805674b50a1c63d59e';
-    return await axios.get(` ${BASE_URL}?${API_KEY}`);
+    return await axios.get(` ${BASE_URL}?${API_KEY}&page=${this.page}`);
   }
 
   async getGenreName() {
     const BASE_URL = 'https://api.themoviedb.org/3/genre/movie/list';
     const API_KEY = 'api_key=5f364d2fc6b25c805674b50a1c63d59e';
-    return await axios.get(
-      ` ${BASE_URL}?${API_KEY}&language=en-US&page=${this.page}`
-    );
+    return await axios.get(` ${BASE_URL}?${API_KEY}&language=en-US`);
   }
 
   resetPage() {
