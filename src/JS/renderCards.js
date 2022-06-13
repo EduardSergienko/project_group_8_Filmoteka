@@ -1,7 +1,9 @@
 export function filmCardRender(arg, genresArrObj) {
   return arg
     .map(
-      item => ` <li class="films-list__card">
+      item => ` <li class="films-list__card" 
+      data-id="${item.id}"
+      data-media-type="${item.media_type}">
       <img class = 'films-list__poster' src="https://image.tmdb.org/t/p/w500${
         item.poster_path
       }" alt=""  loading="lazy" />
