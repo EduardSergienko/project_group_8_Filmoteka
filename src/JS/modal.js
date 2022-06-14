@@ -1,11 +1,10 @@
 import * as basicLightbox from 'basiclightbox';
 import FilmApiService from './filmApiService';
-
-const filmApiService = new FilmApiService();
 import { textModalBtn, addBtnListenet } from './modalBtn';
 
-const movieItemRef = document.querySelector('.films-list');
+const filmApiService = new FilmApiService();
 
+const movieItemRef = document.querySelector('.films-list');
 movieItemRef.addEventListener('click', onMovieItemClick);
 
 async function onMovieItemClick(evt) {
@@ -144,6 +143,7 @@ function createMovieItemClick({
 
 function onCloseModalBtn() {
   modalMovie.close();
+}
 
 function onEscapePress(event) {
   if (event.code === 'Escape') {
