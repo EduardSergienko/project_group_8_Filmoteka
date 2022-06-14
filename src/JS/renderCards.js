@@ -4,9 +4,12 @@ export function filmCardRender(arg, genresArrObj) {
       item => ` <li class="films-list__card" 
       data-id="${item.id}"
       data-media-type="${item.media_type}">
-      <img class = 'films-list__poster' src="https://image.tmdb.org/t/p/w500${
+      <img class = 'films-list__poster' src="https://image.tmdb.org/t/p/w400/${
         item.poster_path
-      }" alt="" loading="lazy" />
+      }" alt="${item.name || item.original_title}" srcset="
+            https://image.tmdb.org/t/p/w400/${item.poster_path} 1x,
+            https://image.tmdb.org/t/p/original/${item.poster_path} 2x
+          " loading="lazy" />
 
   <div class="film-info">
   <h2 class="film-info__name">
