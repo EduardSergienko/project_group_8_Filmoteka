@@ -47,17 +47,17 @@ function addWatchList(id) {
     if (localWatchListJson) {
       watchList = [...localWatchListJson];
     }
-    let queueList = [];
-    let localQueueListJson = loadStorage(QUEUE);
-    if (localQueueListJson) {
-      queueList = [...localQueueListJson];
-    }
-    let queueSet = queueList.includes(id);
-    if (queueSet) {
-      let index = queueList.indexOf(id);
-      queueList.splice(index, 1);
-      saveStorage(QUEUE, queueList);
-    }
+    // let queueList = [];
+    // let localQueueListJson = loadStorage(QUEUE);
+    // if (localQueueListJson) {
+    //   queueList = [...localQueueListJson];
+    // }
+    // let queueSet = queueList.includes(id);
+    // if (queueSet) {
+    //   let index = queueList.indexOf(id);
+    //   queueList.splice(index, 1);
+    //   saveStorage(QUEUE, queueList);
+    // }
     const watchSet = watchList.includes(id);
     if (watchSet) {
       return;
@@ -81,17 +81,17 @@ function addQueueList(id) {
       queueList = [...localQueueListJson];
     }
 
-    let watchList = [];
-    let localWatchListJson = loadStorage(WATCHED);
-    if (localWatchListJson) {
-      watchList = [...localWatchListJson];
-    }
-    let watchSet = watchList.includes(id);
-    if (watchSet) {
-      let index = watchList.indexOf(id);
-      watchList.splice(index, 1);
-      saveStorage(WATCHED, watchList);
-    }
+    // let watchList = [];
+    // let localWatchListJson = loadStorage(WATCHED);
+    // if (localWatchListJson) {
+    //   watchList = [...localWatchListJson];
+    // }
+    // let watchSet = watchList.includes(id);
+    // if (watchSet) {
+    //   let index = watchList.indexOf(id);
+    //   watchList.splice(index, 1);
+    //   saveStorage(WATCHED, watchList);
+    // }
 
     const queueSet = queueList.includes(id);
     if (queueSet) {
