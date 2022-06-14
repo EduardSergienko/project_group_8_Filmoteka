@@ -204,7 +204,7 @@ $basicLightbox__timing: ease !default;
   }
 
   @media screen and (min-width: 989px) {
-    flex-basis: 32.6%;
+    max-width: 39%;
   }
 }
 .movie-info__value {
@@ -225,8 +225,24 @@ $basicLightbox__timing: ease !default;
   border-radius: 5px;
   background-color: #f7f7f7;
 }
-.movie-info__value--text {
+.movie-info__value--text-title {
+  max-width: 55%;
   text-transform: uppercase;
+
+  @media screen and (min-width: 734px) {
+    max-width: 52%;
+  }
+
+  @media screen and (min-width: 989px) {
+    max-width: 60%;
+  }
+}
+.movie-info__value--text-genre {
+  max-width: 55%;
+
+  @media screen and (min-width: 734px) {
+    max-width: 52%;
+  }
 }
 .movie-overview__title {
   margin-bottom: 8px;
@@ -283,7 +299,7 @@ $basicLightbox__timing: ease !default;
 
   &:hover,
   &:focus {
-    // border: transparent;
+    border: 1px solid transparent;
     background-color: var(--complementary-text-color);
     color: var(--secondary-text-color);
   }
@@ -292,6 +308,7 @@ $basicLightbox__timing: ease !default;
   width: 110px;
   display: flex;
   align-items: center;
+  justify-content: center;
 
   padding: 13px 14px 13px 13px;
 
@@ -322,7 +339,7 @@ $basicLightbox__timing: ease !default;
 
   &:hover,
   &:focus {
-    // border: transparent;
+    border: 1px solid transparent;
     background-color: var(--complementary-text-color);
     color: var(--secondary-text-color);
   }

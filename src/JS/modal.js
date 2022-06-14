@@ -1,5 +1,6 @@
 import * as basicLightbox from 'basiclightbox';
 import FilmApiService from './filmApiService';
+
 const filmApiService = new FilmApiService();
 
 const movieItemRef = document.querySelector('.films-list');
@@ -50,6 +51,8 @@ function createMovieItemClick({
   original_title,
   genres,
   overview,
+  name,
+  original_name,
 }) {
   modalMovie = basicLightbox.create(
     `<div class="modal">
@@ -74,7 +77,7 @@ function createMovieItemClick({
           src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/${poster_path}"
           data-src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/${poster_path}"
           data-srcset="https://image.tmdb.org/t/p/w300_and_h450_bestv2/${poster_path} 1x, https://image.tmdb.org/t/p/w600_and_h900_bestv2/${poster_path} 2x"
-          alt="${title}"
+          alt="${title || name}"
           srcset="
             https://image.tmdb.org/t/p/w300_and_h450_bestv2/${poster_path} 1x,
             https://image.tmdb.org/t/p/w600_and_h900_bestv2/${poster_path} 2x
@@ -84,7 +87,7 @@ function createMovieItemClick({
     </div>
     <div class="modal-item">
       <div class="movie-desc">
-        <h1 class="movie-desc__item movie-title">${title}</h1>
+        <h1 class="movie-desc__item movie-title">${title || name}</h1>
         <div class="movie-desc__item movie-info">
           <div class="movie-info__item movie__vote">
             <p class="movie-info__param">Vote / Votes</p>
@@ -96,17 +99,18 @@ function createMovieItemClick({
           </div>
           <div class="movie-info__item">
             <p class="movie-info__param">Popularity</p>
-            <p class="movie-info__value">${popularity}</p>
+            <p class="movie-info__value">${popularity.toFixed(1)}</p>
           </div>
           <div class="movie-info__item">
             <p class="movie-info__param">Original Title</p>
-            <p class="movie-info__value movie-info__value--text">
-              ${original_title}
+            <p class="movie-info__value movie-info__value--text-title">
+              ${original_title || original_name}
             </p>
           </div>
           <div class="movie-info__item">
             <p class="movie-info__param">Genre</p>
-            <p class="movie-info__value">${getMovieGenre(genres)}</p>
+            <p class="movie-info__value movie-info__value--text-genre">
+            ${getMovieGenre(genres)}</p>
           </div>
         </div>
         <div class="movie-desc__item movie-overview">
@@ -136,4 +140,5 @@ function createMovieItemClick({
 
 function onCloseModalBtn() {
   modalMovie.close();
+  closeModalBtnRef.removeEventListener('click', onCloseModalBtn);
 }
