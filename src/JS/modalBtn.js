@@ -105,22 +105,22 @@ function addQueueList(id) {
 }
 
 function removeFromWatchedList(id) {
-  let queueList = [];
-  let localQueueListJson = loadStorage(WATCHED);
-  if (localQueueListJson) {
-    queueList = [...localQueueListJson];
+  let watchList = [];
+  let localWatchedList = loadStorage(WATCHED);
+  if (localWatchedList) {
+    watchList = [...localWatchedList];
   }
 
-  let index = queueList.indexOf(id);
-  queueList.splice(index, 1);
-  saveStorage(WATCHED, queueList);
+  let index = watchList.indexOf(id);
+  watchList.splice(index, 1);
+  saveStorage(WATCHED, watchList);
 }
 
 function removeFromQueueList(id) {
   let queueList = [];
-  let localQueueListJson = loadStorage(QUEUE);
-  if (localQueueListJson) {
-    queueList = [...localQueueListJson];
+  let localQueueList = loadStorage(QUEUE);
+  if (localQueueList) {
+    queueList = [...localQueueList];
   }
 
   let index = queueList.indexOf(id);
