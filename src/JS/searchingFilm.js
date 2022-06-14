@@ -1,12 +1,14 @@
 import FilmApiService from './filmApiService';
 import { filmCardRender } from './renderCards';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import initPagination from './pagePagination';
 const filmApiService = new FilmApiService();
 
 const searchBtn = document.querySelector('.search-submit');
 const inputEl = document.querySelector('.form-input');
 const filmList = document.querySelector('.films-list');
 searchBtn.addEventListener('click', onSearchBtnClick);
+const PAGE_NAME = 'SearchingFilms';
 
 async function onSearchBtnClick(evt) {
   evt.preventDefault();
@@ -19,9 +21,15 @@ async function onSearchBtnClick(evt) {
       const genres = await filmApiService.getGenreName();
       const filmArray = resolve.data.results;
       const gengeArray = genres.data.genres;
-      console.log(filmArray);
+
       if (filmArray.length !== 0) {
         filmList.innerHTML = filmCardRender(filmArray, gengeArray);
+        initPagination(
+          PAGE_NAME,
+          resolve.data.page,
+          resolve.data.total_pages,
+          filmApiService.searchingFilm
+        );
       } else {
         Notify.failure(
           'Search result not successful. Enter the correct movie name and try again. '

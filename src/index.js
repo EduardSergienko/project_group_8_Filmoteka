@@ -4,4 +4,4 @@ import './JS/showTrandingFilms';
 import './JS/renderCards';
 import './JS/pagePagination';
 import './JS/modal';
-import './JS/searching-film';
+import './JS/searchingFilm';
