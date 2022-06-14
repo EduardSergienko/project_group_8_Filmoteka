@@ -5,6 +5,9 @@ body {
   font-family: Roboto, sans-serif;
   font-weight: 500;
 }
+html {
+  scroll-behavior: smooth;
+}
 a {
   color: var(--secondary-text-color);
   text-decoration: none;
@@ -45,7 +48,6 @@ button {
   border-radius: 5px;
 }
 .is-hidden {
-
   position: absolute;
   width: 1px;
   height: 1px;
@@ -54,5 +56,4 @@ button {
   overflow: hidden;
   border: 0;
   clip: rect(0 0 0 0);
-
 }
