@@ -1,6 +1,7 @@
 import * as basicLightbox from 'basiclightbox';
 import FilmApiService from './filmApiService';
 const filmApiService = new FilmApiService();
+import { textModalBtn, addBtnListenet } from './modalBtn';
 
 const movieItemRef = document.querySelector('.films-list');
 
@@ -24,6 +25,9 @@ async function onMovieItemClick(evt) {
 
     getMovieGenre(data.genres);
     createMovieItemClick(data);
+
+    addBtnListenet(filmApiService.queryID);
+    textModalBtn(filmApiService.queryID);
 
     const closeModalBtnRef = document.querySelector('[data-modal-close]');
     closeModalBtnRef.addEventListener('click', onCloseModalBtn);

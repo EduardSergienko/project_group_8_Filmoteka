@@ -6,7 +6,7 @@ export function filmCardRender(arg, genresArrObj) {
       data-media-type="${item.media_type}">
       <img class = 'films-list__poster' src="https://image.tmdb.org/t/p/w500${
         item.poster_path
-      }" alt=""  loading="lazy" />
+      }" alt="" loading="lazy" />
 
   <div class="film-info">
   <h2 class="film-info__name">
