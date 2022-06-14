@@ -11,20 +11,20 @@ export default class FilmApiService {
     const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
     const API_KEY = 'api_key=5f364d2fc6b25c805674b50a1c63d59e';
     return await axios.get(
-      ` ${BASE_URL}?${API_KEY}&query=${this.searchingFilm}&language=en-US&page=${this.page}`
+      `${BASE_URL}?${API_KEY}&query=${this.searchingFilm}&language=en-US&page=${this.page}`
     );
   }
 
   async fetchTranding() {
     const BASE_URL = 'https://api.themoviedb.org/3/trending/movie/day';
     const API_KEY = 'api_key=5f364d2fc6b25c805674b50a1c63d59e';
-    return await axios.get(` ${BASE_URL}?${API_KEY}&page=${this.page}`);
+    return await axios.get(`${BASE_URL}?${API_KEY}&page=${this.page}`);
   }
 
   async getGenreName() {
     const BASE_URL = 'https://api.themoviedb.org/3/genre/movie/list';
     const API_KEY = 'api_key=5f364d2fc6b25c805674b50a1c63d59e';
-    return await axios.get(` ${BASE_URL}?${API_KEY}&language=en-US`);
+    return await axios.get(`${BASE_URL}?${API_KEY}&language=en-US`);
   }
 
   async fetchMovieID() {

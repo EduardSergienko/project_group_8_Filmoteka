@@ -8,6 +8,7 @@ const filmApiService = new FilmApiService();
 const filmsWrap = document.querySelector('.films-wrap');
 const filmList = document.querySelector('.films-list');
 const filmRait = document.querySelector('.film-info__rait');
+const PAGE_NAME = 'TrandingFilms';
 
 filmsWrap.addEventListener('DOMContentLoaded', showTranding);
 
@@ -16,11 +17,10 @@ export async function showTranding() {
     const resolve = await filmApiService.fetchTranding();
     const genres = await filmApiService.getGenreName();
     const filmArray = resolve.data.results;
-
     const genreArray = genres.data.genres;
 
     filmList.innerHTML = filmCardRender(filmArray, genreArray);
-    initPagination(resolve.data.page, resolve.data.total_pages);
+    initPagination(PAGE_NAME, resolve.data.page, resolve.data.total_pages);
   } catch (error) {
     console.log(error);
   }

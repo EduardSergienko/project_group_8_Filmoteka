@@ -11,11 +11,16 @@ const filmList = document.querySelector('.films-list');
 const arrow = `${arrowSprite}#arrow`;
 const dotte = `${arrowSprite}#dotte`;
 
-export default function initPagination(page, total_pages) {
+export default function initPagination(
+  pageName,
+  page,
+  totalPages,
+  searchingFilm = ''
+) {
   const container = document.getElementById('pagination');
   const options = {
-    totalItems: total_pages,
-    itemsPerPage: 10,
+    totalItems: totalPages,
+    itemsPerPage: 1,
     visiblePages: 5,
     page: page,
     centerAlign: true,
@@ -43,18 +48,41 @@ export default function initPagination(page, total_pages) {
 
   const pagination = new Pagination(container, options);
 
-  pagination.on('afterMove', async event => {
-    filmApiService.page = event.page;
+  pagination.on('afterMove', async ({ page }) => {
+    filmApiService.page = page;
+    if (pageName === 'TrandingFilms') {
+      try {
+        const resolve = await filmApiService.fetchTranding();
+        const genres = await filmApiService.getGenreName();
+        const filmArray = resolve.data.results;
+        const genreArray = genres.data.genres;
 
-    try {
-      const resolve = await filmApiService.fetchTranding();
-      const genres = await filmApiService.getGenreName();
-      const filmArray = resolve.data.results;
-      const genreArray = genres.data.genres;
-
-      filmList.innerHTML = filmCardRender(filmArray, genreArray);
-    } catch (error) {
-      console.log(error);
+        filmList.innerHTML = filmCardRender(filmArray, genreArray);
+        scrollToTop();
+      } catch (error) {
+        console.log(error);
+      }
     }
+
+    if (pageName === 'SearchingFilms') {
+      try {
+        filmApiService.qwery = searchingFilm;
+        const resolve = await filmApiService.fetchMovies();
+        const genres = await filmApiService.getGenreName();
+        const filmArray = resolve.data.results;
+        const genreArray = genres.data.genres;
+
+        filmList.innerHTML = filmCardRender(filmArray, genreArray);
+        scrollToTop();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    return pagination;
   });
+}
+
+function scrollToTop() {
+  window.scrollTo({ top: 0 });
 }
