@@ -24,7 +24,7 @@ async function onSearchBtnClick(evt) {
         filmList.innerHTML = filmCardRender(filmArray, gengeArray);
       } else {
         Notify.failure(
-          'Search result not successful. Enter the correct movie name and try again '
+          'Search result not successful. Enter the correct movie name and try again. '
         );
       }
     } catch (error) {
@@ -32,7 +32,7 @@ async function onSearchBtnClick(evt) {
     }
   } else {
     Notify.failure(
-      'Search result not successful. Enter the correct movie name and try again '
+      'Search result not successful. Enter the correct movie name and try again. '
     );
   }
 }
