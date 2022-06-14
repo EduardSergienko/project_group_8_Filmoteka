@@ -1,11 +1,10 @@
 import * as basicLightbox from 'basiclightbox';
 import FilmApiService from './filmApiService';
-
-const filmApiService = new FilmApiService();
 import { textModalBtn, addBtnListenet } from './modalBtn';
 
-const movieItemRef = document.querySelector('.films-list');
+const filmApiService = new FilmApiService();
 
+const movieItemRef = document.querySelector('.films-list');
 movieItemRef.addEventListener('click', onMovieItemClick);
 
 async function onMovieItemClick(evt) {
@@ -19,7 +18,6 @@ async function onMovieItemClick(evt) {
   const currentMovie = evt.target.closest('.films-list__card');
 
   filmApiService.queryID = currentMovie.dataset.id;
-  filmApiService.queryMediaType = currentMovie.dataset.mediaType;
 
   try {
     const { data } = await filmApiService.fetchMovieID();
@@ -32,6 +30,8 @@ async function onMovieItemClick(evt) {
 
     const closeModalBtnRef = document.querySelector('[data-modal-close]');
     closeModalBtnRef.addEventListener('click', onCloseModalBtn);
+
+    window.addEventListener('keydown', onEscapePress);
   } catch (error) {
     console.log(error.message);
   }
@@ -78,13 +78,12 @@ function createMovieItemClick({
       <a class="poster__link" href="#">
         <img
           class="poster__movie"
-          src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/${poster_path}"
-          data-src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/${poster_path}"
-          data-srcset="https://image.tmdb.org/t/p/w300_and_h450_bestv2/${poster_path} 1x, https://image.tmdb.org/t/p/w600_and_h900_bestv2/${poster_path} 2x"
+          src="https://image.tmdb.org/t/p/w500/${poster_path}"
           alt="${title || name}"
           srcset="
-            https://image.tmdb.org/t/p/w300_and_h450_bestv2/${poster_path} 1x,
-            https://image.tmdb.org/t/p/w600_and_h900_bestv2/${poster_path} 2x
+            https://image.tmdb.org/t/p/w500/${poster_path} 1x,
+            https://image.tmdb.org/t/p/w780/${poster_path} 2x,
+            https://image.tmdb.org/t/p/w1280/${poster_path} 3x
           "
         /> 
       </a>
@@ -144,5 +143,11 @@ function createMovieItemClick({
 
 function onCloseModalBtn() {
   modalMovie.close();
-  closeModalBtnRef.removeEventListener('click', onCloseModalBtn);
+}
+
+function onEscapePress(event) {
+  if (event.code === 'Escape') {
+    modalMovie.close();
+    window.removeEventListener('keydown', onEscapePress);
+  }
 }
