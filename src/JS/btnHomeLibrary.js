@@ -3,17 +3,22 @@ const libraryNavBtn = document.querySelector('.pages__library-btn');
 const homeHeader = document.querySelector('.main-page__header');
 const libraryHeader = document.querySelector('.header-library');
 libraryNavBtn.addEventListener('click', onLibraryNavBtnClick);
+
 function onLibraryNavBtnClick() {
   homeHeader.classList.toggle('is-hidden');
-  homeNavBtn.classList.toggle('current');
+  //homeNavBtn.classList.toggle('current');
   libraryHeader.classList.toggle('is-hidden');
-  libraryNavBtn.classList.toggle('current');
+  //libraryNavBtn.classList.toggle('current');
 }
-const libraryHeaderLibbtn = document.querySelector('.header-library__button');
-libraryHeaderLibbtn.addEventListener('click', onLibraryHeaderBtnClick);
-function onLibraryHeaderBtnClick() {
+const libraryHeaderHomebtn = document.querySelector(
+  '.header-library__home-button'
+);
+
+libraryHeaderHomebtn.addEventListener('click', onLibraryHeaderHomeBtnClick);
+
+function onLibraryHeaderHomeBtnClick() {
   homeHeader.classList.toggle('is-hidden');
-  homeNavBtn.classList.toggle('current');
+  // homeNavBtn.classList.toggle('current');
   libraryHeader.classList.toggle('is-hidden');
-  libraryNavBtn.classList.toggle('current');
+  //libraryNavBtn.classList.toggle('current');
 }
