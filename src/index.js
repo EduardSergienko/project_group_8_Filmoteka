@@ -5,3 +5,7 @@ import './JS/renderCards';
 import './JS/pagePagination';
 import './JS/modal';
 import './JS/searchingFilm';
+
+import './JS/scrollToTop';
+import './JS/localStorage';
+import './JS/modalBtn';

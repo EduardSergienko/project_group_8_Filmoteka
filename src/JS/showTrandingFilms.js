@@ -3,7 +3,7 @@ import { filmCardRender } from './renderCards';
 import initPagination from './pagePagination';
 
 const filmApiService = new FilmApiService();
-console.log(filmApiService);
+// console.log(filmApiService);
 
 const filmsWrap = document.querySelector('.films-wrap');
 const filmList = document.querySelector('.films-list');

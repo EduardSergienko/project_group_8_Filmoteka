@@ -1,11 +1,14 @@
 import posterNotFound from '../images/desktop/poster-not-found-desktop.png';
+import posterNotFound2x from '../images/desktop/poster-not-found-desktop@2x.png';
 
 export function filmCardRender(arg, genresArrObj) {
   return arg
     .map(item => {
-      let src = `https://image.tmdb.org/t/p/w500${item.poster_path}`;
+      let src = `https://image.tmdb.org/t/p/w400/${item.poster_path}`;
+      let src2x = `https://image.tmdb.org/t/p/original/${item.poster_path}`;
       if (!item.poster_path) {
         src = posterNotFound;
+        src2x = posterNotFound2x;
       }
 
       return `<li class="films-list__card" 
@@ -13,7 +16,7 @@ export function filmCardRender(arg, genresArrObj) {
       data-media-type="${item.media_type}">
       <img class = 'films-list__poster' src="${src}" alt="${
         item.name || item.original_title
-      }"  loading="lazy" />
+      }" srcset="${src} 1x, ${src2x} 2x" loading="lazy" />
 
   <div class="film-info">
   <h2 class="film-info__name">

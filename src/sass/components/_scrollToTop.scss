@@ -1,0 +1,24 @@
+.scroll-process {
+  background-color: aqua;
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.scroll-process__value {
+  display: flex;
+  height: calc(100% - 15px);
+  width: calc(100% - 15px);
+  background-color: white;
+  border-radius: 50%;
+  font-size: 25px;
+  align-items: center;
+  justify-content: center;
+}
