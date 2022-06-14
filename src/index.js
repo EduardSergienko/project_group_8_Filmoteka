@@ -6,3 +6,8 @@ import './JS/pagePagination';
 import './JS/modal';
 import './JS/searching-film';
 import './JS/scrollToTop';
+import './JS/localStorage';
+import './JS/modalBtn';
+
+
+
