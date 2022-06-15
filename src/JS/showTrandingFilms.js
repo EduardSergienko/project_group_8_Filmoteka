@@ -2,7 +2,8 @@ import FilmApiService from './filmApiService';
 import { filmCardRender } from './renderCards';
 import { initPagination, paginationProperties } from './pagePagination';
 import { SHOW_TRANDING_FILMS } from './searchType';
-import Notiflix from 'notiflix';
+import { NotiflixLoading, NotiflixLoadingRemove } from './loading';
+
 const filmApiService = new FilmApiService();
 
 const filmsWrap = document.querySelector('.films-wrap');
@@ -13,10 +14,7 @@ filmsWrap.addEventListener('DOMContentLoaded', showTranding);
 
 export async function showTranding() {
   try {
-    Notiflix.Loading.pulse({
-      svgColor: 'var(--complementary-text-color)',
-      svgSize: '170px',
-    });
+    NotiflixLoading();
     const resolve = await filmApiService.fetchTranding();
     const genres = await filmApiService.getGenreName();
     const filmArray = resolve.data.results;
@@ -30,7 +28,7 @@ export async function showTranding() {
     filmList.innerHTML = filmCardRender(filmArray, genreArray);
 
     initPagination(paginationProperties); //Add Pagination
-    Notiflix.Loading.remove();
+    NotiflixLoadingRemove();
   } catch (error) {
     console.log(error);
   }
