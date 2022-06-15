@@ -17,8 +17,12 @@
 .films-list__card {
   cursor: pointer;
   margin-bottom: 20px;
+  transition: 250ms;
   &:last-child {
     margin-bottom: 0;
+  }
+  &:hover {
+    transform: scale(1.03);
   }
   @media screen and (min-width: 768px) {
     margin: 16px 16px;
