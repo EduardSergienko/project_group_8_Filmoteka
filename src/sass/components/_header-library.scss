@@ -9,7 +9,7 @@
 .header-library {
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: bottom;
 
   @media screen {
     @media screen and (min-device-pixel-ratio: 1),
@@ -137,6 +137,7 @@
 .header-library__hero--button {
   width: 129.5px;
   height: 44px;
+  padding-top: 2.5px;
 
   @media (min-width: 768px) {
     width: 152px;
