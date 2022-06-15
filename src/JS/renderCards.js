@@ -10,6 +10,9 @@ export function filmCardRender(arg, genresArrObj) {
         src = posterNotFound;
         src2x = posterNotFound2x;
       }
+      if (!item.first_air_date & !item.release_date) {
+        item.first_air_date = 'n/a';
+      }
 
       return `<li class="films-list__card" 
       data-id="${item.id}"
