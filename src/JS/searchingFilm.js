@@ -34,15 +34,31 @@ async function onSearchBtnClick(evt) {
         initPagination(paginationProperties); //Add Pagination
       } else {
         Notify.failure(
-          'Search result not successful. Enter the correct movie name and try again. '
+          'Search result not successful. Enter the correct movie name and try again.',
+          {
+            timeout: 3000,
+            position: 'center-top',
+            cssAnimationStyle: 'zoom',
+            width: '500px',
+            distance: '150px',
+          }
         );
+        Notiflix.failure.remove();
       }
     } catch (error) {
       console.log(error);
     }
   } else {
     Notify.failure(
-      'Search result not successful. Enter the correct movie name and try again. '
+      'Search result not successful. Enter the correct movie name and try again. ',
+      {
+        timeout: 3000,
+        position: 'center-top',
+        cssAnimationStyle: 'zoom',
+        width: '500px',
+        distance: '150px',
+      }
     );
+    Notiflix.failure.remove();
   }
 }
