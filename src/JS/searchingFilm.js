@@ -47,7 +47,9 @@ async function onSearchBtnClick(evt) {
         );
         Notify.failure.remove();
       }
-      NotiflixLoadingRemove();
+      setTimeout(() => {
+          NotiflixLoadingRemove();
+        }, 500);
     } catch (error) {
       console.log(error);
     }
