@@ -28,7 +28,9 @@ export async function showTranding() {
     filmList.innerHTML = filmCardRender(filmArray, genreArray);
 
     initPagination(paginationProperties); //Add Pagination
-    NotiflixLoadingRemove();
+    setTimeout(() => {
+      NotiflixLoadingRemove();
+    }, 500);
   } catch (error) {
     console.log(error);
   }
