@@ -1,14 +1,13 @@
 import FilmApiService from './filmApiService';
 import { filmCardRender } from './renderCards';
-import initPagination from './pagePagination';
+import { initPagination, paginationProperties } from './pagePagination';
+import { SHOW_TRANDING_FILMS } from './searchType';
 
 const filmApiService = new FilmApiService();
-// console.log(filmApiService);
 
 const filmsWrap = document.querySelector('.films-wrap');
 const filmList = document.querySelector('.films-list');
 const filmRait = document.querySelector('.film-info__rait');
-const PAGE_NAME = 'TrandingFilms';
 
 filmsWrap.addEventListener('DOMContentLoaded', showTranding);
 
@@ -19,8 +18,14 @@ export async function showTranding() {
     const filmArray = resolve.data.results;
     const genreArray = genres.data.genres;
 
+    //Add paginationProperties
+    paginationProperties.pageName = SHOW_TRANDING_FILMS;
+    paginationProperties.page = resolve.data.page;
+    paginationProperties.totalPages = resolve.data.total_pages;
+
     filmList.innerHTML = filmCardRender(filmArray, genreArray);
-    initPagination(PAGE_NAME, resolve.data.page, resolve.data.total_pages);
+
+    initPagination(paginationProperties); //Add Pagination
   } catch (error) {
     console.log(error);
   }

@@ -1,14 +1,15 @@
 import FilmApiService from './filmApiService';
 import { filmCardRender } from './renderCards';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import initPagination from './pagePagination';
+import { initPagination, paginationProperties } from './pagePagination';
+import { SEARCH_FILMS } from './searchType';
+
 const filmApiService = new FilmApiService();
 
 const searchBtn = document.querySelector('.search-submit');
 const inputEl = document.querySelector('.form-input');
 const filmList = document.querySelector('.films-list');
 searchBtn.addEventListener('click', onSearchBtnClick);
-const PAGE_NAME = 'SearchingFilms';
 
 async function onSearchBtnClick(evt) {
   evt.preventDefault();
@@ -22,14 +23,15 @@ async function onSearchBtnClick(evt) {
       const filmArray = resolve.data.results;
       const gengeArray = genres.data.genres;
 
+      //Add paginationProperties
+      paginationProperties.pageName = SEARCH_FILMS;
+      paginationProperties.page = resolve.data.page;
+      paginationProperties.totalPages = resolve.data.total_pages;
+      paginationProperties.searchingFilm = filmApiService.searchingFilm;
+
       if (filmArray.length !== 0) {
         filmList.innerHTML = filmCardRender(filmArray, gengeArray);
-        initPagination(
-          PAGE_NAME,
-          resolve.data.page,
-          resolve.data.total_pages,
-          filmApiService.searchingFilm
-        );
+        initPagination(paginationProperties); //Add Pagination
       } else {
         Notify.failure(
           'Search result not successful. Enter the correct movie name and try again. '
