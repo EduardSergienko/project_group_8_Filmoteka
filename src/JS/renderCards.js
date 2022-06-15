@@ -5,10 +5,13 @@ export function filmCardRender(arg, genresArrObj) {
   return arg
     .map(item => {
       let src = `https://image.tmdb.org/t/p/w400/${item.poster_path}`;
-      let src2x = `https://image.tmdb.org/t/p/original/${item.poster_path}`;
+      let src2x = `https://image.tmdb.org/t/p/w780/${item.poster_path}`;
       if (!item.poster_path) {
         src = posterNotFound;
         src2x = posterNotFound2x;
+      }
+      if (!item.first_air_date & !item.release_date) {
+        item.first_air_date = 'n/a';
       }
 
       return `<li class="films-list__card" 
