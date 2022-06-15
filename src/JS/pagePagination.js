@@ -4,6 +4,7 @@ import 'tui-pagination/dist/tui-pagination.css';
 import FilmApiService from './filmApiService';
 import arrowSprite from '../images/arrow-sprite.svg';
 import { filmCardRender } from './renderCards';
+import { SHOW_TRANDING_FILMS, SEARCH_FILMS } from './searchType';
 
 const filmApiService = new FilmApiService();
 const filmList = document.querySelector('.films-list');
@@ -11,12 +12,19 @@ const filmList = document.querySelector('.films-list');
 const arrow = `${arrowSprite}#arrow`;
 const dotte = `${arrowSprite}#dotte`;
 
-export default function initPagination(
+export const paginationProperties = {
+  pageName: '',
+  page: 1,
+  totalPages: null,
+  searchingFilm: '',
+};
+
+export function initPagination({
   pageName,
   page,
   totalPages,
-  searchingFilm = ''
-) {
+  searchingFilm = '',
+}) {
   const container = document.getElementById('pagination');
   const options = {
     totalItems: totalPages,
@@ -50,7 +58,8 @@ export default function initPagination(
 
   pagination.on('afterMove', async ({ page }) => {
     filmApiService.page = page;
-    if (pageName === 'TrandingFilms') {
+
+    if (pageName === SHOW_TRANDING_FILMS) {
       try {
         const resolve = await filmApiService.fetchTranding();
         const genres = await filmApiService.getGenreName();
@@ -64,7 +73,7 @@ export default function initPagination(
       }
     }
 
-    if (pageName === 'SearchingFilms') {
+    if (pageName === SEARCH_FILMS) {
       try {
         filmApiService.qwery = searchingFilm;
         const resolve = await filmApiService.fetchMovies();
