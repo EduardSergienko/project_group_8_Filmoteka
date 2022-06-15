@@ -47,7 +47,11 @@
 
 .header-container {
   padding-top: 40px;
-  padding-bottom: 44px;
+  padding-bottom: 92px;
+  @media screen and (min-width:321px){
+    padding-bottom: 80px;
+    
+  }
 
  
 }
@@ -68,6 +72,7 @@
 }
 
 .header-logo {
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -132,14 +137,14 @@
 
 .form-container {
   display: flex;
-  flex-direction: row;
+  //flex-direction: row;
   align-items: top;
   justify-content: center;
   padding: 0%;
-  min-height: 68px;
-  @media screen and (min-width:321px){
-    min-height: 56px;
-  }
+  //min-height: 68px;
+  // @media screen and (min-width:321px){
+  //   min-height: 56px;
+  // }
   
 }
 
@@ -150,7 +155,7 @@
   font-size: 14px;
   line-height: 1.14;
   display: flex;
-  flex-direction: row;
+  //flex-direction: row;
   align-items: flex-start;
   //margin-bottom: 36px;
   padding: 0;

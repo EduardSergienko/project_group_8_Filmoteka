@@ -120,3 +120,21 @@
     filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
   }
 }
+.header-lib-logo{
+  cursor: pointer;
+  display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: rgba(255, 255, 255, 1);
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.16;
+  
+    &__svg {
+      margin-right: 7px;
+  
+      @media screen and (min-width: 1024px) {
+        margin-right: 10px;
+      }
+    }
+}
