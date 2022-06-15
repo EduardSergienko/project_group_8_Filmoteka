@@ -3,7 +3,7 @@ import { filmCardRender } from './renderCards';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { initPagination, paginationProperties } from './pagePagination';
 import { SEARCH_FILMS } from './searchType';
-import Notiflix from 'notiflix';
+import { NotiflixLoading, NotiflixLoadingRemove } from './loading';
 
 const filmApiService = new FilmApiService();
 
@@ -19,10 +19,7 @@ async function onSearchBtnClick(evt) {
   filmApiService.resetPage();
   if (filmApiService.qwery !== '') {
     try {
-      Notiflix.Loading.pulse({
-        svgColor: 'var(--complementary-text-color)',
-        svgSize: '170px',
-      });
+      NotiflixLoading();
       const resolve = await filmApiService.fetchMovies();
       const genres = await filmApiService.getGenreName();
       const filmArray = resolve.data.results;
@@ -48,9 +45,9 @@ async function onSearchBtnClick(evt) {
             distance: '150px',
           }
         );
-        Notiflix.failure.remove();
+        Notify.failure.remove();
       }
-      Notiflix.Loading.remove();
+      NotiflixLoadingRemove();
     } catch (error) {
       console.log(error);
     }
