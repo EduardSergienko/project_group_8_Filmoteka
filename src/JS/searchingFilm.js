@@ -19,7 +19,6 @@ async function onSearchBtnClick(evt) {
   filmApiService.resetPage();
   if (filmApiService.qwery !== '') {
     try {
-      NotiflixLoading();
       const resolve = await filmApiService.fetchMovies();
       const genres = await filmApiService.getGenreName();
       const filmArray = resolve.data.results;
@@ -32,6 +31,7 @@ async function onSearchBtnClick(evt) {
       paginationProperties.searchingFilm = filmApiService.searchingFilm;
 
       if (filmArray.length !== 0) {
+        NotiflixLoading();
         filmList.innerHTML = filmCardRender(filmArray, gengeArray);
         initPagination(paginationProperties); //Add Pagination
       } else {

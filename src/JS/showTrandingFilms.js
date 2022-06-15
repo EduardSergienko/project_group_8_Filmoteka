@@ -14,12 +14,12 @@ filmsWrap.addEventListener('DOMContentLoaded', showTranding);
 
 export async function showTranding() {
   try {
-    NotiflixLoading();
     const resolve = await filmApiService.fetchTranding();
     const genres = await filmApiService.getGenreName();
     const filmArray = resolve.data.results;
     const genreArray = genres.data.genres;
 
+    NotiflixLoading();
     //Add paginationProperties
     paginationProperties.pageName = SHOW_TRANDING_FILMS;
     paginationProperties.page = resolve.data.page;
