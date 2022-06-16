@@ -7,8 +7,13 @@ body {
 }
 
 body.dark-theme {
-  color: #FFFFFF;
-  background-color: #363636;
+  color: #ffffff;
+  // background-color: #363636;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
+    url(../images/background/background.jpg) fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 html {
