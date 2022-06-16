@@ -3,6 +3,7 @@ import { filmCardRender } from './renderCards';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { initPagination, paginationProperties } from './pagePagination';
 import { SEARCH_FILMS } from './searchType';
+import { NotiflixLoading, NotiflixLoadingRemove } from './loading';
 
 const filmApiService = new FilmApiService();
 
@@ -30,19 +31,40 @@ async function onSearchBtnClick(evt) {
       paginationProperties.searchingFilm = filmApiService.searchingFilm;
 
       if (filmArray.length !== 0) {
-        filmList.innerHTML = filmCardRender(filmArray, gengeArray);
-        initPagination(paginationProperties); //Add Pagination
+        NotiflixLoading();
+
+        setTimeout(() => {
+          filmList.innerHTML = filmCardRender(filmArray, gengeArray);
+          initPagination(paginationProperties);
+          NotiflixLoadingRemove();
+        }, 1000);
       } else {
         Notify.failure(
-          'Search result not successful. Enter the correct movie name and try again. '
+          'Search result not successful. Enter the correct movie name and try again.',
+          {
+            timeout: 3000,
+            position: 'center-top',
+            cssAnimationStyle: 'zoom',
+            width: '500px',
+            distance: '150px',
+          }
         );
+        Notify.failure.remove();
       }
     } catch (error) {
       console.log(error);
     }
   } else {
     Notify.failure(
-      'Search result not successful. Enter the correct movie name and try again. '
+      'Search result not successful. Enter the correct movie name and try again. ',
+      {
+        timeout: 3000,
+        position: 'center-top',
+        cssAnimationStyle: 'zoom',
+        width: '500px',
+        distance: '150px',
+      }
     );
+    Notify.failure.remove();
   }
 }

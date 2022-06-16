@@ -5,6 +5,7 @@ import FilmApiService from './filmApiService';
 import arrowSprite from '../images/arrow-sprite.svg';
 import { filmCardRender } from './renderCards';
 import { SHOW_TRANDING_FILMS, SEARCH_FILMS } from './searchType';
+import { NotiflixLoading, NotiflixLoadingRemove } from './loading';
 
 const filmApiService = new FilmApiService();
 const filmList = document.querySelector('.films-list');
@@ -61,12 +62,16 @@ export function initPagination({
 
     if (pageName === SHOW_TRANDING_FILMS) {
       try {
+        NotiflixLoading();
         const resolve = await filmApiService.fetchTranding();
         const genres = await filmApiService.getGenreName();
         const filmArray = resolve.data.results;
         const genreArray = genres.data.genres;
 
-        filmList.innerHTML = filmCardRender(filmArray, genreArray);
+        setTimeout(() => {
+          filmList.innerHTML = filmCardRender(filmArray, genreArray);
+          NotiflixLoadingRemove();
+        }, 500);
         scrollToTop();
       } catch (error) {
         console.log(error);
@@ -75,13 +80,17 @@ export function initPagination({
 
     if (pageName === SEARCH_FILMS) {
       try {
+        NotiflixLoading();
         filmApiService.qwery = searchingFilm;
         const resolve = await filmApiService.fetchMovies();
         const genres = await filmApiService.getGenreName();
         const filmArray = resolve.data.results;
         const genreArray = genres.data.genres;
 
-        filmList.innerHTML = filmCardRender(filmArray, genreArray);
+        setTimeout(() => {
+          filmList.innerHTML = filmCardRender(filmArray, genreArray);
+          NotiflixLoadingRemove();
+        }, 500);
         scrollToTop();
       } catch (error) {
         console.log(error);
@@ -93,5 +102,5 @@ export function initPagination({
 }
 
 function scrollToTop() {
-  window.scrollTo({ top: 0 });
+  window.scrollTo(0, 0);
 }

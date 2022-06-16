@@ -48,12 +48,9 @@
 .header-container {
   padding-top: 40px;
   padding-bottom: 92px;
-  @media screen and (min-width:321px){
+  @media screen and (min-width: 321px) {
     padding-bottom: 80px;
-    
   }
-
- 
 }
 
 .main-page__navigation {
@@ -65,9 +62,8 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 54px;
-  @media screen and (min-width:321px){
+  @media screen and (min-width: 321px) {
     margin-bottom: 41px;
-    
   }
 }
 
@@ -102,17 +98,17 @@
   & li:not(:last-child) {
     margin-right: 39px;
   }
-  & .current {
-    position: relative;
+}
 
-    height: 100%;
+.current {
+  position: relative;
 
-    transition-property: color;
-    transition-duration: 250ms;
-    //transition-timing-function: $transition-timing-function;
-  }
+  height: 100%;
 
-  & .current::after {
+  transition-property: color;
+  transition-duration: 250ms;
+  //transition-timing-function: $transition-timing-function;
+  &::after {
     content: ' ';
     position: absolute;
     bottom: -1px;
@@ -145,7 +141,6 @@
   // @media screen and (min-width:321px){
   //   min-height: 56px;
   // }
-  
 }
 
 .form-container_search {
