@@ -136,7 +136,8 @@ function createMovieItemClick({
     </div>
   </div>
 </div>
-`
+`,
+    { onClose: () => window.removeEventListener('keydown', onEscapePress) }
   );
   modalMovie.show();
 }
@@ -148,6 +149,5 @@ function onCloseModalBtn() {
 function onEscapePress(event) {
   if (event.code === 'Escape') {
     modalMovie.close();
-    window.removeEventListener('keydown', onEscapePress);
   }
 }
