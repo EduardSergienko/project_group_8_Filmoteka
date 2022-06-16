@@ -48,7 +48,7 @@
 .header-container {
   padding-top: 40px;
   padding-bottom: 92px;
-  @media screen and (min-width: 321px) {
+  @media screen and (min-width: 768px) {
     padding-bottom: 80px;
   }
 }
@@ -62,7 +62,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 54px;
-  @media screen and (min-width: 321px) {
+  @media screen and (min-width: 767px) {
     margin-bottom: 41px;
   }
 }
