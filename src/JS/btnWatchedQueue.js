@@ -4,15 +4,16 @@ import { cutFilmTitle } from './renderCards';
 import { getMovieGenre } from './modal';
 import posterNotFound from '../images/desktop/poster-not-found-desktop.png';
 import posterNotFound2x from '../images/desktop/poster-not-found-desktop@2x.png';
-
+import { NotiflixLoading, NotiflixLoadingRemove } from './loading';
 
 const filmApiService = new FilmApiService();
 const refs = {
   watched: document.querySelector('.watched-button'),
   queue: document.querySelector('.queue-button'),
   gallery: document.querySelector('.films-list'),
-  libraryBtn:document.querySelector('.pages__library-btn'),
-};
+  libraryBtn: document.querySelector('.pages__library-btn'),
+  paginationHidden: document.querySelector('.tui-pagination'),
+ };
 
 refs.libraryBtn.addEventListener('click', onClicLibrary);
 refs.watched.addEventListener('click', onClickWatched);
@@ -21,12 +22,14 @@ refs.queue.addEventListener('click', onClickQueue);
 
 async function onClicLibrary() {
   onClickWatched();
+  refs.paginationHidden.classList.add('is-hidden');
+
 }
 
 async function onClickWatched() {
-  // console.log();
-  refs.watched.classList.add('currentbtn')
-  refs.queue.classList.remove('currentbtn')
+
+  refs.watched.classList.add('currentbtn');
+  refs.queue.classList.remove('currentbtn');
   const watched = JSON.parse(localStorage.getItem('watched'));
   console.log(watched);
   
@@ -36,18 +39,19 @@ async function onClickWatched() {
   } else {
     // зробити рендер сітки
     renderMovies(watched);
-    -''
+    
   }
   return;
 }
 
 async function onClickQueue() {
   // console.log(e);
-refs.watched.classList.remove('currentbtn')
-  refs.queue.classList.add('currentbtn')
+  refs.watched.classList.remove('currentbtn');
+  refs.queue.classList.add('currentbtn');
   const queue = JSON.parse(localStorage.getItem('queue'));
  console.log(queue);
   refs.gallery.innerHTML = '';
+  
   if (queue === null || queue.length === 0) {
     messageWarning();
   } else {
@@ -93,7 +97,7 @@ function libraryFilmCardRender(arg) {
       ${getMovieGenre(item.genres)} | ${(
         item.first_air_date || item.release_date
       ).slice(0, 4) }
-      <span class="movie-info__value--vote-left">${item.vote_average}</span>
+      <span class="movie-info__value--vote-left">${ item.vote_average}</span>
       
     </p>
    
@@ -115,13 +119,15 @@ async function renderMovies(array) {
         const filmArray = resolve.data;
         librartArray.push(filmArray);
        }
-     
+      NotiflixLoading();
       console.log(librartArray);
     } catch (error) {
         console.log(error);
     };
-     
-    console.dir(librartArray);
-
-      refs.gallery.innerHTML = libraryFilmCardRender(librartArray);
+     setTimeout(() => {
+     console.dir(librartArray);
+  refs.gallery.innerHTML = libraryFilmCardRender(librartArray);
+  NotiflixLoadingRemove();
+    }, 300);
+  
 }
