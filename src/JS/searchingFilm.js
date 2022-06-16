@@ -37,7 +37,7 @@ async function onSearchBtnClick(evt) {
           filmList.innerHTML = filmCardRender(filmArray, gengeArray);
           initPagination(paginationProperties);
           NotiflixLoadingRemove();
-        }, 1000);
+        }, 500);
       } else {
         Notify.failure(
           'Search result not successful. Enter the correct movie name and try again.',
