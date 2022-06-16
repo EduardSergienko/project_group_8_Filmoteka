@@ -1,0 +1,32 @@
+.active-toolebar{
+    display: none;
+}
+
+.toolbarContainer{
+ display: flex;
+width: 70px;
+margin-left: 0;
+ 
+
+@media screen and (min-width: 768px) {
+margin-right: auto;
+}
+
+
+    &__Btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 31px;
+        height: 31px;
+        border-radius: 50%;
+        border: none;
+        border-color: aliceblue;
+
+    }
+
+}
+
+.animation{
+    transform: translateX(100px);
+}
