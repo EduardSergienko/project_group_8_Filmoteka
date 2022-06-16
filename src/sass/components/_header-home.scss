@@ -86,6 +86,11 @@
   }
 }
 
+.header-logo,
+.header-lib-logo {
+  position: relative;
+}
+
 .pages__list {
   text-transform: uppercase;
   display: flex;
