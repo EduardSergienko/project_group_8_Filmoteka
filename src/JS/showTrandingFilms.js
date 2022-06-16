@@ -2,15 +2,17 @@ import FilmApiService from './filmApiService';
 import { filmCardRender } from './renderCards';
 import { initPagination, paginationProperties } from './pagePagination';
 import { SHOW_TRANDING_FILMS } from './searchType';
-// import { NotiflixLoading, NotiflixLoadingRemove } from './loading';
+import { NotiflixLoading, NotiflixLoadingRemove } from './loading';
 
 const filmApiService = new FilmApiService();
 
 const filmsWrap = document.querySelector('.films-wrap');
 const filmList = document.querySelector('.films-list');
 const filmRait = document.querySelector('.film-info__rait');
+const footer = document.querySelector('.footer');
 
 filmsWrap.addEventListener('DOMContentLoaded', showTranding);
+footer.classList.add('is-hidden');
 
 export async function showTranding() {
   try {
@@ -19,16 +21,19 @@ export async function showTranding() {
     const filmArray = resolve.data.results;
     const genreArray = genres.data.genres;
 
-    // NotiflixLoading();
+    NotiflixLoading();
     //Add paginationProperties
     paginationProperties.pageName = SHOW_TRANDING_FILMS;
     paginationProperties.page = resolve.data.page;
     paginationProperties.totalPages = resolve.data.total_pages;
 
-    filmList.innerHTML = filmCardRender(filmArray, genreArray);
+    setTimeout(() => {
+      filmList.innerHTML = filmCardRender(filmArray, genreArray);
 
-    initPagination(paginationProperties); //Add Pagination
-    // NotiflixLoadingRemove();
+      initPagination(paginationProperties); //Add Pagination
+      footer.classList.remove('is-hidden');
+      NotiflixLoadingRemove();
+    }, 500);
   } catch (error) {
     console.log(error);
   }
