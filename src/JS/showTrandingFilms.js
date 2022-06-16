@@ -9,12 +9,14 @@ const filmApiService = new FilmApiService();
 const filmsWrap = document.querySelector('.films-wrap');
 const filmList = document.querySelector('.films-list');
 const filmRait = document.querySelector('.film-info__rait');
+const searchForm = document.getElementById('search-form');
 const footer = document.querySelector('.footer');
-
-filmsWrap.addEventListener('DOMContentLoaded', showTranding);
 footer.classList.add('is-hidden');
 
+filmsWrap.addEventListener('DOMContentLoaded', showTranding);
+
 export async function showTranding() {
+  searchForm.reset();
   try {
     const resolve = await filmApiService.fetchTranding();
     const genres = await filmApiService.getGenreName();
