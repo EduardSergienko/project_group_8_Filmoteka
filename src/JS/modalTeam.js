@@ -1,13 +1,21 @@
 // import * as basicLightbox from 'basiclightbox';
 
 // import denysUrl from '../images/team/denys-tutov.jpg';
+
 // import eduardUrl from '../images/team/eduard-sergienko.jpg';
+
 // import hannaUrl from '../images/team/hanna-pylypenko.jpg';
+
 // import romanUrl from '../images/team/roman-maksimenko.jpg';
+
 // import vitaliiUrl from '../images/team/vitalii-baluta.jpg';
+
 // import volodymyrUrl from '../images/team/volodymyr-zvarych.jpg';
+
 // import yakovUrl from '../images/team/yakov-yakimenko.jpg';
+
 // import yuriiUrl from '../images/team/yurii-dvornichenko.jpg';
+
 // import tetianaUrl from '../images/team/tetiana-polyvian.jpg';
 
 // const developers = [
