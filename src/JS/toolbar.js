@@ -41,14 +41,14 @@ function nightTheme() {
   removeStorage(NIGHT);
 
   refs.moonSvg.classList.remove(active);
-  refs.body.classList.add('dark');
-  refs.footer.classList.add('dark');
-  refs.footerLink.classList.add('dark');
+  refs.body.classList.add('dark-theme');
+  refs.footer.classList.add('dark-theme');
+  refs.footerLink.classList.add('dark-theme');
   refs.scroll.classList.add('dark');
-  saveStorage(BODY, 'dark');
-  saveStorage(FOOTER, 'dark');
-  saveStorage(COLORFOOTERLINK, 'dark');
-  saveStorage(SKROLL, 'dark');
+  saveStorage(BODY, 'dark-theme');
+  saveStorage(FOOTER, 'dark-theme');
+  saveStorage(COLORFOOTERLINK, 'dark-theme');
+  saveStorage(SKROLL, 'dark-theme');
 
   refs.sunSvg.classList.add(active);
   saveStorage(SUN, active);
@@ -63,11 +63,11 @@ function dayTheme() {
   removeStorage(COLORFOOTERLINK);
   removeStorage(SKROLL);
 
-  refs.body.classList.remove('dark');
-  refs.footer.classList.remove('dark');
-  refs.footerLink.classList.remove('dark');
+  refs.body.classList.remove('dark-theme');
+  refs.footer.classList.remove('dark-theme');
+  refs.footerLink.classList.remove('dark-theme');
   refs.sunSvg.classList.remove(active);
-  refs.scroll.classList.remove('dark');
+  refs.scroll.classList.remove('dark-theme');
 
   refs.moonSvg.classList.add(active);
   saveStorage(NIGHT, active);

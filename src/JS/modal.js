@@ -44,7 +44,7 @@ async function onMovieItemClick(evt) {
     console.log(error.message);
   }
 }
-function getGenreModalMovie(genreArr) {
+export function getGenreModalMovie(genreArr) {
   const genresNames = genreArr.map(genre => genre.name);
 
   if (genresNames.length > 2) {
