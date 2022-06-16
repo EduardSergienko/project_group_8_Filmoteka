@@ -36,7 +36,7 @@ async function onMovieItemClick(evt) {
     console.log(error.message);
   }
 }
-function getMovieGenre(genreArr) {
+export function getMovieGenre(genreArr) {
   const genresNames = genreArr.map(genre => genre.name);
 
   if (genresNames.length > 2) {

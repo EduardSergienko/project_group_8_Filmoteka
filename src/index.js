@@ -1,7 +1,7 @@
 import './JS/btnHomeLibrary';
 import './JS/filmApiService';
 import './JS/showTrandingFilms';
-// import './JS/btnWatchedQueue';
+import './JS/btnWatchedQueue';
 import './JS/renderCards';
 import './JS/pagePagination';
 import './JS/modal';
