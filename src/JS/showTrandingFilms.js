@@ -9,8 +9,10 @@ const filmApiService = new FilmApiService();
 const filmsWrap = document.querySelector('.films-wrap');
 const filmList = document.querySelector('.films-list');
 const filmRait = document.querySelector('.film-info__rait');
+const footer = document.querySelector('.footer');
 
 filmsWrap.addEventListener('DOMContentLoaded', showTranding);
+footer.classList.add('is-hidden');
 
 export async function showTranding() {
   try {
@@ -25,10 +27,10 @@ export async function showTranding() {
     paginationProperties.page = resolve.data.page;
     paginationProperties.totalPages = resolve.data.total_pages;
 
-    filmList.innerHTML = filmCardRender(filmArray, genreArray);
-
-    initPagination(paginationProperties); //Add Pagination
     setTimeout(() => {
+      filmList.innerHTML = filmCardRender(filmArray, genreArray);
+      initPagination(paginationProperties); //Add Pagination
+      footer.classList.remove('is-hidden');
       NotiflixLoadingRemove();
     }, 500);
   } catch (error) {

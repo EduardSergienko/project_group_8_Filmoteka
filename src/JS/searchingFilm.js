@@ -32,8 +32,12 @@ async function onSearchBtnClick(evt) {
 
       if (filmArray.length !== 0) {
         NotiflixLoading();
-        filmList.innerHTML = filmCardRender(filmArray, gengeArray);
-        initPagination(paginationProperties); //Add Pagination
+
+        setTimeout(() => {
+          filmList.innerHTML = filmCardRender(filmArray, gengeArray);
+          initPagination(paginationProperties);
+          NotiflixLoadingRemove();
+        }, 1000);
       } else {
         Notify.failure(
           'Search result not successful. Enter the correct movie name and try again.',
@@ -47,9 +51,6 @@ async function onSearchBtnClick(evt) {
         );
         Notify.failure.remove();
       }
-      setTimeout(() => {
-          NotiflixLoadingRemove();
-        }, 500);
     } catch (error) {
       console.log(error);
     }
@@ -64,6 +65,6 @@ async function onSearchBtnClick(evt) {
         distance: '150px',
       }
     );
-    Notiflix.failure.remove();
+    Notify.failure.remove();
   }
 }
