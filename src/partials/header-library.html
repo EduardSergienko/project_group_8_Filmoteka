@@ -1,24 +1,26 @@
 <header class="header-library is-hidden">
-  <div class="container">
+  <div class="container container-library">
     <nav class="header-library__nav">
-      <div class="header-logo">
+      <div class="header-lib-logo">
         <svg width="24px" height="24px" class="header-logo__svg">
           <use href="./images/sprite.svg#icon-film-logo"></use>
         </svg>
         <p class="header-logo__text">Filmoteka</p>
       </div>
-      <ul class="header-library__nav--list">
-        <li class="header-library__item">
-          <button class="header-library__button pages__home-btn">
-            <span class="library__button-text">Home</span>
-          </button>
-        </li>
-        <li class="header-library__item">
-          <button class="header-library__button pages__library-btn">
-            <span class="library__button-text">My Library</span>
-          </button>
-        </li>
-      </ul>
+      <div class="pages-container">
+        <ul class="header-library__nav--list">
+          <li
+            class="header-library__home-button pages__home-btn"
+          >
+            Home
+          </li>
+          <li
+            class="header-library__lib-button pages__library-btn current"
+          >
+            My Library </a>
+          </li>
+        </ul>
+      </div>
     </nav>
     <ul class="header-library__hero--list">
       <li class="header-library__hero--item">

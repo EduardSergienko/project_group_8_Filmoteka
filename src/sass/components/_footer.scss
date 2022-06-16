@@ -21,10 +21,6 @@ align-items: center;
         background-color: #1f1e1e;
     }
 }
-// .footer.dark{
-//     color: #ffff;
-//     background-color: #f7f7f7;
-// }
 
  }
 .footer__copyright {
@@ -39,19 +35,19 @@ font-size: 16px;
 }
 }
 .team__icon {
-width: 14px;
-height: 13px;
-margin-top: 1px;
-margin-left: 10px;
+  width: 14px;
+  height: 13px;
+  margin-top: 1px;
+  margin-left: 10px;
 }
 .team {
-margin-top: 10px;
-display: flex;
-justify-content: center;
-@media screen and (min-width: 768px) {
-margin: 0;
-margin-left: 3px;
-}
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  @media screen and (min-width: 768px) {
+    margin: 0;
+    margin-left: 3px;
+  }
 }
 .team__text {
 margin-left: 10px;

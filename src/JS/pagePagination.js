@@ -4,6 +4,8 @@ import 'tui-pagination/dist/tui-pagination.css';
 import FilmApiService from './filmApiService';
 import arrowSprite from '../images/arrow-sprite.svg';
 import { filmCardRender } from './renderCards';
+import { SHOW_TRANDING_FILMS, SEARCH_FILMS } from './searchType';
+import { NotiflixLoading, NotiflixLoadingRemove } from './loading';
 
 const filmApiService = new FilmApiService();
 const filmList = document.querySelector('.films-list');
@@ -11,12 +13,19 @@ const filmList = document.querySelector('.films-list');
 const arrow = `${arrowSprite}#arrow`;
 const dotte = `${arrowSprite}#dotte`;
 
-export default function initPagination(
+export const paginationProperties = {
+  pageName: '',
+  page: 1,
+  totalPages: null,
+  searchingFilm: '',
+};
+
+export function initPagination({
   pageName,
   page,
   totalPages,
-  searchingFilm = ''
-) {
+  searchingFilm = '',
+}) {
   const container = document.getElementById('pagination');
   const options = {
     totalItems: totalPages,
@@ -50,29 +59,38 @@ export default function initPagination(
 
   pagination.on('afterMove', async ({ page }) => {
     filmApiService.page = page;
-    if (pageName === 'TrandingFilms') {
+
+    if (pageName === SHOW_TRANDING_FILMS) {
       try {
+        NotiflixLoading();
         const resolve = await filmApiService.fetchTranding();
         const genres = await filmApiService.getGenreName();
         const filmArray = resolve.data.results;
         const genreArray = genres.data.genres;
 
-        filmList.innerHTML = filmCardRender(filmArray, genreArray);
+        setTimeout(() => {
+          filmList.innerHTML = filmCardRender(filmArray, genreArray);
+          NotiflixLoadingRemove();
+        }, 500);
         scrollToTop();
       } catch (error) {
         console.log(error);
       }
     }
 
-    if (pageName === 'SearchingFilms') {
+    if (pageName === SEARCH_FILMS) {
       try {
+        NotiflixLoading();
         filmApiService.qwery = searchingFilm;
         const resolve = await filmApiService.fetchMovies();
         const genres = await filmApiService.getGenreName();
         const filmArray = resolve.data.results;
         const genreArray = genres.data.genres;
 
-        filmList.innerHTML = filmCardRender(filmArray, genreArray);
+        setTimeout(() => {
+          filmList.innerHTML = filmCardRender(filmArray, genreArray);
+          NotiflixLoadingRemove();
+        }, 500);
         scrollToTop();
       } catch (error) {
         console.log(error);
@@ -84,5 +102,5 @@ export default function initPagination(
 }
 
 function scrollToTop() {
-  window.scrollTo({ top: 0 });
+  window.scrollTo(0, 0);
 }
