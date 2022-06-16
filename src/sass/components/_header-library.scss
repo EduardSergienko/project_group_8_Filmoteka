@@ -12,15 +12,8 @@
   background-position: bottom;
 
   @media screen {
-    @media screen and (min-device-pixel-ratio: 1),
-      (min-resolution: 96dpi),
-      (min-resolution: 1dppx) {
-      background-image: linear-gradient(
-          rgba(0, 0, 0, 0.56),
-          rgba(0, 0, 0, 0.56)
-        ),
-        url('../images/1x/library-header320.jpg');
-    }
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/1x/library-header320.jpg');
     @media screen and (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
@@ -33,15 +26,9 @@
   }
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    @media screen and (min-device-pixel-ratio: 1),
-      (min-resolution: 96dpi),
-      (min-resolution: 1dppx) {
-      background-image: linear-gradient(
-          rgba(0, 0, 0, 0.56),
-          rgba(0, 0, 0, 0.56)
-        ),
-        url('../images/1x/library-header768.jpg');
-    }
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/1x/library-header768.jpg');
+
     @media screen and (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
@@ -54,15 +41,9 @@
   }
 
   @media screen and (min-width: 1024px) {
-    @media screen and (min-device-pixel-ratio: 1),
-      (min-resolution: 96dpi),
-      (min-resolution: 1dppx) {
-      background-image: linear-gradient(
-          rgba(0, 0, 0, 0.56),
-          rgba(0, 0, 0, 0.56)
-        ),
-        url('../images/1x/library-header1024.jpg');
-    }
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../images/1x/library-header1024.jpg');
+
     @media screen and (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {

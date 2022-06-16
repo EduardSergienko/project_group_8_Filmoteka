@@ -1,4 +1,5 @@
 .scroll-process {
+  color: #ffff;
   background-color: aqua;
   position: fixed;
   bottom: 20px;
@@ -11,12 +12,20 @@
   border-radius: 50%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+  z-index: 50;
+
+  &.dark-theme {
+    color: black;
+    .scroll-process__value {
+      background-color: #ffff;
+    }
+  }
 }
 .scroll-process__value {
   display: flex;
   height: calc(100% - 15px);
   width: calc(100% - 15px);
-  background-color: white;
+  background-color: #212121;
   border-radius: 50%;
   font-size: 25px;
   align-items: center;

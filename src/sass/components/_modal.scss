@@ -20,6 +20,8 @@ $basicLightbox__timing: ease !default;
   z-index: $basicLightbox__zIndex;
   will-change: opacity;
 
+  overflow-y: scroll;
+
   &--visible {
     opacity: 1;
   }
@@ -89,8 +91,11 @@ $basicLightbox__timing: ease !default;
     left: 50%;
 
     width: 280px;
+    color: #000000;
 
     transform: translate(-50%, -50%) scale(1);
+
+  
   }
 
   @media screen and (min-width: 734px) {
@@ -271,6 +276,8 @@ $basicLightbox__timing: ease !default;
 }
 .feature-button__watched {
   width: 110px;
+  display: flex;
+  align-items: center;
 
   padding: 6px 27px;
 
@@ -343,4 +350,10 @@ $basicLightbox__timing: ease !default;
     background-color: var(--complementary-text-color);
     color: var(--secondary-text-color);
   }
+}
+
+.BtnActive{
+      border: 1px solid transparent;
+        background-color: var(--complementary-text-color);
+        color: var(--secondary-text-color);
 }

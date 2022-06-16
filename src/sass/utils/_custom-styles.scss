@@ -5,6 +5,12 @@ body {
   font-family: Roboto, sans-serif;
   font-weight: 500;
 }
+
+body.dark-theme {
+  color: #FFFFFF;
+  background-color: #363636;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -22,13 +28,13 @@ h3 {
 }
 h2 {
   font-size: 12px;
-  color: var(--main-text-color);
+  // color: var(--main-text-color);
 }
 p {
   margin: 0;
   padding: 0;
   font-size: 12px;
-  color: var(--main-text-color);
+  // color: var(--main-text-color);
 }
 img {
   display: block;
