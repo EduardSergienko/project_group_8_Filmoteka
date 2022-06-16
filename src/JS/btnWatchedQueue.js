@@ -22,7 +22,7 @@ refs.queue.addEventListener('click', onClickQueue);
 
 async function onClicLibrary() {
   onClickWatched();
-  refs.paginationHidden.classList.add('is-hidden');
+  // refs.paginationHidden.classList.add('is-hidden');
 
 }
 
