@@ -4,8 +4,6 @@ import { initPagination, paginationProperties } from './pagePagination';
 import { SHOW_TRANDING_FILMS } from './searchType';
 import { NotiflixLoading, NotiflixLoadingRemove } from './loading';
 
-import buttonColorChange from './changeButtonColor';
-
 const filmApiService = new FilmApiService();
 
 const filmsWrap = document.querySelector('.films-wrap');
@@ -36,7 +34,6 @@ export async function showTranding() {
       initPagination(paginationProperties); //Add Pagination
       footer.classList.remove('is-hidden');
       NotiflixLoadingRemove();
-      buttonColorChange.CallButtonColorChange();
     }, 500);
   } catch (error) {
     console.log(error);

@@ -186,6 +186,8 @@ export function initPaginationMyLibrary(libraryTotalArray, properties) {
 
   pagination.on('afterMove', ({ page }) => {
     properties.page = page;
+    //тёмная тема
+    buttonColorChange.CallButtonColorChange();
 
     try {
       if (properties.page === page) {

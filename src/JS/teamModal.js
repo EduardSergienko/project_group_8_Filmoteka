@@ -4,6 +4,7 @@ import {
   enablePageScroll,
   setFillGapMethod,
 } from 'scroll-lock';
+import { loadStorage } from './localStorage';
 
 import denysUrl from '../images/team/Den.png';
 import denysUrl2 from '../images/team/Den_2x.png';
@@ -519,6 +520,7 @@ const teamModal = basicLightbox.create(
 `,
   {
     className: 'basic-style',
+    onShow: () => {},
 
     onClose: () => {
       window.removeEventListener('keydown', onEscClick), enablePageScroll();
@@ -534,6 +536,26 @@ function onTeamLinkClick(evt) {
   const closeModal = document.querySelector('.team-modal__close-modal');
   closeModal.addEventListener('click', onCloseModalBtnClick);
   window.addEventListener('keydown', onEscClick);
+  // Тёмная тема
+  if (loadStorage('Sun')) {
+    document.querySelector('.modal-team').classList.add('dark-theme');
+    document
+      .querySelector('.team-modal__close-modal-svg')
+      .classList.add('dark-theme');
+    socialIcons = document.querySelectorAll('.social-box__icon');
+    for (let i = 0; i < socialIcons.length; i++) {
+      socialIcons[i].classList.add('dark-theme');
+    }
+  } else {
+    document.querySelector('.modal-team').classList.remove('dark-theme');
+    document
+      .querySelector('.team-modal__close-modal-svg')
+      .classList.remove('dark-theme');
+    socialIcons = document.querySelectorAll('.social-box__icon');
+    for (let i = 0; i < socialIcons.length; i++) {
+      socialIcons[i].classList.remove('dark-theme');
+    }
+  }
 }
 function onCloseModalBtnClick() {
   teamModal.close();
