@@ -146,11 +146,14 @@ async function renderMovies(array) {
     paginationPropertiesMyLibrary.totalPages = libraryArrayCut.length;
 
     NotiflixLoading();
-    refs.gallery.innerHTML = libraryFilmCardRender(
-      libraryTotalArray[0].results
-    );
-    initPaginationMyLibrary(libraryTotalArray, paginationPropertiesMyLibrary); //Add Pagination
-    NotiflixLoadingRemove();
+
+    setTimeout(() => {
+      refs.gallery.innerHTML = libraryFilmCardRender(
+        libraryTotalArray[0].results
+      );
+      initPaginationMyLibrary(libraryTotalArray, paginationPropertiesMyLibrary); //Add Pagination
+      NotiflixLoadingRemove();
+    }, 500);
   } catch (error) {
     console.log(error);
   }
