@@ -18,7 +18,7 @@ export default buttonColorChange = {
       }
     }
 
-    this.switchButtonClass('.tui-page-btn tui-prev-is-ellip', bool);
+    this.switchButtonClass('.tui-page-btn.tui-prev-is-ellip', bool);
     this.switchButtonClass('.tui-page-btn.tui-next-is-ellip', bool);
     this.switchButtonClass('.tui-page-btn.tui-prev.custom-prev', bool);
     this.switchButtonClass('.tui-page-btn.tui-next.custom-next', bool);
