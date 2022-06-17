@@ -72,41 +72,43 @@ $basicLightbox__timing: ease !default;
   }
 }
 
+.lightbox-extrastyle {
+  display: block;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
+}
+
 // Modal window for a single movie
 .modal {
   position: relative;
+  width: 280px;
 
+  margin: 0 auto;
   padding-top: 48px;
   padding-bottom: 40px;
   padding-left: 20px;
   padding-right: 20px;
 
   background-color: var(--main-background-color);
+  color: var(--main-text-color);
 
-  @media screen and (min-width: 310px) {
-    position: absolute;
-    width: 280px;
-
-    color: var(--main-text-color);
-
-    transform: translate(-50%, -30%) scale(1);
-  }
-
-  @media screen and (min-width: 640px) and (orientation: landscape) and (max-width: 733px) {
-    transform: translate(-50%, -17%) scale(1);
-  }
-
-  @media screen and (min-width: 734px) {
+  @media screen and (min-width: 768px) {
     width: 704px;
-    // top: 50%;
-    // left: 50%;
 
     padding-top: 40px;
     padding-left: 36px;
     padding-right: 72px;
   }
 
-  @media screen and (min-width: 989px) {
+  @media screen and (min-width: 768px) and (orientation: landscape) and (max-width: 1023px) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 10%) scale(1);
+  }
+
+  @media screen and (min-width: 1024px) {
     width: 814px;
     max-height: 558px;
 
@@ -139,22 +141,22 @@ $basicLightbox__timing: ease !default;
   position: absolute;
 }
 .modal__wrapper {
-  @media screen and (min-width: 734px) {
+  @media screen and (min-width: 768px) {
     display: flex;
     justify-content: space-between;
   }
 }
 .modal-item:not(:last-child) {
-  @media screen and (min-width: 734px) {
+  @media screen and (min-width: 768px) {
     margin-right: 68px;
   }
 
-  @media screen and (min-width: 989px) {
+  @media screen and (min-width: 1024px) {
     margin-right: 16px;
   }
 }
 .poster {
-  @media screen and (max-width: 733px) {
+  @media screen and (max-width: 768px) {
     margin-bottom: 20px;
   }
 }
@@ -168,12 +170,12 @@ $basicLightbox__timing: ease !default;
 
   border-radius: 5px;
 
-  @media screen and (min-width: 734px) {
+  @media screen and (min-width: 768px) {
     width: 264px;
     height: 374px;
   }
 
-  @media screen and (min-width: 989px) {
+  @media screen and (min-width: 1024px) {
     width: 375px;
     height: 478px;
   }
@@ -185,7 +187,7 @@ $basicLightbox__timing: ease !default;
   font-size: 20px;
   line-height: 1.15em;
 
-  @media screen and (min-width: 989px) {
+  @media screen and (min-width: 1024px) {
     font-size: 30px;
     line-height: 1.167em;
   }
@@ -204,11 +206,11 @@ $basicLightbox__timing: ease !default;
   line-height: 1.33em;
   color: var(--modal-form-secondary-text-color);
 
-  @media screen and (min-width: 734px) {
+  @media screen and (min-width: 768px) {
     flex-basis: 47.3%;
   }
 
-  @media screen and (min-width: 989px) {
+  @media screen and (min-width: 1024px) {
     max-width: 39%;
   }
 }
@@ -234,18 +236,18 @@ $basicLightbox__timing: ease !default;
   max-width: 55%;
   text-transform: uppercase;
 
-  @media screen and (min-width: 734px) {
+  @media screen and (min-width: 768px) {
     max-width: 52%;
   }
 
-  @media screen and (min-width: 989px) {
+  @media screen and (min-width: 1024px) {
     max-width: 60%;
   }
 }
 .movie-info__value--text-genre {
   max-width: 55%;
 
-  @media screen and (min-width: 734px) {
+  @media screen and (min-width: 768px) {
     max-width: 52%;
   }
 }
@@ -259,28 +261,26 @@ $basicLightbox__timing: ease !default;
   font-size: 12px;
   line-height: 1.667em;
 }
-.feature-button {
+.feature-button__list {
   display: flex;
   justify-content: space-between;
 
-  @media screen and (min-width: 989px) {
+  @media screen and (min-width: 1024px) {
     justify-content: start;
     margin-left: 8px;
   }
 }
 .feature-button__item:not(:last-child) {
   margin-right: 20px;
-  @media screen and (min-width: 734px) {
+  @media screen and (min-width: 768px) {
     margin-right: 15px;
   }
 }
-.feature-button__watched {
+.feature-button {
   width: 110px;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  padding: 6px 27px;
 
   border: 1px solid var(--main-text-color);
   background-color: var(--main-background-color);
@@ -291,17 +291,22 @@ $basicLightbox__timing: ease !default;
 
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  @media screen and (max-width: 733px) {
+  @media screen and (max-width: 767px) {
     max-height: 44px;
   }
+}
+.feature-button__watched {
+  padding: 6px 27px;
 
-  @media screen and (min-width: 734px) {
+  @media screen and (min-width: 768px) {
     width: 125px;
+
     padding: 14px 9px 12px 9px;
   }
 
-  @media screen and (min-width: 989px) {
+  @media screen and (min-width: 1024px) {
     width: 136px;
+
     padding: 14px 10px 12px 10px;
   }
 
@@ -313,33 +318,15 @@ $basicLightbox__timing: ease !default;
   }
 }
 .feature-button__queue {
-  width: 110px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   padding: 13px 14px 13px 13px;
 
-  border: 1px solid var(--main-text-color);
-  background-color: var(--main-background-color);
-  font-size: 12px;
-  line-height: 1.33em;
-  text-align: center;
-  text-transform: uppercase;
-
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  @media screen and (max-width: 733px) {
-    max-height: 44px;
-  }
-
-  @media screen and (min-width: 734px) {
+  @media screen and (min-width: 768px) {
     width: 125px;
 
     padding: 14px 7px 12px 7px;
   }
 
-  @media screen and (min-width: 989px) {
+  @media screen and (min-width: 1024px) {
     width: 136px;
 
     padding: 14px 8px 12px 8px;
