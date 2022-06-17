@@ -1,42 +1,50 @@
 import * as basicLightbox from 'basiclightbox';
+import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 import FilmApiService from './filmApiService';
 import { textModalBtn, addBtnListenet } from './modalBtn';
+import posterNotFound from '../images/desktop/poster-not-found-desktop.png';
+import posterNotFound2x from '../images/desktop/poster-not-found-desktop@2x.png';
 
 const filmApiService = new FilmApiService();
 
 const movieItemRef = document.querySelector('.films-list');
 movieItemRef.addEventListener('click', onMovieItemClick);
 
+const scrollableElement = document.querySelector('.modal');
+
 async function onMovieItemClick(evt) {
   evt.preventDefault();
 
-  const isMovieItemEl = evt.target.classList.contains('films-list__poster');
+  const isMovieItemEl =
+    evt.target.classList.contains('films-list__poster') ||
+    evt.target.closest('.film-info');
   if (!isMovieItemEl) {
     return;
   }
 
   const currentMovie = evt.target.closest('.films-list__card');
-
   filmApiService.queryID = currentMovie.dataset.id;
 
   try {
     const { data } = await filmApiService.fetchMovieID();
+    console.log(data);
+    disablePageScroll(scrollableElement);
 
-    getMovieGenre(data.genres);
+    getGenreModalMovie(data.genres);
     createMovieItemClick(data);
 
     addBtnListenet(filmApiService.queryID);
     textModalBtn(filmApiService.queryID);
 
-    const closeModalBtnRef = document.querySelector('[data-modal-close]');
-    closeModalBtnRef.addEventListener('click', onCloseModalBtn);
-
-    window.addEventListener('keydown', onEscapePress);
+    document
+      .querySelector('[data-modal-close]')
+      .addEventListener('click', onCloseModalBtn);
+    window.addEventListener('keydown', onCloseModalEscape);
   } catch (error) {
     console.log(error.message);
   }
 }
-export function getMovieGenre(genreArr) {
+export function getGenreModalMovie(genreArr) {
   const genresNames = genreArr.map(genre => genre.name);
 
   if (genresNames.length > 2) {
@@ -58,6 +66,16 @@ function createMovieItemClick({
   name,
   original_name,
 }) {
+  let src = `https://image.tmdb.org/t/p/w500${poster_path}`;
+  let src2x = `https://image.tmdb.org/t/p/w780${poster_path}`;
+  let src3x = `https://image.tmdb.org/t/p/w1280${poster_path}`;
+
+  if (!poster_path) {
+    src = posterNotFound;
+    src2x = posterNotFound2x;
+    src3x = posterNotFound2x;
+  }
+
   modalMovie = basicLightbox.create(
     `<div class="modal">
   <div class="modal__wrapper">
@@ -75,18 +93,19 @@ function createMovieItemClick({
       </svg>
     </button>
     <div class="modal-item poster">
-      <a class="poster__link" href="#">
+      <div class="poster__wrapp">
         <img
           class="poster__movie"
-          src="https://image.tmdb.org/t/p/w500/${poster_path}"
+          data-src="${poster_path}"
+          src="${src}"
           alt="${title || name}"
           srcset="
-            https://image.tmdb.org/t/p/w500/${poster_path} 1x,
-            https://image.tmdb.org/t/p/w780/${poster_path} 2x,
-            https://image.tmdb.org/t/p/w1280/${poster_path} 3x
+            ${src} 1x,
+            ${src2x} 2x,
+            ${src3x} 3x
           "
         /> 
-      </a>
+      </div>
     </div>
     <div class="modal-item">
       <div class="movie-desc">
@@ -113,7 +132,7 @@ function createMovieItemClick({
           <div class="movie-info__item">
             <p class="movie-info__param">Genre</p>
             <p class="movie-info__value movie-info__value--text-genre">
-            ${getMovieGenre(genres)}</p>
+            ${getGenreModalMovie(genres)}</p>
           </div>
         </div>
         <div class="movie-desc__item movie-overview">
@@ -137,17 +156,24 @@ function createMovieItemClick({
   </div>
 </div>
 `,
-    { onClose: () => window.removeEventListener('keydown', onEscapePress) }
+    {
+      onClose: () => {
+        window.removeEventListener('keydown', onCloseModalEscape),
+          enablePageScroll(scrollableElement);
+      },
+    }
   );
   modalMovie.show();
 }
 
 function onCloseModalBtn() {
   modalMovie.close();
+  enablePageScroll(scrollableElement);
 }
 
-function onEscapePress(event) {
-  if (event.code === 'Escape') {
+function onCloseModalEscape(evt) {
+  if (evt.code === 'Escape') {
     modalMovie.close();
+    enablePageScroll(scrollableElement);
   }
 }

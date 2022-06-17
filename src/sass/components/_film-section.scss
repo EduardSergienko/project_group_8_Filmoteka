@@ -1,23 +1,24 @@
 .films {
   padding: 20px 0;
 }
+
 .films-list {
+  min-height: calc(102vh - 460px);
   @media screen and (min-width: 768px) {
     display: flex;
     flex-wrap: wrap;
     margin: -16px -16px;
+    min-height: calc(102vh - 428px);
   }
   @media screen and (min-width: 1024px) {
     margin: -11px -8px;
+    min-height: calc(102vh - 436px);
   }
-  // display: flex;
-  // flex-wrap: wrap;
-  // margin: -11px -8px;
 }
 .films-list__card {
   cursor: pointer;
   margin-bottom: 20px;
-  transition: 250ms;
+  transition: background-color 0ms, transform 250ms;
   &:last-child {
     margin-bottom: 0;
   }
@@ -30,6 +31,9 @@
   @media screen and (min-width: 768px) {
     margin: 11px 8px;
   }
+}
+.films-list__card.dark-theme {
+  background-color: #050505aa;
 }
 .films-list__poster {
   border-radius: 5px;

@@ -10,5 +10,6 @@ import './JS/searchingFilm';
 import './JS/scrollToTop';
 import './JS/localStorage';
 import './JS/modalBtn';
-import './JS/modalTeam';
+
 import './JS/toolbar';
+import './JS/teamModal';
