@@ -1,11 +1,14 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
+import buttonColorChange from './changeButtonColor';
 
 import FilmApiService from './filmApiService';
 import arrowSprite from '../images/arrow-sprite.svg';
 import { filmCardRender } from './renderCards';
 import { SHOW_TRANDING_FILMS, SEARCH_FILMS } from './searchType';
 import { NotiflixLoading, NotiflixLoadingRemove } from './loading';
+
+import { loadStorage, saveStorage, removeStorage } from './localStorage';
 
 const filmApiService = new FilmApiService();
 const filmList = document.querySelector('.films-list');
@@ -59,6 +62,7 @@ export function initPagination({
 
   pagination.on('afterMove', async ({ page }) => {
     filmApiService.page = page;
+    buttonColorChange.CallButtonColorChange();
 
     if (pageName === SHOW_TRANDING_FILMS) {
       try {

@@ -1,7 +1,6 @@
 //Pagination div
 .tui-pagination.pagination-custom {
   margin-bottom: 60px;
-  
 }
 
 //Button First and Last
@@ -11,7 +10,6 @@
 .tui-page-btn.tui-is-disabled.tui-last {
   display: none;
   background: none;
-  
 }
 
 //Button Prev and Next
@@ -29,6 +27,13 @@
   &:hover {
     background-color: #f1f1f1;
   }
+  &.dark-theme {
+    background-color: #1116;
+    fill: var(--complementary-text-color);
+    &:hover {
+      background-color: #5558;
+    }
+  }
 }
 
 //Dotters
@@ -40,16 +45,22 @@
   border: none;
   border-radius: 5px;
   display: none;
+  // fill: var(--complementary-text-color);
 
   &:hover {
     background-color: #f1f1f1;
-    
   }
 
   @media screen and (min-width: 768px) {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+  }
+  &.dark-theme {
+    fill: var(--complementary-text-color);
+    &:hover {
+      background-color: #5558;
+    }
   }
 }
 
@@ -61,7 +72,14 @@
   & .tui-ico-prev.pagination__arrow,
   .tui-ico-next.pagination__arrow {
     opacity: 0.2;
-    
+  }
+  &.dark-theme {
+    background-color: #1116;
+    fill: var(--complementary-text-color);
+    & .tui-ico-prev.pagination__arrow,
+    .tui-ico-next.pagination__arrow {
+      opacity: 0.5;
+    }
   }
 }
 
@@ -70,15 +88,12 @@
 .tui-pagination .tui-ico-prev.pagination__arrow {
   width: 14px;
   height: 14px;
- 
-  
 }
 
 //Button Dotters Icon
 .tui-pagination .tui-ico-ellip.dotte {
   width: 14px;
   height: 14px;
-  
 }
 
 //Button background tui-pagnation
@@ -87,7 +102,6 @@
 .tui-pagination .tui-ico-ellip {
   background: none !important;
   margin: 0 !important;
-  
 }
 
 //Page Number
@@ -105,12 +119,25 @@
   padding: 0;
   border: none;
   border-radius: 5px;
-    
-background-color: #f7f7f7d4;
- 
 
+  background-color: #f7f7f7d4;
+
+  &.dark-theme {
+    background-color: #1116;
+    color: var(--complementary-text-color);
+    &:hover,
+    &:focus {
+      border-radius: 5px;
+      background-color: #5558;
+    }
+  }
   &.tui-is-selected {
     border: none;
+    border-radius: 5px;
     background-color: var(--complementary-text-color);
+    color: #f1f1f1;
+    &.dark-theme {
+      background-color: var(--complementary-text-color);
+    }
   }
 }

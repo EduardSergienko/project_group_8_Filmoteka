@@ -75,7 +75,11 @@ function libraryFilmCardRender(arg) {
         item.first_air_date = 'n/a';
       }
 
-      return `<li class="films-list__card" 
+      let darkTheme = JSON.parse(localStorage.getItem('Sun'))
+        ? ' dark-theme'
+        : '';
+
+      return `<li class="films-list__card${darkTheme}" 
       data-id="${item.id}"
       data-media-type="${item.media_type}">
       <img class = 'films-list__poster' src="${src}" alt="${
