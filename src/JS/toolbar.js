@@ -8,9 +8,11 @@ const refs = {
   sunLibSvg: document.querySelector('.toolbarContainer__sun-lib'),
   moonSvg: document.querySelector('.toolbarContainer__moon'),
   moonLibSvg: document.querySelector('.toolbarContainer__moon-lib'),
+  libHeader: document.querySelector('.header-library'),
   footer: document.querySelector('.footer'),
   footerLink: document.querySelector('.team__link'),
   scroll: document.querySelector('.scroll-process'),
+  // pageBtn: document.querySelector('.tui-page-btn'),
 };
 
 const active = 'active-toolebar';
@@ -42,11 +44,18 @@ refs.body.classList.add(loadStorage(BODY) ?? 'n');
 refs.footer.classList.add(loadStorage(FOOTER) ?? 'n');
 refs.footerLink.classList.add(loadStorage(COLORFOOTERLINK) ?? 'n');
 refs.scroll.classList.add(loadStorage(COLORFOOTERLINK) ?? 'n');
+refs.libHeader.classList.add(loadStorage(BODY) ?? 'n');
 
 refs.sunSvg.classList.add(loadStorage(SUN) ?? 'n');
 refs.sunLibSvg.classList.add(loadStorage(SUN) ?? 'n');
 refs.moonSvg.classList.add(loadStorage(SUN) ? 'n' : 'active-toolebar');
 refs.moonLibSvg.classList.add(loadStorage(SUN) ? 'n' : 'active-toolebar');
+
+if (loadStorage(SUN)) {
+  setTimeout(() => {
+    changeButtonColor(true);
+  }, 1000);
+}
 
 function nightTheme() {
   removeStorage(NIGHT);
@@ -60,8 +69,12 @@ function nightTheme() {
   refs.footer.classList.add('dark-theme');
   refs.footerLink.classList.add('dark-theme');
   refs.scroll.classList.add('dark');
+  refs.libHeader.classList.add('dark-theme');
+  setTimeout(() => {
+    changeButtonColor(true);
+  }, 300);
+
   const allContainers = document.querySelectorAll('.films-list__card');
-  console.log('123');
   if (allContainers.length > 0) {
     for (let i = 0; i < allContainers.length; i++) {
       allContainers[i].classList.add('dark-theme');
@@ -98,6 +111,10 @@ function dayTheme() {
   refs.footer.classList.remove('dark-theme');
   refs.footerLink.classList.remove('dark-theme');
   refs.scroll.classList.remove('dark');
+  refs.libHeader.classList.remove('dark-theme');
+  setTimeout(() => {
+    changeButtonColor(false);
+  }, 300);
   const allContainers = document.querySelectorAll('.films-list__card');
   if (allContainers.length > 0) {
     for (let i = 0; i < allContainers.length; i++) {
@@ -108,4 +125,19 @@ function dayTheme() {
   saveStorage(NIGHT, active);
 
   checkpoint = false;
+}
+
+function changeButtonColor(bool) {
+  const allPageButtons = document.querySelectorAll(
+    '.tui-page-btn.tui-page-number'
+  );
+  if (allPageButtons.length > 0) {
+    for (let i = 0; i < allPageButtons.length; i++) {
+      if (bool) {
+        allPageButtons[i].classList.add('dark-theme');
+      } else {
+        allPageButtons[i].classList.remove('dark-theme');
+      }
+    }
+  }
 }
