@@ -510,7 +510,10 @@ const teamModal = basicLightbox.create(
 </svg>
   </button>
 </div>
-`
+`,
+  {
+    className: 'basic-style',
+  }
 );
 function onTeamLinkClick(evt) {
   evt.preventDefault();
