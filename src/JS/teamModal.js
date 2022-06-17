@@ -1,4 +1,5 @@
 import * as basicLightbox from 'basiclightbox';
+import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
 import denysUrl from '../images/team/Den.png';
 import denysUrl2 from '../images/team/Den_2x.png';
@@ -36,6 +37,7 @@ import tetianaUrl from '../images/team/Tanya.png';
 import tetianaUrl2 from '../images/team/Tanya_2x.png';
 import tetianaUrlTab from '../images/team/Tanya_tab.png';
 import tetianaUrlTab2 from '../images/team/Tanya_tab_2x.png';
+
 const teamLink = document.querySelector('.team__link');
 
 teamLink.addEventListener('click', onTeamLinkClick);
@@ -513,9 +515,26 @@ const teamModal = basicLightbox.create(
 `,
   {
     className: 'basic-style',
+
+    onClose: () => {
+      window.removeEventListener('keydown', onEscClick), enablePageScroll();
+    },
   }
 );
 function onTeamLinkClick(evt) {
   evt.preventDefault();
   teamModal.show();
+  disablePageScroll();
+  const closeModal = document.querySelector('.team-modal__close-modal');
+  closeModal.addEventListener('click', onCloseModalBtnClick);
+  window.addEventListener('keydown', onEscClick);
+}
+function onCloseModalBtnClick() {
+  teamModal.close();
+}
+function onEscClick(evt) {
+  if (evt.code === 'Escape') {
+    teamModal.close();
+    enablePageScroll();
+  }
 }
