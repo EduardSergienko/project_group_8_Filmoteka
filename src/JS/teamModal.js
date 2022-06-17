@@ -1,5 +1,9 @@
 import * as basicLightbox from 'basiclightbox';
-import { disablePageScroll, enablePageScroll } from 'scroll-lock';
+import {
+  disablePageScroll,
+  enablePageScroll,
+  setFillGapMethod,
+} from 'scroll-lock';
 
 import denysUrl from '../images/team/Den.png';
 import denysUrl2 from '../images/team/Den_2x.png';
@@ -524,7 +528,9 @@ const teamModal = basicLightbox.create(
 function onTeamLinkClick(evt) {
   evt.preventDefault();
   teamModal.show();
-  disablePageScroll();
+  const modalEl = document.querySelector('.modal-team');
+  disablePageScroll(modalEl);
+  setFillGapMethod('none');
   const closeModal = document.querySelector('.team-modal__close-modal');
   closeModal.addEventListener('click', onCloseModalBtnClick);
   window.addEventListener('keydown', onEscClick);
