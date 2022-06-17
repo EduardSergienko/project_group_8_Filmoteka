@@ -528,9 +528,9 @@ const teamModal = basicLightbox.create(
 function onTeamLinkClick(evt) {
   evt.preventDefault();
   teamModal.show();
-  const modalEl = document.querySelector('.modal-team');
-  disablePageScroll(modalEl);
-  setFillGapMethod('none');
+  const bsLbx = document.querySelector('.basic-style');
+  disablePageScroll(bsLbx);
+
   const closeModal = document.querySelector('.team-modal__close-modal');
   closeModal.addEventListener('click', onCloseModalBtnClick);
   window.addEventListener('keydown', onEscClick);
