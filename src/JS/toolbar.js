@@ -64,7 +64,7 @@ function nightTheme() {
   refs.body.classList.add('dark-theme');
   refs.footer.classList.add('dark-theme');
   refs.footerLink.classList.add('dark-theme');
-  refs.scroll.classList.add('dark');
+  refs.scroll.classList.add('dark-theme');
   refs.libHeader.classList.add('dark-theme');
 
   const allContainers = document.querySelectorAll('.films-list__card');
@@ -101,7 +101,7 @@ function dayTheme() {
   refs.body.classList.remove('dark-theme');
   refs.footer.classList.remove('dark-theme');
   refs.footerLink.classList.remove('dark-theme');
-  refs.scroll.classList.remove('dark');
+  refs.scroll.classList.remove('dark-theme');
   refs.libHeader.classList.remove('dark-theme');
 
   const allContainers = document.querySelectorAll('.films-list__card');
