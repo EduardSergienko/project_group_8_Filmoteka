@@ -4,6 +4,11 @@ import { getGenreModalMovie } from './modal';
 import posterNotFound from '../images/desktop/poster-not-found-desktop.png';
 import posterNotFound2x from '../images/desktop/poster-not-found-desktop@2x.png';
 import { NotiflixLoading, NotiflixLoadingRemove } from './loading';
+import {
+  initPaginationMyLibrary,
+  paginationPropertiesMyLibrary,
+} from './pagePagination';
+import { MY_LIBRARY } from './searchType';
 
 const filmApiService = new FilmApiService();
 const refs = {
@@ -34,6 +39,7 @@ async function onClickWatched() {
     messageWarning();
   } else {
     // зробити рендер сітки
+    paginationPropertiesMyLibrary.page = 1;
     renderMovies(watched);
   }
   return;
@@ -51,6 +57,7 @@ async function onClickQueue() {
     messageWarning();
   } else {
     // зробити рендер сітки
+    paginationPropertiesMyLibrary.page = 1;
     renderMovies(queue);
   }
   return;
@@ -62,7 +69,7 @@ function messageWarning() {
   refs.gallery.insertAdjacentHTML('beforeend', message);
 }
 
-function libraryFilmCardRender(arg) {
+export function libraryFilmCardRender(arg) {
   return arg
     .map(item => {
       let src = `https://image.tmdb.org/t/p/w400/${item.poster_path}`;
@@ -96,9 +103,7 @@ function libraryFilmCardRender(arg) {
         item.first_air_date || item.release_date
       ).slice(0, 4)}
       <span class="movie-info__value--vote-left">${item.vote_average}</span>
-      
     </p>
-   
     </div>
   </div>
 </li>`;
@@ -107,22 +112,46 @@ function libraryFilmCardRender(arg) {
 }
 
 async function renderMovies(array) {
-  const librartArray = [];
+  console.log(array);
+
+  const libraryTotalArray = [];
+  const libraryArrayCut = [];
   try {
-    for (let id of array) {
-      filmApiService.ID = id;
-      const resolve = await filmApiService.fetchMovieID();
-      const filmArray = resolve.data;
-      librartArray.push(filmArray);
+    for (let i = 0; i < array.length; i += 9) {
+      const chunk = array.slice(i, i + 9);
+      libraryArrayCut.push(chunk);
     }
+
+    console.log('Cut', libraryArrayCut);
+
+    for (let i = 0; i < libraryArrayCut.length; i += 1) {
+      const libraryArrayRender = [];
+
+      for (let id of libraryArrayCut[i]) {
+        filmApiService.ID = id;
+        const resolve = await filmApiService.fetchMovieID();
+        const filmArray = resolve.data;
+        libraryArrayRender.push(filmArray);
+      }
+
+      const collectionPageObj = {
+        ...paginationPropertiesMyLibrary,
+        page: i + 1,
+        results: libraryArrayRender,
+      };
+
+      libraryTotalArray.push(collectionPageObj);
+    }
+
+    paginationPropertiesMyLibrary.totalPages = libraryArrayCut.length;
+
     NotiflixLoading();
-    console.log(librartArray);
+    refs.gallery.innerHTML = libraryFilmCardRender(
+      libraryTotalArray[0].results
+    );
+    initPaginationMyLibrary(libraryTotalArray, paginationPropertiesMyLibrary); //Add Pagination
+    NotiflixLoadingRemove();
   } catch (error) {
     console.log(error);
   }
-  setTimeout(() => {
-    console.dir(librartArray);
-    refs.gallery.innerHTML = libraryFilmCardRender(librartArray);
-    NotiflixLoadingRemove();
-  }, 300);
 }

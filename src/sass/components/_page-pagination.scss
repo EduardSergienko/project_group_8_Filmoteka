@@ -119,8 +119,7 @@
   padding: 0;
   border: none;
   border-radius: 5px;
-
-  background-color: #f7f7f7d4;
+  color: var(--footer-tex-color);
 
   &.dark-theme {
     background-color: #1116;
@@ -133,6 +132,7 @@
   }
   &.tui-is-selected {
     border: none;
+    color: var(--secondary-text-color);
     border-radius: 5px;
     background-color: var(--complementary-text-color);
     color: #f1f1f1;
