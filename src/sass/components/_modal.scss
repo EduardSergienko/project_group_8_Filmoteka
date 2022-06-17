@@ -81,31 +81,29 @@ $basicLightbox__timing: ease !default;
   padding-left: 20px;
   padding-right: 20px;
 
-  background-color: #ffffff;
-
-  //   @include Animation(transform);
+  background-color: var(--main-background-color);
 
   @media screen and (min-width: 310px) {
     position: absolute;
-    top: 50%;
-    left: 50%;
-
     width: 280px;
-    color: #000000;
 
-    transform: translate(-50%, -50%) scale(1);
+    color: var(--main-text-color);
 
-  
+    transform: translate(-50%, -30%) scale(1);
+  }
+
+  @media screen and (min-width: 640px) and (orientation: landscape) and (max-width: 733px) {
+    transform: translate(-50%, -17%) scale(1);
   }
 
   @media screen and (min-width: 734px) {
     width: 704px;
+    // top: 50%;
+    // left: 50%;
 
     padding-top: 40px;
     padding-left: 36px;
     padding-right: 72px;
-
-    transform: translate(-50%, -50%) scale(1);
   }
 
   @media screen and (min-width: 989px) {
@@ -120,7 +118,6 @@ $basicLightbox__timing: ease !default;
   position: absolute;
   top: 8px;
   right: 8px;
-
   width: 30px;
   height: 30px;
   display: flex;
@@ -160,6 +157,9 @@ $basicLightbox__timing: ease !default;
   @media screen and (max-width: 733px) {
     margin-bottom: 20px;
   }
+}
+.poster__wrapp {
+  cursor: pointer;
 }
 .poster__movie {
   width: 240px;
@@ -278,6 +278,7 @@ $basicLightbox__timing: ease !default;
   width: 110px;
   display: flex;
   align-items: center;
+  justify-content: center;
 
   padding: 6px 27px;
 
@@ -352,8 +353,8 @@ $basicLightbox__timing: ease !default;
   }
 }
 
-.BtnActive{
-      border: 1px solid transparent;
-        background-color: var(--complementary-text-color);
-        color: var(--secondary-text-color);
+.BtnActive {
+  border: 1px solid transparent;
+  background-color: var(--complementary-text-color);
+  color: var(--secondary-text-color);
 }
