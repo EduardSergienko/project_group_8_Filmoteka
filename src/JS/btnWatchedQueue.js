@@ -1,6 +1,6 @@
 import FilmApiService from './filmApiService';
 import { cutFilmTitle } from './renderCards';
-import { getMovieGenre } from './modal';
+import { getGenreModalMovie } from './modal';
 import posterNotFound from '../images/desktop/poster-not-found-desktop.png';
 import posterNotFound2x from '../images/desktop/poster-not-found-desktop@2x.png';
 import { NotiflixLoading, NotiflixLoadingRemove } from './loading';
@@ -92,7 +92,7 @@ function libraryFilmCardRender(arg) {
     </h2>
     <div class="film-info__wrap">
     <p class="film-info__genre-year">
-      ${getMovieGenre(item.genres)} | ${(
+      ${getGenreModalMovie(item.genres)} | ${(
         item.first_air_date || item.release_date
       ).slice(0, 4)}
       <span class="movie-info__value--vote-left">${item.vote_average}</span>
