@@ -1,6 +1,6 @@
 import { loadStorage } from './localStorage';
 
-export default buttonColorChange = {
+const buttonColorChange = {
   CallButtonColorChange() {
     if (loadStorage('Sun')) {
       this.changeButtonColor(true);
@@ -43,3 +43,5 @@ export default buttonColorChange = {
     }
   },
 };
+
+export default buttonColorChange;
