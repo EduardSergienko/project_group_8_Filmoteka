@@ -1,5 +1,6 @@
+import { Pagination } from 'tui-pagination';
 import { loadStorage, saveStorage, removeStorage } from './localStorage';
-
+import buttonColorChange from './changeButtonColor';
 const refs = {
   toolbarBtn: document.querySelector('.toolbarContainer__Btn'),
   toolbarBtnLib: document.querySelector('.toolbarContainer__Lib'),
@@ -24,13 +25,14 @@ const SKROLL = 'skroll';
 const CONTAINER = 'container';
 const COLORFOOTERLINK = 'colorFooterLink';
 
-console.log(refs);
-
 refs.toolbarBtn.addEventListener('click', togle);
 refs.toolbarBtnLib.addEventListener('click', togle);
 let checkpoint = false;
 if (loadStorage(SUN)) {
   checkpoint = true;
+  setTimeout(() => {
+    buttonColorChange.CallButtonColorChange();
+  }, 1000);
 }
 function togle() {
   if (checkpoint) {
@@ -51,12 +53,6 @@ refs.sunLibSvg.classList.add(loadStorage(SUN) ?? 'n');
 refs.moonSvg.classList.add(loadStorage(SUN) ? 'n' : 'active-toolebar');
 refs.moonLibSvg.classList.add(loadStorage(SUN) ? 'n' : 'active-toolebar');
 
-if (loadStorage(SUN)) {
-  setTimeout(() => {
-    changeButtonColor(true);
-  }, 1000);
-}
-
 function nightTheme() {
   removeStorage(NIGHT);
 
@@ -70,9 +66,6 @@ function nightTheme() {
   refs.footerLink.classList.add('dark-theme');
   refs.scroll.classList.add('dark');
   refs.libHeader.classList.add('dark-theme');
-  setTimeout(() => {
-    changeButtonColor(true);
-  }, 300);
 
   const allContainers = document.querySelectorAll('.films-list__card');
   if (allContainers.length > 0) {
@@ -80,9 +73,6 @@ function nightTheme() {
       allContainers[i].classList.add('dark-theme');
     }
   }
-  // for (const container in allContainers) {
-  //   container.classList.add('dark-theme');
-  // }
   saveStorage(BODY, 'dark-theme');
   saveStorage(FOOTER, 'dark-theme');
   saveStorage(COLORFOOTERLINK, 'dark-theme');
@@ -92,6 +82,7 @@ function nightTheme() {
   saveStorage(SUN, active);
 
   checkpoint = true;
+  buttonColorChange.CallButtonColorChange();
 }
 
 function dayTheme() {
@@ -112,9 +103,7 @@ function dayTheme() {
   refs.footerLink.classList.remove('dark-theme');
   refs.scroll.classList.remove('dark');
   refs.libHeader.classList.remove('dark-theme');
-  setTimeout(() => {
-    changeButtonColor(false);
-  }, 300);
+
   const allContainers = document.querySelectorAll('.films-list__card');
   if (allContainers.length > 0) {
     for (let i = 0; i < allContainers.length; i++) {
@@ -125,19 +114,5 @@ function dayTheme() {
   saveStorage(NIGHT, active);
 
   checkpoint = false;
-}
-
-function changeButtonColor(bool) {
-  const allPageButtons = document.querySelectorAll(
-    '.tui-page-btn.tui-page-number'
-  );
-  if (allPageButtons.length > 0) {
-    for (let i = 0; i < allPageButtons.length; i++) {
-      if (bool) {
-        allPageButtons[i].classList.add('dark-theme');
-      } else {
-        allPageButtons[i].classList.remove('dark-theme');
-      }
-    }
-  }
+  buttonColorChange.CallButtonColorChange();
 }

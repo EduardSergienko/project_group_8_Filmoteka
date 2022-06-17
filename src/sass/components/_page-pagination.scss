@@ -27,6 +27,13 @@
   &:hover {
     background-color: #f1f1f1;
   }
+  &.dark-theme {
+    background-color: #1116;
+    fill: var(--complementary-text-color);
+    &:hover {
+      background-color: #5558;
+    }
+  }
 }
 
 //Dotters
@@ -38,17 +45,22 @@
   border: none;
   border-radius: 5px;
   display: none;
-  fill: var(--complementary-text-color);
+  // fill: var(--complementary-text-color);
 
   &:hover {
     background-color: #f1f1f1;
-    // background-color: #5558;
   }
 
   @media screen and (min-width: 768px) {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+  }
+  &.dark-theme {
+    fill: var(--complementary-text-color);
+    &:hover {
+      background-color: #5558;
+    }
   }
 }
 
@@ -60,6 +72,14 @@
   & .tui-ico-prev.pagination__arrow,
   .tui-ico-next.pagination__arrow {
     opacity: 0.2;
+  }
+  &.dark-theme {
+    background-color: #1116;
+    fill: var(--complementary-text-color);
+    & .tui-ico-prev.pagination__arrow,
+    .tui-ico-next.pagination__arrow {
+      opacity: 0.5;
+    }
   }
 }
 
@@ -102,17 +122,22 @@
 
   background-color: #f7f7f7d4;
 
-  // background-color: #1116;
-  color: var(--complementary-text-color);
-  // &:hover,
-  // &:focus {
-  //   border-radius: 5px;
-  //   background-color: #5558;
-  // }
+  &.dark-theme {
+    background-color: #1116;
+    color: var(--complementary-text-color);
+    &:hover,
+    &:focus {
+      border-radius: 5px;
+      background-color: #5558;
+    }
+  }
   &.tui-is-selected {
     border: none;
     border-radius: 5px;
     background-color: var(--complementary-text-color);
     color: #f1f1f1;
+    &.dark-theme {
+      background-color: var(--complementary-text-color);
+    }
   }
 }
