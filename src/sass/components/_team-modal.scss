@@ -3,13 +3,20 @@
   background-color: var(--footer-background-color);
   width: 280px;
   padding: 8px 7px;
+  height: 100vh;
+  // position: absolute;
+  // transform: translate(-50%, -33%) scale(1);
   @media screen and (min-width: 768px) {
     width: 704px;
     padding: 40px 30px;
+    height: auto;
+    // transform: translate(-50%, -50%) scale(1);
   }
   @media screen and (min-width: 1024px) {
     width: 814px;
     padding: 40px 37px;
+    height: auto;
+    // transform: translate(-50%, -50%) scale(1);
   }
 }
 .team-modal__title {
