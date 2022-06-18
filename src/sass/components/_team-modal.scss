@@ -1,14 +1,18 @@
 .modal-team {
-  position: relative;
+  position: absolute;
   background-color: var(--footer-background-color);
   width: 280px;
   padding: 8px 7px;
-  margin: 0 auto;
   color: var(--main-text-color);
 
+  @media screen and (max-width: 767px) {
+    left: 50%;
+    transform: translateX(-50%);
+  }
   @media screen and (min-width: 768px) {
     width: 704px;
     padding: 40px 30px;
+    position: relative;
   }
   @media screen and (min-width: 1024px) {
     width: 814px;
@@ -151,5 +155,9 @@
 
   @media screen and (min-width: 768px) {
     display: flex;
+    justify-content: flex-start;
   }
+}
+.modal_centre {
+  margin: auto;
 }
