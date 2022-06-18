@@ -7,7 +7,7 @@ import arrowSprite from '../images/arrow-sprite.svg';
 import { filmCardRender } from './renderCards';
 import { libraryFilmCardRender } from './btnWatchedQueue';
 import { SHOW_TRANDING_FILMS, SEARCH_FILMS, MY_LIBRARY } from './searchType';
-import { NotiflixLoading, NotiflixLoadingRemove } from './loading';
+import { notiflixLoading, notiflixLoadingRemove } from './loading';
 
 import { loadStorage, saveStorage, removeStorage } from './localStorage';
 
@@ -76,7 +76,7 @@ export function initPagination({
     if (pageName === SHOW_TRANDING_FILMS) {
       filmApiService.page = page;
       try {
-        NotiflixLoading();
+        notiflixLoading();
         const resolve = await filmApiService.fetchTranding();
         const genres = await filmApiService.getGenreName();
         const filmArray = resolve.data.results;
@@ -84,7 +84,7 @@ export function initPagination({
 
         setTimeout(() => {
           filmList.innerHTML = filmCardRender(filmArray, genreArray);
-          NotiflixLoadingRemove();
+          notiflixLoadingRemove();
         }, 500);
         scrollToTop();
       } catch (error) {
@@ -95,7 +95,7 @@ export function initPagination({
     if (pageName === SEARCH_FILMS) {
       filmApiService.page = page;
       try {
-        NotiflixLoading();
+        notiflixLoading();
         filmApiService.qwery = searchingFilm;
         const resolve = await filmApiService.fetchMovies();
         const genres = await filmApiService.getGenreName();
@@ -104,7 +104,7 @@ export function initPagination({
 
         setTimeout(() => {
           filmList.innerHTML = filmCardRender(filmArray, genreArray);
-          NotiflixLoadingRemove();
+          notiflixLoadingRemove();
         }, 500);
         scrollToTop();
       } catch (error) {
@@ -140,7 +140,7 @@ export function initPagination({
         setTimeout(() => {
           filmList.innerHTML = libraryFilmCardRender(libraryArrayRender);
           j += 1;
-          NotiflixLoadingRemove();
+          notiflixLoadingRemove();
         }, 500);
         scrollToTop();
       } catch (error) {
@@ -191,12 +191,12 @@ export function initPaginationMyLibrary(libraryTotalArray, properties) {
 
     try {
       if (properties.page === page) {
-        NotiflixLoading();
+        notiflixLoading();
         setTimeout(() => {
           filmList.innerHTML = libraryFilmCardRender(
             libraryTotalArray[page - 1].results
           );
-          NotiflixLoadingRemove();
+          notiflixLoadingRemove();
         }, 300);
       }
     } catch (error) {

@@ -3,7 +3,7 @@ import { cutFilmTitle } from './renderCards';
 import { getGenreModalMovie } from './modal';
 import posterNotFound from '../images/desktop/poster-not-found-desktop.png';
 import posterNotFound2x from '../images/desktop/poster-not-found-desktop@2x.png';
-import { NotiflixLoading, NotiflixLoadingRemove } from './loading';
+import { notiflixLoading, notiflixLoadingRemove } from './loading';
 import {
   initPaginationMyLibrary,
   paginationPropertiesMyLibrary,
@@ -145,14 +145,14 @@ async function renderMovies(array) {
 
     paginationPropertiesMyLibrary.totalPages = libraryArrayCut.length;
 
-    NotiflixLoading();
+    notiflixLoading();
 
     setTimeout(() => {
       refs.gallery.innerHTML = libraryFilmCardRender(
         libraryTotalArray[0].results
       );
       initPaginationMyLibrary(libraryTotalArray, paginationPropertiesMyLibrary); //Add Pagination
-      NotiflixLoadingRemove();
+      notiflixLoadingRemove();
       //тёмная тема
       buttonColorChange.CallButtonColorChange();
     }, 500);

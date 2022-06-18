@@ -2,7 +2,7 @@ import FilmApiService from './filmApiService';
 import { filmCardRender } from './renderCards';
 import { initPagination, paginationProperties } from './pagePagination';
 import { SHOW_TRANDING_FILMS } from './searchType';
-import { NotiflixLoading, NotiflixLoadingRemove } from './loading';
+import { notiflixLoading, notiflixLoadingRemove } from './loading';
 
 const filmApiService = new FilmApiService();
 
@@ -23,7 +23,7 @@ export async function showTranding() {
     const filmArray = resolve.data.results;
     const genreArray = genres.data.genres;
 
-    NotiflixLoading();
+    notiflixLoading();
     //Add paginationProperties
     paginationProperties.pageName = SHOW_TRANDING_FILMS;
     paginationProperties.page = resolve.data.page;
@@ -33,7 +33,7 @@ export async function showTranding() {
       filmList.innerHTML = filmCardRender(filmArray, genreArray);
       initPagination(paginationProperties); //Add Pagination
       footer.classList.remove('is-hidden');
-      NotiflixLoadingRemove();
+      notiflixLoadingRemove();
     }, 500);
   } catch (error) {
     console.log(error);

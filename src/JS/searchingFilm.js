@@ -3,7 +3,7 @@ import { filmCardRender } from './renderCards';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { initPagination, paginationProperties } from './pagePagination';
 import { SEARCH_FILMS } from './searchType';
-import { NotiflixLoading, NotiflixLoadingRemove } from './loading';
+import { notiflixLoading, notiflixLoadingRemove } from './loading';
 
 const filmApiService = new FilmApiService();
 
@@ -31,12 +31,12 @@ async function onSearchBtnClick(evt) {
       paginationProperties.searchingFilm = filmApiService.searchingFilm;
 
       if (filmArray.length !== 0) {
-        NotiflixLoading();
+        notiflixLoading();
 
         setTimeout(() => {
           filmList.innerHTML = filmCardRender(filmArray, gengeArray);
           initPagination(paginationProperties);
-          NotiflixLoadingRemove();
+          notiflixLoadingRemove();
         }, 500);
       } else {
         Notify.failure(
