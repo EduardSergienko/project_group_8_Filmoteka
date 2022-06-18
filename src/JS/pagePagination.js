@@ -25,18 +25,12 @@ export const paginationProperties = {
   libraryArr: [],
 };
 
-export const paginationPropertiesMyLibrary = {
-  page: 1,
-  results: [],
-  totalPages: null,
-};
-
 export function initPagination({
   pageName = '',
   page,
   totalPages,
   searchingFilm = '',
-  libraryArr,
+  libraryArr = [],
 }) {
   const container = document.getElementById('pagination');
   const options = {
@@ -74,7 +68,6 @@ export function initPagination({
     buttonColorChange.CallButtonColorChange();
 
     if (pageName === SHOW_TRANDING_FILMS) {
-      filmApiService.page = page;
       try {
         notiflixLoading();
         const resolve = await filmApiService.fetchTranding();
@@ -93,7 +86,6 @@ export function initPagination({
     }
 
     if (pageName === SEARCH_FILMS) {
-      filmApiService.page = page;
       try {
         notiflixLoading();
         filmApiService.qwery = searchingFilm;
@@ -112,61 +104,34 @@ export function initPagination({
       }
     }
 
-    return pagination;
-  });
-}
+    if (pageName === MY_LIBRARY) {
+      paginationProperties.page = page;
+      //тёмная тема
+      buttonColorChange.CallButtonColorChange();
 
-export function initPaginationMyLibrary(libraryTotalArray, properties) {
-  const container = document.getElementById('pagination');
-  const options = {
-    totalItems: properties.totalPages,
-    itemsPerPage: 1,
-    visiblePages: 5,
-    page: properties.page,
-    centerAlign: true,
-    firstItemClassName: 'tui-first-child',
-    lastItemClassName: 'tui-last-child',
-    usageStatistics: false,
-    template: {
-      page: '<a href="#" class="tui-page-btn tui-page-number">{{page}}</a>',
-      currentPage:
-        '<strong class="tui-page-btn tui-is-selected tui-page-number">{{page}}</strong>',
-      moveButton:
-        '<a href="#" class="tui-page-btn tui-{{type}} custom-{{type}}">' +
-        `<svg class="tui-ico-{{type}} pagination__arrow" width="16" height="16"><use href="${arrow}-{{type}}"></use></svg>` +
-        '</a>',
-      disabledMoveButton:
-        '<span class="tui-page-btn tui-is-disabled tui-{{type}} custom-{{type}}">' +
-        `<svg class="tui-ico-{{type}} pagination__arrow" width="16" height="16"><use href="${arrow}-{{type}}"></use></svg>` +
-        '</span>',
-      moreButton:
-        '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-        `<svg class="tui-ico-ellip dotte"><use href="${dotte}"></use></svg>` +
-        '</a>',
-    },
-  };
+      try {
+        const libraryArrayRender = [];
 
-  const pagination = new Pagination(container, options);
+        for (let id of libraryArr[page - 1]) {
+          filmApiService.ID = id;
+          const resolve = await filmApiService.fetchMovieID();
+          const filmArray = resolve.data;
+          libraryArrayRender.push(filmArray);
+        }
+        console.log('in pag', libraryArrayRender);
 
-  pagination.on('afterMove', async ({ page }) => {
-    properties.page = page;
-    //тёмная тема
-    buttonColorChange.CallButtonColorChange();
-
-    try {
-      if (properties.page === page) {
         notiflixLoading();
         setTimeout(() => {
-          filmList.innerHTML = libraryFilmCardRender(
-            libraryTotalArray[page - 1].results
-          );
+          filmList.innerHTML = libraryFilmCardRender(libraryArrayRender);
           notiflixLoadingRemove();
         }, 300);
         scrollToTop();
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
+
+    return pagination;
   });
 }
 

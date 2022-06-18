@@ -5,8 +5,8 @@ import posterNotFound from '../images/desktop/poster-not-found-desktop.png';
 import posterNotFound2x from '../images/desktop/poster-not-found-desktop@2x.png';
 import { notiflixLoading, notiflixLoadingRemove } from './loading';
 import {
-  initPaginationMyLibrary,
-  paginationPropertiesMyLibrary,
+  initPagination,
+  paginationProperties,
   scrollToTop,
 } from './pagePagination';
 import { MY_LIBRARY } from './searchType';
@@ -43,13 +43,12 @@ async function onClickWatched() {
     refs.pagination.classList.add('is-hidden');
   } else {
     // зробити рендер сітки
-    paginationPropertiesMyLibrary.page = 1;
+    paginationProperties.page = 1;
     renderMovies(watched);
   }
 }
 
 async function onClickQueue() {
-  // console.log(e);
   refs.watched.classList.remove('currentbtn');
   refs.queue.classList.add('currentbtn');
   const queue = JSON.parse(localStorage.getItem('queue'));
@@ -61,7 +60,7 @@ async function onClickQueue() {
     refs.pagination.classList.add('is-hidden');
   } else {
     // зробити рендер сітки
-    paginationPropertiesMyLibrary.page = 1;
+    paginationProperties.page = 1;
     renderMovies(queue);
   }
   return;
@@ -118,52 +117,42 @@ export function libraryFilmCardRender(arg) {
 async function renderMovies(array) {
   refs.pagination.classList.add('is-hidden');
 
-  const libraryTotalArray = [];
-  const libraryArrayCut = [];
+  const libraryArraySlice = [];
   try {
     for (let i = 0; i < array.length; i += 9) {
       const chunk = array.slice(i, i + 9);
-      libraryArrayCut.push(chunk);
+      libraryArraySlice.push(chunk);
     }
 
-    for (let i = 0; i < libraryArrayCut.length; i += 1) {
-      const libraryArrayRender = [];
+    const libraryArrayRender = [];
 
-      for (let id of libraryArrayCut[i]) {
-        filmApiService.ID = id;
-        const resolve = await filmApiService.fetchMovieID();
-        const filmArray = resolve.data;
-        libraryArrayRender.push(filmArray);
-      }
-
-      const collectionPageObj = {
-        ...paginationPropertiesMyLibrary,
-        page: i + 1,
-        results: libraryArrayRender,
-      };
-
-      libraryTotalArray.push(collectionPageObj);
+    for (let id of libraryArraySlice[0]) {
+      filmApiService.ID = id;
+      const resolve = await filmApiService.fetchMovieID();
+      const filmArray = resolve.data;
+      libraryArrayRender.push(filmArray);
     }
 
-    paginationPropertiesMyLibrary.totalPages = libraryArrayCut.length;
+    paginationProperties.pageName = MY_LIBRARY;
+    paginationProperties.page = 1;
+    paginationProperties.totalPages = libraryArraySlice.length;
+    paginationProperties.libraryArr = libraryArraySlice;
 
     notiflixLoading();
 
     setTimeout(() => {
-      refs.gallery.innerHTML = libraryFilmCardRender(
-        libraryTotalArray[0].results
-      );
+      refs.gallery.innerHTML = libraryFilmCardRender(libraryArrayRender);
 
       pagination.classList.remove('is-hidden');
 
-      initPaginationMyLibrary(libraryTotalArray, paginationPropertiesMyLibrary); //Add Pagination
+      initPagination(paginationProperties); //Add Pagination
       notiflixLoadingRemove();
       refs.footer.classList.remove('is-hidden');
-
-      //тёмная тема
-      buttonColorChange.CallButtonColorChange();
-    }, 500);
+    }, 300);
     scrollToTop();
+
+    //тёмная тема
+    buttonColorChange.CallButtonColorChange();
   } catch (error) {
     console.log(error);
   }
