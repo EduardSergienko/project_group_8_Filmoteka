@@ -112,42 +112,6 @@ export function initPagination({
       }
     }
 
-    if (pageName === MY_LIBRARY) {
-      const libraryArrayCut = [];
-      console.log('in pagin', libraryArr);
-      try {
-        let j = 0;
-        if (libraryArr.length <= 9) {
-          for (let i = 0; i < libraryArr.length; i += 1) {
-            const chunk = libraryArr[i];
-            libraryArrayCut.push(chunk);
-          }
-        } else {
-          for (let i = 0; i < libraryArr.length; i += 9) {
-            const chunk = libraryArr.slice(i, i + 9);
-            libraryArrayCut.push(chunk);
-          }
-        }
-
-        const libraryArrayRender = [];
-        for (let id of libraryArrayCut[j]) {
-          filmApiService.ID = id;
-          const resolve = await filmApiService.fetchMovieID();
-          const filmArray = resolve.data;
-          libraryArrayRender.push(filmArray);
-        }
-
-        setTimeout(() => {
-          filmList.innerHTML = libraryFilmCardRender(libraryArrayRender);
-          j += 1;
-          notiflixLoadingRemove();
-        }, 500);
-        scrollToTop();
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
     return pagination;
   });
 }
@@ -198,6 +162,7 @@ export function initPaginationMyLibrary(libraryTotalArray, properties) {
           );
           notiflixLoadingRemove();
         }, 300);
+        scrollToTop();
       }
     } catch (error) {
       console.log(error);
@@ -205,6 +170,6 @@ export function initPaginationMyLibrary(libraryTotalArray, properties) {
   });
 }
 
-function scrollToTop() {
+export function scrollToTop() {
   window.scrollTo(0, 0);
 }

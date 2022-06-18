@@ -10,6 +10,7 @@ const filmsWrap = document.querySelector('.films-wrap');
 const filmList = document.querySelector('.films-list');
 const filmRait = document.querySelector('.film-info__rait');
 const searchForm = document.getElementById('search-form');
+const pagination = document.getElementById('pagination');
 const footer = document.querySelector('.footer');
 footer.classList.add('is-hidden');
 
@@ -31,6 +32,7 @@ export async function showTranding() {
 
     setTimeout(() => {
       filmList.innerHTML = filmCardRender(filmArray, genreArray);
+      pagination.classList.remove('is-hidden');
       initPagination(paginationProperties); //Add Pagination
       footer.classList.remove('is-hidden');
       notiflixLoadingRemove();
