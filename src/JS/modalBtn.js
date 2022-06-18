@@ -9,25 +9,25 @@ function textModalBtn(id) {
 
   if (inLocalStorage(id, WATCHED)) {
     BTNWatched.textContent = 'Remove from watched';
-    BTNWatched.style.padding = '5px 0 4px';
+    // BTNWatched.style.padding = '5px 0 4px';
     BTNWatched.classList.add('active');
     BTNWatched.classList.add('BtnActive');
   } else {
     BTNWatched.textContent = 'Add to watched';
     BTNWatched.classList.remove('active');
-    BTNWatched.style.padding = '14px 8px 12px';
+    // BTNWatched.style.padding = '14px 8px 12px';
     BTNWatched.classList.remove('BtnActive');
   }
 
   if (inLocalStorage(id, QUEUE)) {
     BTNQueue.textContent = 'Remove from queue';
-    BTNQueue.style.padding = '5px 6px 4px';
+    // BTNQueue.style.padding = '5px 6px 4px';
     BTNQueue.classList.add('active');
     BTNQueue.classList.add('BtnActive');
   } else {
     BTNQueue.textContent = 'Add to queue';
     BTNQueue.classList.remove('active');
-    BTNQueue.style.padding = '14px 8px 12px';
+    // BTNQueue.style.padding = '14px 8px 12px';
     BTNQueue.classList.remove('BtnActive');
   }
 }
