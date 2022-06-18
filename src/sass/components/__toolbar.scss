@@ -1,4 +1,4 @@
-.active-toolebar {
+.active-toolbar {
   display: none;
 }
 
@@ -25,6 +25,15 @@
       width: 31px;
       height: 31px;
     }
+  }
+}
+
+.toolbarContainer {
+  &__sun,
+  &__moon,
+  &__sun-lib,
+  &__moon-lib {
+    height: inherit;
   }
 }
 

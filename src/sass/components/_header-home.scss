@@ -54,7 +54,6 @@
 }
 
 .main-page__navigation {
-  cursor: pointer;
   color: rgba(255, 255, 255, 1);
 
   display: flex;
@@ -100,6 +99,9 @@
   font-size: 12px;
   line-height: 1.16;
 
+  & li {
+    cursor: pointer;
+  }
   & li:not(:last-child) {
     margin-right: 39px;
   }

@@ -18,7 +18,7 @@ const refs = {
   },
 };
 
-const active = 'active-toolebar';
+const active = 'active-toolbar';
 const SUN = 'Sun';
 const NIGHT = 'Night';
 
@@ -42,10 +42,10 @@ function togle() {
   nightTheme();
 }
 
-refs.sunSvg.classList.add(loadStorage(SUN) ?? 'n');
-refs.sunLibSvg.classList.add(loadStorage(SUN) ?? 'n');
-refs.moonSvg.classList.add(loadStorage(SUN) ? 'n' : 'active-toolebar');
-refs.moonLibSvg.classList.add(loadStorage(SUN) ? 'n' : 'active-toolebar');
+refs.sunSvg.classList.add(loadStorage(SUN) ?? '');
+refs.sunLibSvg.classList.add(loadStorage(SUN) ?? '');
+refs.moonSvg.classList.add(loadStorage(SUN) ? '' : 'active-toolbar');
+refs.moonLibSvg.classList.add(loadStorage(SUN) ? '' : 'active-toolbar');
 
 function nightTheme() {
   removeStorage(NIGHT);
