@@ -1,12 +1,9 @@
-.active-toolebar {
+.active-toolbar {
   display: none;
 }
 
 .toolbarContainer {
-  // position: absolute;
-  right: -30px;
-  display: flex;
-  width: 30px;
+  width: 0px;
   margin-left: 0;
 
   &__Btn,
@@ -28,6 +25,15 @@
       width: 31px;
       height: 31px;
     }
+  }
+}
+
+.toolbarContainer {
+  &__sun,
+  &__moon,
+  &__sun-lib,
+  &__moon-lib {
+    height: inherit;
   }
 }
 

@@ -30,6 +30,7 @@
   &.dark-theme {
     background-color: #1116;
     fill: var(--complementary-text-color);
+    color: var(--complementary-text-color);
     &:hover {
       background-color: #5558;
     }

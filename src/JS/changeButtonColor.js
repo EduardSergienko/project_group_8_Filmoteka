@@ -9,19 +9,12 @@ const buttonColorChange = {
     }
   },
   changeButtonColor(bool) {
-    const allPageButtons = document.querySelectorAll(
-      '.tui-page-btn.tui-page-number'
-    );
+    const allPageButtons = document.querySelectorAll('.tui-page-btn');
     if (allPageButtons.length > 0) {
       for (let i = 0; i < allPageButtons.length; i++) {
         this.forArray(allPageButtons, bool);
       }
     }
-
-    this.switchButtonClass('.tui-page-btn.tui-prev-is-ellip', bool);
-    this.switchButtonClass('.tui-page-btn.tui-next-is-ellip', bool);
-    this.switchButtonClass('.tui-page-btn.tui-prev.custom-prev', bool);
-    this.switchButtonClass('.tui-page-btn.tui-next.custom-next', bool);
   },
   forArray(array, bool) {
     for (let i = 0; i < array.length; i++) {

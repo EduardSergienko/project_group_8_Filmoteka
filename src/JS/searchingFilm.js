@@ -5,8 +5,6 @@ import { initPagination, paginationProperties } from './pagePagination';
 import { SEARCH_FILMS } from './searchType';
 import { NotiflixLoading, NotiflixLoadingRemove } from './loading';
 
-import buttonColorChange from './changeButtonColor';
-
 const filmApiService = new FilmApiService();
 
 const searchBtn = document.querySelector('.search-submit');
@@ -39,7 +37,6 @@ async function onSearchBtnClick(evt) {
           filmList.innerHTML = filmCardRender(filmArray, gengeArray);
           initPagination(paginationProperties);
           NotiflixLoadingRemove();
-          buttonColorChange.CallButtonColorChange();
         }, 500);
       } else {
         Notify.failure(
