@@ -27,7 +27,7 @@ export function filmCardRender(arg, genresArrObj) {
 
   <div class="film-info">
   <h2 class="film-info__name">
-      ${cutFilmTitle(item.name || item.original_title)}  
+      ${cutFilmTitle(item.title || item.original_title)}  
     </h2>
     <div class="film-info__wrap">
     <p class="film-info__genre-year">
