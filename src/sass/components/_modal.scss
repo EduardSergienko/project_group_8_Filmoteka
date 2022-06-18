@@ -309,11 +309,9 @@ $basicLightbox__timing: ease !default;
     width: 136px;
   }
 
-  &:hover,
-  &:focus {
+  &:hover {
     border: 1px solid transparent;
-    background-color: var(--complementary-text-color);
-    color: var(--secondary-text-color);
+    background-color: var(--footer-background-color);
   }
 }
 
@@ -321,4 +319,9 @@ $basicLightbox__timing: ease !default;
   border: 1px solid transparent;
   background-color: var(--complementary-text-color);
   color: var(--secondary-text-color);
+
+  &:hover {
+    background-color: var(--footer-background-color);
+    color: var(--main-text-color);
+  }
 }

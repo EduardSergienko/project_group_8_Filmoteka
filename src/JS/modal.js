@@ -12,6 +12,8 @@ movieItemRef.addEventListener('click', onMovieItemClick);
 
 const scrollableModal = document.querySelector('.lightbox-extrastyle');
 
+let postersArr = [];
+
 async function onMovieItemClick(evt) {
   evt.preventDefault();
 
@@ -40,6 +42,11 @@ async function onMovieItemClick(evt) {
       .querySelector('[data-modal-close]')
       .addEventListener('click', onCloseModalBtn);
     window.addEventListener('keydown', onCloseModalEscape);
+
+    postersArr.length = 0;
+    document
+      .querySelector('.poster__wrapp')
+      .addEventListener('click', changePosterByClick);
   } catch (error) {
     console.log(error.message);
   }
@@ -104,7 +111,7 @@ function createMovieItemClick({
             ${src2x} 2x,
             ${src3x} 3x
           "
-        /> 
+        />
       </div>
     </div>
     <div class="modal-item">
@@ -176,5 +183,37 @@ function onCloseModalEscape(evt) {
   if (evt.code === 'Escape') {
     modalMovie.close();
     enablePageScroll();
+  }
+}
+
+async function changePosterByClick() {
+  try {
+    const moviePoster = document.querySelector('.poster__movie');
+    let currentPosterPath = moviePoster.getAttribute('data-src');
+
+    if (currentPosterPath === 'null') {
+      return;
+    }
+
+    if (postersArr.length === 0) {
+      const { data } = await filmApiService.fetchMovieImages();
+      let imageObj = data.posters;
+
+      for (const image of imageObj) {
+        postersArr.push(image.file_path);
+      }
+    }
+
+    let posterToShow = postersArr.pop();
+
+    let posterSrc = `https://image.tmdb.org/t/p/w500${posterToShow}`;
+    const posterSrcset = `https://image.tmdb.org/t/p/w500${posterToShow} 1x, 
+                      https://image.tmdb.org/t/p/w780${posterToShow} 2x,
+                      https://image.tmdb.org/t/p/w1280${posterToShow} 3x`;
+    moviePoster.setAttribute('src', posterSrc);
+    moviePoster.setAttribute('srcset', posterSrcset);
+    moviePoster.setAttribute('data-src', posterToShow);
+  } catch (error) {
+    console.log(error.message);
   }
 }
