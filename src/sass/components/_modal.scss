@@ -276,6 +276,7 @@ $basicLightbox__timing: ease !default;
     margin-right: 15px;
   }
 }
+
 .feature-button {
   width: 110px;
   display: flex;
@@ -321,15 +322,14 @@ $basicLightbox__timing: ease !default;
   padding: 13px 14px 13px 13px;
 
   @media screen and (min-width: 768px) {
-    width: 125px;
 
-    padding: 14px 7px 12px 7px;
+    width: 125px;
+    // padding: 14px 9px 12px 9px;
   }
 
   @media screen and (min-width: 1024px) {
     width: 136px;
-
-    padding: 14px 8px 12px 8px;
+    // padding: 14px 10px 12px 10px;
   }
 
   &:hover,

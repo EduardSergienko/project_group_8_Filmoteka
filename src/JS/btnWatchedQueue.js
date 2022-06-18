@@ -9,6 +9,7 @@ import {
   paginationPropertiesMyLibrary,
 } from './pagePagination';
 import { MY_LIBRARY } from './searchType';
+import buttonColorChange from './changeButtonColor';
 
 const filmApiService = new FilmApiService();
 const refs = {
@@ -42,7 +43,6 @@ async function onClickWatched() {
     paginationPropertiesMyLibrary.page = 1;
     renderMovies(watched);
   }
-  return;
 }
 
 async function onClickQueue() {
@@ -153,6 +153,8 @@ async function renderMovies(array) {
       );
       initPaginationMyLibrary(libraryTotalArray, paginationPropertiesMyLibrary); //Add Pagination
       NotiflixLoadingRemove();
+      //тёмная тема
+      buttonColorChange.CallButtonColorChange();
     }, 500);
   } catch (error) {
     console.log(error);
