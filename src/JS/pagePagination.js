@@ -148,7 +148,7 @@ export function initPaginationMyLibrary(libraryTotalArray, properties) {
 
   const pagination = new Pagination(container, options);
 
-  pagination.on('afterMove', ({ page }) => {
+  pagination.on('afterMove', async ({ page }) => {
     properties.page = page;
     //тёмная тема
     buttonColorChange.CallButtonColorChange();
