@@ -1,9 +1,5 @@
 import * as basicLightbox from 'basiclightbox';
-import {
-  disablePageScroll,
-  enablePageScroll,
-  setFillGapMethod,
-} from 'scroll-lock';
+import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 import { loadStorage } from './localStorage';
 
 import denysUrl from '../images/team/Den.png';
@@ -43,9 +39,12 @@ import tetianaUrl2 from '../images/team/Tanya_2x.png';
 import tetianaUrlTab from '../images/team/Tanya_tab.png';
 import tetianaUrlTab2 from '../images/team/Tanya_tab_2x.png';
 
+const scrollUpBtn = document.querySelector('.scroll-process');
 const teamLink = document.querySelector('.team__link');
-
+// const htmlEl = document.querySelector('html');
+// const bodyel = document.querySelector('body');
 teamLink.addEventListener('click', onTeamLinkClick);
+
 const teamModal = basicLightbox.create(
   `<div class="modal-team">
   <h2 class="team-modal__title">ILIT team</h2>
@@ -520,22 +519,31 @@ const teamModal = basicLightbox.create(
 `,
   {
     className: 'basic-style',
-    onShow: () => {},
+    onShow: () => {
+      scrollUpBtn.classList.add('is-hidden');
+      // htmlEl.classList.add('hidscroll');
+      // bodyel.classList.add('hidscroll');
+    },
 
     onClose: () => {
       window.removeEventListener('keydown', onEscClick), enablePageScroll();
+      scrollUpBtn.classList.remove('is-hidden');
     },
   }
 );
 function onTeamLinkClick(evt) {
   evt.preventDefault();
   teamModal.show();
+
   const bsLbx = document.querySelector('.basic-style');
   disablePageScroll(bsLbx);
+
   const boxHolder = document.querySelector('.basicLightbox__placeholder');
   boxHolder.classList.add('modal_centre');
+
   const closeModal = document.querySelector('.team-modal__close-modal');
   closeModal.addEventListener('click', onCloseModalBtnClick);
+
   window.addEventListener('keydown', onEscClick);
   // Тёмная тема
   if (loadStorage('Sun')) {
