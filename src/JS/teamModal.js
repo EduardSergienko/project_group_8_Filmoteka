@@ -551,7 +551,7 @@ function onTeamLinkClick(evt) {
     document
       .querySelector('.team-modal__close-modal-svg')
       .classList.add('dark-theme');
-    socialIcons = document.querySelectorAll('.social-box__icon');
+    const socialIcons = document.querySelectorAll('.social-box__icon');
     for (let i = 0; i < socialIcons.length; i++) {
       socialIcons[i].classList.add('dark-theme');
     }
@@ -560,7 +560,7 @@ function onTeamLinkClick(evt) {
     document
       .querySelector('.team-modal__close-modal-svg')
       .classList.remove('dark-theme');
-    socialIcons = document.querySelectorAll('.social-box__icon');
+    const socialIcons = document.querySelectorAll('.social-box__icon');
     for (let i = 0; i < socialIcons.length; i++) {
       socialIcons[i].classList.remove('dark-theme');
     }
