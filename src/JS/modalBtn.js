@@ -17,6 +17,7 @@ function textModalBtn(id) {
     BTNWatched.classList.remove('active');
     // BTNWatched.style.padding = '14px 8px 12px';
     BTNWatched.classList.remove('BtnActive');
+    BTNWatched.blur();
   }
 
   if (inLocalStorage(id, QUEUE)) {
@@ -29,6 +30,7 @@ function textModalBtn(id) {
     BTNQueue.classList.remove('active');
     // BTNQueue.style.padding = '14px 8px 12px';
     BTNQueue.classList.remove('BtnActive');
+    BTNQueue.blur();
   }
 }
 
