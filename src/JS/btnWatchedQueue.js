@@ -116,7 +116,6 @@ export function libraryFilmCardRender(arg) {
 }
 
 async function renderMovies(array) {
-  console.log(array);
   refs.pagination.classList.add('is-hidden');
 
   const libraryTotalArray = [];
@@ -126,8 +125,6 @@ async function renderMovies(array) {
       const chunk = array.slice(i, i + 9);
       libraryArrayCut.push(chunk);
     }
-
-    console.log('Cut', libraryArrayCut);
 
     for (let i = 0; i < libraryArrayCut.length; i += 1) {
       const libraryArrayRender = [];
