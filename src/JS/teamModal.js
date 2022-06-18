@@ -41,7 +41,8 @@ import tetianaUrlTab2 from '../images/team/Tanya_tab_2x.png';
 
 const scrollUpBtn = document.querySelector('.scroll-process');
 const teamLink = document.querySelector('.team__link');
-
+// const htmlEl = document.querySelector('html');
+// const bodyel = document.querySelector('body');
 teamLink.addEventListener('click', onTeamLinkClick);
 
 const teamModal = basicLightbox.create(
@@ -520,6 +521,8 @@ const teamModal = basicLightbox.create(
     className: 'basic-style',
     onShow: () => {
       scrollUpBtn.classList.add('is-hidden');
+      // htmlEl.classList.add('hidscroll');
+      // bodyel.classList.add('hidscroll');
     },
 
     onClose: () => {
