@@ -42,11 +42,6 @@ function togle() {
   nightTheme();
 }
 
-refs.sunSvg.classList.add(loadStorage(SUN) ?? '');
-refs.sunLibSvg.classList.add(loadStorage(SUN) ?? '');
-refs.moonSvg.classList.add(loadStorage(SUN) ? '' : 'active-toolbar');
-refs.moonLibSvg.classList.add(loadStorage(SUN) ? '' : 'active-toolbar');
-
 function nightTheme() {
   removeStorage(NIGHT);
 
