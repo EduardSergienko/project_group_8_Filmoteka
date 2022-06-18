@@ -148,6 +148,9 @@ async function renderMovies(array) {
       initPagination(paginationProperties); //Add Pagination
       notiflixLoadingRemove();
       refs.footer.classList.remove('is-hidden');
+
+      //тёмная тема
+      buttonColorChange.CallButtonColorChange();
     }, 300);
     scrollToTop();
 

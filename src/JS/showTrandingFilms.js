@@ -3,6 +3,7 @@ import { filmCardRender } from './renderCards';
 import { initPagination, paginationProperties } from './pagePagination';
 import { SHOW_TRANDING_FILMS } from './searchType';
 import { notiflixLoading, notiflixLoadingRemove } from './loading';
+import buttonColorChange from './changeButtonColor';
 
 const filmApiService = new FilmApiService();
 
@@ -36,6 +37,8 @@ export async function showTranding() {
       initPagination(paginationProperties); //Add Pagination
       footer.classList.remove('is-hidden');
       notiflixLoadingRemove();
+      //тёмная тема
+      buttonColorChange.CallButtonColorChange();
     }, 500);
   } catch (error) {
     console.log(error);
