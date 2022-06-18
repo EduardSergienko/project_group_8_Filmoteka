@@ -10,7 +10,7 @@ const filmApiService = new FilmApiService();
 const movieItemRef = document.querySelector('.films-list');
 movieItemRef.addEventListener('click', onMovieItemClick);
 
-const scrollableElement = document.querySelector('.modal');
+const scrollableModal = document.querySelector('.lightbox-extrastyle');
 
 async function onMovieItemClick(evt) {
   evt.preventDefault();
@@ -27,8 +27,8 @@ async function onMovieItemClick(evt) {
 
   try {
     const { data } = await filmApiService.fetchMovieID();
-    console.log(data);
-    disablePageScroll(scrollableElement);
+
+    disablePageScroll(scrollableModal);
 
     getGenreModalMovie(data.genres);
     createMovieItemClick(data);
@@ -140,14 +140,14 @@ function createMovieItemClick({
           <p class="movie-overview__text">${overview}</p>
         </div>
       </div>
-      <ul class="feature-button">
+      <ul class="feature-button__list">
         <li class="feature-button__item">
-          <button class="feature-button__watched" type="button">
+          <button class="feature-button feature-button__watched" type="button">
             add to Watched
           </button>
         </li>
         <li class="feature-button__item">
-          <button class="feature-button__queue" type="button">
+          <button class="feature-button feature-button__queue" type="button">
             add to queue
           </button>
         </li>
@@ -157,9 +157,10 @@ function createMovieItemClick({
 </div>
 `,
     {
+      className: 'lightbox-extrastyle',
       onClose: () => {
         window.removeEventListener('keydown', onCloseModalEscape),
-          enablePageScroll(scrollableElement);
+          enablePageScroll();
       },
     }
   );
@@ -168,12 +169,12 @@ function createMovieItemClick({
 
 function onCloseModalBtn() {
   modalMovie.close();
-  enablePageScroll(scrollableElement);
+  enablePageScroll();
 }
 
 function onCloseModalEscape(evt) {
   if (evt.code === 'Escape') {
     modalMovie.close();
-    enablePageScroll(scrollableElement);
+    enablePageScroll();
   }
 }
