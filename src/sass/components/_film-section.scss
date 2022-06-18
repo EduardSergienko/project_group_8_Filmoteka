@@ -1,18 +1,24 @@
 .films {
   padding: 20px 0;
+  min-height: calc(100vh - 330px);
+
+  @media screen and (min-width: 768px) {
+    min-height: calc(100vh - 294px);
+  }
+
+  @media screen and (min-width: 1024px) {
+    min-height: calc(100vh - 293px);
+  }
 }
 
 .films-list {
-  min-height: calc(102vh - 460px);
   @media screen and (min-width: 768px) {
     display: flex;
     flex-wrap: wrap;
     margin: -16px -16px;
-    min-height: calc(102vh - 428px);
   }
   @media screen and (min-width: 1024px) {
     margin: -11px -8px;
-    min-height: calc(102vh - 436px);
   }
 }
 .films-list__card {
