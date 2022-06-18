@@ -532,7 +532,8 @@ function onTeamLinkClick(evt) {
   teamModal.show();
   const bsLbx = document.querySelector('.basic-style');
   disablePageScroll(bsLbx);
-
+  const boxHolder = document.querySelector('.basicLightbox__placeholder');
+  boxHolder.classList.add('modal_centre');
   const closeModal = document.querySelector('.team-modal__close-modal');
   closeModal.addEventListener('click', onCloseModalBtnClick);
   window.addEventListener('keydown', onEscClick);
