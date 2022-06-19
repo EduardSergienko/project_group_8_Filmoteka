@@ -108,7 +108,7 @@ function createMovieItemClick(
     instaLink = `<li class='movie-icon-container'><a href="https://www.instagram.com/${instagram_id}" target="_blank"><img class='movie-social-link-icon' src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" width=40></a></li>`;
   }
 
-  tmdbLink = `<li class='movie-icon-container'><a href="https://www.themoviedb.org/movie/${id}"><img class='movie-social-link-icon' src="https://www.themoviedb.org/assets/2/v4/logos/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.svg" width=40></a></li>`;
+  tmdbLink = `<li class='movie-icon-container'><a href="https://www.themoviedb.org/movie/${id}" target="_blank"><img class='movie-social-link-icon' src="https://www.themoviedb.org/assets/2/v4/logos/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.svg" width=40></a></li>`;
   https: modalMovie = basicLightbox.create(
     `<div class="modal">
   <div class="modal__wrapper">
