@@ -77,15 +77,18 @@ $basicLightbox__timing: ease !default;
 
   @media screen and (min-width: 768px) {
     display: flex;
+    justify-content: flex-start;
   }
+}
+.lightbox-placeholder__modal--centre {
+  margin: auto;
 }
 
 // Modal window for a single movie
 .modal {
-  position: relative;
+  position: absolute;
   width: 280px;
 
-  margin: 0 auto;
   padding-top: 48px;
   padding-bottom: 40px;
   padding-left: 20px;
@@ -94,18 +97,18 @@ $basicLightbox__timing: ease !default;
   background-color: var(--main-background-color);
   color: var(--main-text-color);
 
+  @media screen and (max-width: 767px) {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   @media screen and (min-width: 768px) {
+    position: relative;
     width: 704px;
 
     padding-top: 40px;
     padding-left: 36px;
     padding-right: 72px;
-  }
-
-  @media screen and (min-width: 768px) and (orientation: landscape) and (max-width: 1023px) {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 10%) scale(1);
   }
 
   @media screen and (min-width: 1024px) {

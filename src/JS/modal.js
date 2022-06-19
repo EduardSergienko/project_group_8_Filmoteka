@@ -10,8 +10,6 @@ const filmApiService = new FilmApiService();
 const movieItemRef = document.querySelector('.films-list');
 movieItemRef.addEventListener('click', onMovieItemClick);
 
-const scrollableModal = document.querySelector('.lightbox-extrastyle');
-
 let postersArr = [];
 
 async function onMovieItemClick(evt) {
@@ -31,13 +29,15 @@ async function onMovieItemClick(evt) {
     const { data } = await filmApiService.fetchMovieID();
     const ids = await filmApiService.getExternalID();
 
-    disablePageScroll(scrollableModal);
-
     getGenreModalMovie(data.genres);
     createMovieItemClick(data, ids.data);
 
     addBtnListenet(filmApiService.queryID);
     textModalBtn(filmApiService.queryID);
+
+    document
+      .querySelector('.basicLightbox__placeholder')
+      .classList.add('lightbox-placeholder__modal--centre');
 
     document
       .querySelector('[data-modal-close]')
@@ -200,6 +200,8 @@ function createMovieItemClick(
     }
   );
   modalMovie.show();
+  const scrollableModal = document.querySelector('.lightbox-extrastyle');
+  disablePageScroll(scrollableModal);
 }
 
 function onCloseModalBtn() {
