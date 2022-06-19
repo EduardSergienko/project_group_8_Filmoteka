@@ -29,11 +29,12 @@ async function onMovieItemClick(evt) {
 
   try {
     const { data } = await filmApiService.fetchMovieID();
+    const ids = await filmApiService.getExternalID();
 
     disablePageScroll(scrollableModal);
 
     getGenreModalMovie(data.genres);
-    createMovieItemClick(data);
+    createMovieItemClick(data, ids.data);
 
     addBtnListenet(filmApiService.queryID);
     textModalBtn(filmApiService.queryID);
@@ -61,21 +62,29 @@ export function getGenreModalMovie(genreArr) {
 }
 
 let modalMovie;
-function createMovieItemClick({
-  poster_path,
-  title,
-  vote_average,
-  vote_count,
-  popularity,
-  original_title,
-  genres,
-  overview,
-  name,
-  original_name,
-}) {
+function createMovieItemClick(
+  {
+    poster_path,
+    title,
+    vote_average,
+    vote_count,
+    popularity,
+    original_title,
+    genres,
+    overview,
+    name,
+    original_name,
+  },
+  { id, facebook_id, imdb_id, instagram_id, twitter_id }
+) {
   let src = `https://image.tmdb.org/t/p/w500${poster_path}`;
   let src2x = `https://image.tmdb.org/t/p/w780${poster_path}`;
   let src3x = `https://image.tmdb.org/t/p/w1280${poster_path}`;
+  let imdbLink = '';
+  let fbLink = '';
+  let twitLink = '';
+  let instaLink = '';
+  let tmdbLink = '';
 
   if (!poster_path) {
     src = posterNotFound;
@@ -83,7 +92,24 @@ function createMovieItemClick({
     src3x = posterNotFound2x;
   }
 
-  modalMovie = basicLightbox.create(
+  if (imdb_id) {
+    imdbLink = `<li class='movie-icon-container'><a href="https://www.imdb.com/title/${imdb_id}" target="_blank"><img class='movie-social-link-icon' src="https://upload.wikimedia.org/wikipedia/commons/c/cc/IMDb_Logo_Square.svg" width=40></a></li>`;
+  }
+
+  if (facebook_id) {
+    fbLink = `<li class='movie-icon-container'><a href="https://www.facebook.com/${facebook_id}" target="_blank"><img class='movie-social-link-icon' src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg" width=40></a></li>`;
+  }
+
+  if (twitter_id) {
+    twitLink = `<li class='movie-icon-container'><a href="https://www.twitter.com/${twitter_id}" target="_blank"><img class='movie-social-link-icon' src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Twitter-logo.svg" width=40></a></li>`;
+  }
+
+  if (instagram_id) {
+    instaLink = `<li class='movie-icon-container'><a href="https://www.instagram.com/${instagram_id}" target="_blank"><img class='movie-social-link-icon' src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" width=40></a></li>`;
+  }
+
+  tmdbLink = `<li class='movie-icon-container'><a href="https://www.themoviedb.org/movie/${id}"><img class='movie-social-link-icon' src="https://www.themoviedb.org/assets/2/v4/logos/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.svg" width=40></a></li>`;
+  https: modalMovie = basicLightbox.create(
     `<div class="modal">
   <div class="modal__wrapper">
     <button type="button" class="modal__circle-btn" data-modal-close>
@@ -159,6 +185,8 @@ function createMovieItemClick({
           </button>
         </li>
       </ul>
+      <ul class='movie-social-links'>${imdbLink}${fbLink}${twitLink}${instaLink}${tmdbLink}</ul>
+      
     </div>
   </div>
 </div>
