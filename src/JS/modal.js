@@ -185,7 +185,7 @@ function createMovieItemClick(
           </button>
         </li>
       </ul>
-      <ul class='movie-social-links'>${imdbLink}${fbLink}${twitLink}${instaLink}${tmdbLink}</ul>
+      <ul class='movie-social-links'>${imdbLink}${tmdbLink}${fbLink}${twitLink}${instaLink}</ul>
       
     </div>
   </div>

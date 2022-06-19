@@ -37,6 +37,46 @@
   }
 }
 
+.toolbarContainer {
+  &__sun,
+  &__sun-lib {
+    &.rot {
+      &:hover,
+      &:focus {
+        animation: 5s linear 0s normal none infinite running rot;
+        -webkit-animation: 5s linear 0s normal none infinite running rot;
+      }
+    }
+  }
+  &__moon,
+  &__moon-lib {
+    &.rot {
+      &:hover,
+      &:focus {
+        animation: 2s linear 0s normal none infinite running rot;
+        -webkit-animation: 2s linear 0s normal none infinite running rot;
+      }
+    }
+  }
+}
+
+@keyframes rot {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes rot {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .animation {
   transform: translateX(100px);
 }
