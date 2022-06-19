@@ -305,6 +305,7 @@ $basicLightbox__timing: ease !default;
 .feature-button__watched,
 .feature-button__queue {
   height: 44px;
+  color: var(--main-text-color);
 
   @media screen and (min-width: 768px) {
     width: 125px;
