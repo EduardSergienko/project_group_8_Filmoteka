@@ -7,7 +7,7 @@ import { textModalBtn, addBtnListener } from './modalBtn';
 import posterNotFound from '../images/desktop/poster-not-found-desktop.png';
 import posterNotFound2x from '../images/desktop/poster-not-found-desktop@2x.png';
 
-const DEBOUNCE_DELAY = 200;
+const DEBOUNCE_DELAY = 250;
 const filmApiService = new FilmApiService();
 
 const movieItemRef = document.querySelector('.films-list');
@@ -94,21 +94,18 @@ function createMovieItemClick(
   if (imdb_id) {
     imdbLink = `<li class='movie-icon-container'><a href="https://www.imdb.com/title/${imdb_id}" target="_blank"><img class='movie-social-link-icon' src="https://upload.wikimedia.org/wikipedia/commons/c/cc/IMDb_Logo_Square.svg" width=40></a></li>`;
   }
-
   if (facebook_id) {
     fbLink = `<li class='movie-icon-container'><a href="https://www.facebook.com/${facebook_id}" target="_blank"><img class='movie-social-link-icon' src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg" width=40></a></li>`;
   }
-
   if (twitter_id) {
     twitLink = `<li class='movie-icon-container'><a href="https://www.twitter.com/${twitter_id}" target="_blank"><img class='movie-social-link-icon' src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Twitter-logo.svg" width=40></a></li>`;
   }
-
   if (instagram_id) {
     instaLink = `<li class='movie-icon-container'><a href="https://www.instagram.com/${instagram_id}" target="_blank"><img class='movie-social-link-icon' src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" width=40></a></li>`;
   }
-
   tmdbLink = `<li class='movie-icon-container'><a href="https://www.themoviedb.org/movie/${id}" target="_blank"><img class='movie-social-link-icon' src="https://www.themoviedb.org/assets/2/v4/logos/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.svg" width=40></a></li>`;
-  https: modalMovie = basicLightbox.create(
+
+  modalMovie = basicLightbox.create(
     `<div class="modal">
   <div class="modal__wrapper">
     <button type="button" class="modal__circle-btn" data-action="close-modal">
@@ -138,7 +135,7 @@ function createMovieItemClick(
             ${src3x} 3x
           "
         />
-        <a href="#" data-action="trailer" class="poster__trailer-btn">Watch the trailer</a>
+        <div data-action="trailer" class="poster__trailer-btn">Watch the trailer</div>
       </div>
     </div>
     <div class="modal-item">
@@ -193,7 +190,7 @@ function createMovieItemClick(
 </div>
 `,
     {
-      className: 'basicLightbox-block',
+      className: 'basicLightbox-center',
       onClose: () => {
         window.removeEventListener('keydown', onCloseModalEscape),
           enablePageScroll();
@@ -202,7 +199,7 @@ function createMovieItemClick(
   );
   modalMovie.show();
 
-  const scrollableModal = document.querySelector('.basicLightbox-block');
+  const scrollableModal = document.querySelector('.basicLightbox-center');
   disablePageScroll(scrollableModal);
 
   postersArr.length = 0;
@@ -288,9 +285,6 @@ async function onShowTrailer() {
 
     window.removeEventListener('keydown', onCloseModalEscape);
     window.addEventListener('keydown', onCloseTrailerEsc);
-
-    renderIframeBtn();
-    closeIframeBtn(trailerIframe);
   } catch (error) {
     console.log(error.message);
   }
@@ -300,34 +294,4 @@ function onCloseTrailerEsc(evt) {
   if (evt.code === 'Escape') {
     trailerIframe.close();
   }
-}
-
-function renderIframeBtn() {
-  const modalBox = document.querySelector('.basicLightbox--iframe');
-  modalBox.insertAdjacentHTML(
-    'afterbegin',
-    `<button
-        type="button"
-        class="iframe__circle-btn"
-        data-action="close-iframe"
-        >
-          <svg
-          class="iframe__circle-svg"
-          width="30"
-          height="30"
-          xmlns="http://www.w3.org/2000/svg"
-            >
-            <path
-              d="m7.975 8-.699.701 3.149 3.149 3.15 3.15-3.138 3.138L7.3 21.275l.712.713.713.712 3.137-3.137L15 16.425l3.138 3.138 3.137 3.137.713-.712.712-.713-3.137-3.137L16.425 15l3.15-3.15 3.15-3.15-.713-.712-.712-.713-3.15 3.15-3.15 3.15-3.138-3.138C10.137 8.712 8.713 7.3 8.699 7.3c-.014 0-.34.315-.724.7"
-              fill-rule="evenodd"
-            />
-          </svg>
-    </button>`
-  );
-}
-
-function closeIframeBtn(trailer) {
-  document
-    .querySelector('[data-action="close-iframe"]')
-    .addEventListener('click', () => trailer.close());
 }
