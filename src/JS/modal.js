@@ -47,16 +47,6 @@ async function onMovieItemClick(evt) {
     document
       .querySelector('.basicLightbox__placeholder')
       .classList.add('lightbox-placeholder__modal--centre');
-
-    document
-      .querySelector('[data-action="close-modal"]')
-      .addEventListener('click', onCloseModalBtn);
-    window.addEventListener('keydown', onCloseModalEscape);
-
-    postersArr.length = 0;
-    document
-      .querySelector('.poster__wrapp')
-      .addEventListener('click', debounce(changePosterByClick, DEBOUNCE_DELAY));
   } catch (error) {
     console.log(error.message);
   }
@@ -138,6 +128,7 @@ function createMovieItemClick(
       <div class="poster__wrapp">
         <img
           class="poster__movie"
+          data-action="poster"
           data-src="${poster_path}"
           src="${src}"
           alt="${title || name}"
@@ -147,7 +138,7 @@ function createMovieItemClick(
             ${src3x} 3x
           "
         />
-        <a href="#" class="poster__trailer-btn">Watch the trailer</a>
+        <a href="#" data-action="trailer" class="poster__trailer-btn">Watch the trailer</a>
       </div>
     </div>
     <div class="modal-item">
@@ -210,8 +201,19 @@ function createMovieItemClick(
     }
   );
   modalMovie.show();
+
   const scrollableModal = document.querySelector('.basicLightbox-block');
   disablePageScroll(scrollableModal);
+
+  postersArr.length = 0;
+  document
+    .querySelector('.poster__wrapp')
+    .addEventListener('click', debounce(callPosterOrTrailer, DEBOUNCE_DELAY));
+
+  document
+    .querySelector('[data-action="close-modal"]')
+    .addEventListener('click', onCloseModalBtn);
+  window.addEventListener('keydown', onCloseModalEscape);
 }
 
 function onCloseModalBtn() {
@@ -223,6 +225,14 @@ function onCloseModalEscape(evt) {
   if (evt.code === 'Escape') {
     modalMovie.close();
     enablePageScroll();
+  }
+}
+
+function callPosterOrTrailer(evt) {
+  if (evt.target.dataset.action === 'poster') {
+    changePosterByClick();
+  } else if (evt.target.dataset.action === 'trailer') {
+    onShowTrailer();
   }
 }
 
@@ -258,40 +268,41 @@ async function changePosterByClick() {
   }
 }
 
-// let trailerIframe = '';
+let trailerIframe;
 async function onShowTrailer() {
   try {
     const { data } = await filmApiService.fetchMovieTrailer();
     const id = data.results[0].key;
-    const trailerIframe = basicLightbox.create(
+    trailerIframe = basicLightbox.create(
       `<iframe width="560" height="315" 
       src='https://www.youtube.com/embed/${id}'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     `,
       {
         onClose: () => {
           window.addEventListener('keydown', onCloseModalEscape);
-          // window.removeEventListener('keydown', onCloseTrailerEsc);
+          window.removeEventListener('keydown', onCloseTrailerEsc);
         },
       }
     );
     trailerIframe.show();
+
     window.removeEventListener('keydown', onCloseModalEscape);
-    window.addEventListener('keydown', evt => {
-      if (evt.code === 'Escape') {
-        trailerIframe.close();
-      }
-    });
+    window.addEventListener('keydown', onCloseTrailerEsc);
+
+    renderIframeBtn();
     closeIframeBtn(trailerIframe);
   } catch (error) {
     console.log(error.message);
   }
 }
-// function onCloseTrailerEsc(evt) {
-//   if (evt.code === 'Escape') {
-//     trailerIframe.close();
-//   }
-// }
-function closeIframeBtn(trailer) {
+
+function onCloseTrailerEsc(evt) {
+  if (evt.code === 'Escape') {
+    trailerIframe.close();
+  }
+}
+
+function renderIframeBtn() {
   const modalBox = document.querySelector('.basicLightbox--iframe');
   modalBox.insertAdjacentHTML(
     'afterbegin',
@@ -313,6 +324,10 @@ function closeIframeBtn(trailer) {
           </svg>
     </button>`
   );
-  const modalCloseBtn = document.querySelector('[data-action="close-iframe"]');
-  modalCloseBtn.addEventListener('click', () => trailer.close());
+}
+
+function closeIframeBtn(trailer) {
+  document
+    .querySelector('[data-action="close-iframe"]')
+    .addEventListener('click', () => trailer.close());
 }
