@@ -34,12 +34,17 @@
   &__sun-lib,
   &__moon-lib {
     height: inherit;
-    fill: black;
+    // fill: black;
     width: 24px;
     @media screen and (min-width: 768px) {
       width: 31px;
     }
   }
+}
+
+.toolbarContainer__sun-svg,
+.toolbarContainer__moon-svg {
+  fill: black;
 }
 
 .toolbarContainer__Btn {
