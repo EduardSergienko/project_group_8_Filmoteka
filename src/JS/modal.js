@@ -35,6 +35,12 @@ async function onMovieItemClick(evt) {
     getGenreModalMovie(data.genres);
     createMovieItemClick(data, ids.data);
 
+    //Watch the trailer button
+    const posterTrailerBtn = document.querySelector('.poster__trailer-btn');
+    setTimeout(() => {
+      posterTrailerBtn.classList.add('is-show');
+    }, 1000);
+
     addBtnListenet(filmApiService.queryID);
     textModalBtn(filmApiService.queryID);
 
@@ -141,6 +147,7 @@ function createMovieItemClick(
             ${src3x} 3x
           "
         />
+        <a href="#" class="poster__trailer-btn">Watch the trailer</a>
       </div>
     </div>
     <div class="modal-item">

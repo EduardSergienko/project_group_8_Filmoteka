@@ -50,6 +50,8 @@ function nightTheme() {
   refs.moonSvg.classList.remove(active);
   refs.moonLibSvg.classList.remove(active);
 
+  blurButtons();
+
   const allContainers = document.querySelectorAll('.films-list__card');
   if (allContainers.length > 0) {
     for (let i = 0; i < allContainers.length; i++) {
@@ -71,6 +73,8 @@ function dayTheme() {
   refs.sunLibSvg.classList.remove(active);
   refs.moonSvg.classList.add(active);
   refs.moonLibSvg.classList.add(active);
+
+  blurButtons();
 
   changeTheme(refs.theme, false);
 
@@ -98,4 +102,9 @@ function changeTheme(refsList, bool) {
   for (const elem in newRefsList) {
     newRefsList[elem].classList.remove('dark-theme');
   }
+}
+
+function blurButtons() {
+  refs.toolbarBtn.blur();
+  refs.toolbarBtnLib.blur();
 }
