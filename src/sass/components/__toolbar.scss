@@ -34,27 +34,27 @@
   &__sun-lib,
   &__moon-lib {
     height: inherit;
+    fill: black;
+    width: 24px;
+    @media screen and (min-width: 768px) {
+      width: 31px;
+    }
   }
 }
 
-.toolbarContainer {
-  &__sun,
-  &__sun-lib {
-    &.rot {
-      &:hover,
-      &:focus {
+.toolbarContainer__Btn {
+  &.rot {
+    &:hover,
+    &:focus {
+      .toolbarContainer__sun,
+      .toolbarContainer__sun-lib {
         animation: 5s linear 0s normal none infinite running rot;
         -webkit-animation: 5s linear 0s normal none infinite running rot;
       }
-    }
-  }
-  &__moon,
-  &__moon-lib {
-    &.rot {
-      &:hover,
-      &:focus {
+      .toolbarContainer__moon,
+      .toolbarContainer__moon-lib {
         animation: 2s linear 0s normal none infinite running rot;
-        -webkit-animation: 2s linear 0s normal none infinite running rot;
+        -webkit-animation: 3s linear 0s normal none infinite running rot;
       }
     }
   }
