@@ -225,16 +225,31 @@ $basicLightbox__timing: ease !default;
   }
 }
 .movie-info__value {
+  display: flex;
   font-size: 12px;
   line-height: 1.167em;
 }
 .movie-info__value--vote-left {
-  padding: 1px 9px 1px 10px;
+  // padding: 1px 9px 1px 10px;
+  // display: inline;
+
+  width: 36px;
+  height: 16px;
+  text-align: center;
 
   border-radius: 5px;
   color: var(--secondary-text-color);
   background-color: var(--complementary-text-color);
 }
+
+.film-info__genre-year > .movie-info__value--vote-left {
+  margin-left: 8px;
+}
+
+.movie-info__value > .movie-info__value--vote-left {
+  margin-right: 9px;
+}
+
 .movie-info__value--vote-right {
   padding: 1px 4px;
   margin-left: 3px;

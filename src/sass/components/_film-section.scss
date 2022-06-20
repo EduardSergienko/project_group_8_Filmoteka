@@ -65,6 +65,7 @@
 }
 
 .film-info__genre-year {
+  display: flex;
   font-weight: 500;
 
   line-height: 16px;
@@ -72,6 +73,7 @@
   color: var(--complementary-text-color);
 }
 .film-info__rating {
+  // margin-left: 8px;
   width: 36px;
   height: 16px;
 
