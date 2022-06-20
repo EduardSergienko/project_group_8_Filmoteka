@@ -1,13 +1,13 @@
 .films {
   padding: 20px 0;
-  min-height: calc(100vh - 330px);
+  min-height: calc(101vh - 330px);
 
   @media screen and (min-width: 768px) {
-    min-height: calc(100vh - 294px);
+    min-height: calc(101vh - 294px);
   }
 
   @media screen and (min-width: 1024px) {
-    min-height: calc(100vh - 293px);
+    min-height: calc(101vh - 292px);
   }
 }
 
