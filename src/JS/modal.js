@@ -40,14 +40,14 @@ async function onMovieItemClick(evt) {
       .classList.add('lightbox-placeholder__modal--centre');
 
     document
-      .querySelector('[data-modal-close]')
+      .querySelector('[data-action="close-modal"]')
       .addEventListener('click', onCloseModalBtn);
     window.addEventListener('keydown', onCloseModalEscape);
 
     postersArr.length = 0;
     document
       .querySelector('.poster__wrapp')
-      .addEventListener('click', changePosterByClick);
+      .addEventListener('click', onShowTrailer);
   } catch (error) {
     console.log(error.message);
   }
@@ -112,7 +112,7 @@ function createMovieItemClick(
   https: modalMovie = basicLightbox.create(
     `<div class="modal">
   <div class="modal__wrapper">
-    <button type="button" class="modal__circle-btn" data-modal-close>
+    <button type="button" class="modal__circle-btn" data-action="close-modal">
       <svg
         class="modal__circle-svg"
         width="30"
@@ -192,7 +192,7 @@ function createMovieItemClick(
 </div>
 `,
     {
-      className: 'lightbox-extrastyle',
+      className: 'basicLightbox-block',
       onClose: () => {
         window.removeEventListener('keydown', onCloseModalEscape),
           enablePageScroll();
@@ -200,7 +200,7 @@ function createMovieItemClick(
     }
   );
   modalMovie.show();
-  const scrollableModal = document.querySelector('.lightbox-extrastyle');
+  const scrollableModal = document.querySelector('.basicLightbox-block');
   disablePageScroll(scrollableModal);
 }
 
@@ -246,4 +246,63 @@ async function changePosterByClick() {
   } catch (error) {
     console.log(error.message);
   }
+}
+
+// let trailerIframe = '';
+async function onShowTrailer() {
+  try {
+    const { data } = await filmApiService.fetchMovieTrailer();
+    const id = data.results[0].key;
+    const trailerIframe = basicLightbox.create(
+      `<iframe width="560" height="315" 
+      src='https://www.youtube.com/embed/${id}'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    `,
+      {
+        onClose: () => {
+          window.addEventListener('keydown', onCloseModalEscape);
+          // window.removeEventListener('keydown', onCloseTrailerEsc);
+        },
+      }
+    );
+    trailerIframe.show();
+    window.removeEventListener('keydown', onCloseModalEscape);
+    window.addEventListener('keydown', evt => {
+      if (evt.code === 'Escape') {
+        trailerIframe.close();
+      }
+    });
+    closeIframeBtn(trailerIframe);
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+// function onCloseTrailerEsc(evt) {
+//   if (evt.code === 'Escape') {
+//     trailerIframe.close();
+//   }
+// }
+function closeIframeBtn(trailer) {
+  const modalBox = document.querySelector('.basicLightbox--iframe');
+  modalBox.insertAdjacentHTML(
+    'afterbegin',
+    `<button
+        type="button"
+        class="iframe__circle-btn"
+        data-action="close-iframe"
+        >
+          <svg
+          class="iframe__circle-svg"
+          width="30"
+          height="30"
+          xmlns="http://www.w3.org/2000/svg"
+            >
+            <path
+              d="m7.975 8-.699.701 3.149 3.149 3.15 3.15-3.138 3.138L7.3 21.275l.712.713.713.712 3.137-3.137L15 16.425l3.138 3.138 3.137 3.137.713-.712.712-.713-3.137-3.137L16.425 15l3.15-3.15 3.15-3.15-.713-.712-.712-.713-3.15 3.15-3.15 3.15-3.138-3.138C10.137 8.712 8.713 7.3 8.699 7.3c-.014 0-.34.315-.724.7"
+              fill-rule="evenodd"
+            />
+          </svg>
+    </button>`
+  );
+  const modalCloseBtn = document.querySelector('[data-action="close-iframe"]');
+  modalCloseBtn.addEventListener('click', () => trailer.close());
 }
