@@ -25,7 +25,7 @@ const NIGHT = 'Night';
 refs.toolbarBtn.addEventListener('click', togle);
 refs.toolbarBtnLib.addEventListener('click', togle);
 let checkpoint = false;
-if (loadStorage(SUN)) {
+if (loadStorage(NIGHT)) {
   togle();
   setTimeout(() => {
     buttonColorChange.CallButtonColorChange();
@@ -43,7 +43,7 @@ function togle() {
 }
 
 function nightTheme() {
-  removeStorage(NIGHT);
+  removeStorage(SUN);
 
   refs.sunSvg.classList.add(active);
   refs.sunLibSvg.classList.add(active);
@@ -60,14 +60,14 @@ function nightTheme() {
   }
   changeTheme(refs.theme, true);
 
-  saveStorage(SUN, active);
+  saveStorage(NIGHT, active);
 
   checkpoint = true;
   buttonColorChange.CallButtonColorChange();
 }
 
 function dayTheme() {
-  removeStorage(SUN);
+  removeStorage(NIGHT);
 
   refs.sunSvg.classList.remove(active);
   refs.sunLibSvg.classList.remove(active);
@@ -78,7 +78,7 @@ function dayTheme() {
 
   changeTheme(refs.theme, false);
 
-  saveStorage(NIGHT, active);
+  saveStorage(SUN, active);
 
   const allContainers = document.querySelectorAll('.films-list__card');
   if (allContainers.length > 0) {

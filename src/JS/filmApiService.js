@@ -54,11 +54,11 @@ export default class FilmApiService {
     this.page = 1;
   }
 
-  get qwery() {
+  get query() {
     return this.searchingFilm;
   }
-  set qwery(newQwery) {
-    this.searchingFilm = newQwery;
+  set query(newQuery) {
+    this.searchingFilm = newQuery;
   }
   get nextPage() {
     return this.page;

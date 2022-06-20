@@ -3,9 +3,9 @@ import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 import debounce from 'lodash.debounce';
 
 import FilmApiService from './filmApiService';
-import { textModalBtn, addBtnListenet } from './modalBtn';
-import posterNotFound from '../images/desktop/poster-not-found-desktop.jpg';
-import posterNotFound2x from '../images/desktop/poster-not-found-desktop@2x.jpg';
+import { textModalBtn, addBtnListener } from './modalBtn';
+import posterNotFound from '../images/desktop/poster-not-found-desktop.png';
+import posterNotFound2x from '../images/desktop/poster-not-found-desktop@2x.png';
 
 const DEBOUNCE_DELAY = 200;
 const filmApiService = new FilmApiService();
@@ -35,7 +35,13 @@ async function onMovieItemClick(evt) {
     getGenreModalMovie(data.genres);
     createMovieItemClick(data, ids.data);
 
-    addBtnListenet(filmApiService.queryID);
+    //Watch the trailer button
+    const posterTrailerBtn = document.querySelector('.poster__trailer-btn');
+    setTimeout(() => {
+      posterTrailerBtn.classList.add('is-show');
+    }, 1000);
+
+    addBtnListener(filmApiService.queryID);
     textModalBtn(filmApiService.queryID);
 
     document
