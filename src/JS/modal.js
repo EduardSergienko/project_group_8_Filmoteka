@@ -35,12 +35,6 @@ async function onMovieItemClick(evt) {
     getGenreModalMovie(data.genres);
     createMovieItemClick(data, ids.data);
 
-    //Watch the trailer button
-    const posterTrailerBtn = document.querySelector('.poster__trailer-btn');
-    setTimeout(() => {
-      posterTrailerBtn.classList.add('is-show');
-    }, 1000);
-
     addBtnListenet(filmApiService.queryID);
     textModalBtn(filmApiService.queryID);
 
@@ -61,7 +55,7 @@ export function getGenreModalMovie(genreArr) {
 }
 
 let modalMovie;
-function createMovieItemClick(
+async function createMovieItemClick(
   {
     poster_path,
     title,
@@ -90,7 +84,6 @@ function createMovieItemClick(
     src2x = posterNotFound2x;
     src3x = posterNotFound2x;
   }
-
   if (imdb_id) {
     imdbLink = `<li class='movie-icon-container'><a href="https://www.imdb.com/title/${imdb_id}" target="_blank"><img class='movie-social-link-icon' src="https://upload.wikimedia.org/wikipedia/commons/c/cc/IMDb_Logo_Square.svg" width=40></a></li>`;
   }
@@ -108,7 +101,7 @@ function createMovieItemClick(
   }
 
   tmdbLink = `<li class='movie-icon-container'><a href="https://www.themoviedb.org/movie/${id}" target="_blank"><img class='movie-social-link-icon' src="https://www.themoviedb.org/assets/2/v4/logos/primary-green-d70eebe18a5eb5b166d5c1ef0796715b8d1a2cbc698f96d311d62f894ae87085.svg" width=40></a></li>`;
-  https: modalMovie = basicLightbox.create(
+  modalMovie = basicLightbox.create(
     `<div class="modal">
   <div class="modal__wrapper">
     <button type="button" class="modal__circle-btn" data-action="close-modal">
@@ -138,7 +131,10 @@ function createMovieItemClick(
             ${src3x} 3x
           "
         />
-        <a href="#" data-action="trailer" class="poster__trailer-btn">Watch the trailer</a>
+        <a href="#" data-action="trailer" class="poster__trailer-btn">
+        <svg class='ytp-large-play-button ytp-button' height="100%" version="1.1" viewBox="0 0 68 48" width="100%"><path class="ytp-large-play-button-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"></path><path d="M 45,24 27,14 27,34" fill="#fff"></path></svg>
+        <span class="poster__trailer-text">Trailer</span>
+        </a>
       </div>
     </div>
     <div class="modal-item">
@@ -195,8 +191,8 @@ function createMovieItemClick(
     {
       className: 'basicLightbox-block',
       onClose: () => {
-        window.removeEventListener('keydown', onCloseModalEscape),
-          enablePageScroll();
+        window.removeEventListener('keydown', onCloseModalEscape);
+        enablePageScroll();
       },
     }
   );
@@ -214,6 +210,16 @@ function createMovieItemClick(
     .querySelector('[data-action="close-modal"]')
     .addEventListener('click', onCloseModalBtn);
   window.addEventListener('keydown', onCloseModalEscape);
+
+  //Watch the trailer button
+  const fetchTrailer = await filmApiService.fetchMovieTrailer();
+  if (fetchTrailer.data.results.length) {
+    console.log(fetchTrailer.data.results.length);
+    const posterTrailerBtn = document.querySelector('.poster__trailer-btn');
+    setTimeout(() => {
+      posterTrailerBtn.classList.add('is-show');
+    }, 1000);
+  }
 }
 
 function onCloseModalBtn() {

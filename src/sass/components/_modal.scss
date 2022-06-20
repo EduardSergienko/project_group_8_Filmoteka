@@ -472,16 +472,22 @@ $basicLightbox__timing: ease !default;
 
   display: flex;
   justify-content: center;
+  // margin-right: 10px;
   align-items: center;
 
-  width: 155px;
-  height: 22px;
-  padding-top: 5px;
+  width: 110px;
+
+  @media screen and (min-width: 1024px) {
+    width: 120px;
+    font-size: 14px;
+  }
+  height: 28px;
 
   font-size: 13px;
   line-height: 19px;
   text-transform: uppercase;
   color: var(--main-text-color);
+  transition: color 250ms cubic-bezier(0.4, 0, 1, 1);
   border-radius: 5px 5px 0px 0px;
 
   background-color: var(--main-background-color);
@@ -491,15 +497,47 @@ $basicLightbox__timing: ease !default;
   // }
 
   &:hover {
-    color: var(--complementary-text-color);
-  }
-
-  @media screen and (min-width: 1024px) {
-    width: 166px;
-    font-size: 14px;
+    // color: var(--youtube-color);
+    & > svg > .ytp-large-play-button-bg {
+      -webkit-transition: fill 0.25s cubic-bezier(0.4, 0, 1, 1),
+        fill-opacity 0.25s cubic-bezier(0.4, 0, 1, 1);
+      transition: fill 0.25s cubic-bezier(0.4, 0, 1, 1),
+        fill-opacity 0.25s cubic-bezier(0.4, 0, 1, 1);
+      fill: var(--youtube-color);
+      fill-opacity: 0.8;
+    }
   }
 
   &.is-show {
-    transform: translate(-50%, 0);
+    transform: translate(-50%, 0%);
   }
+}
+
+.ytp-large-play-button {
+  position: absolute;
+  pointer-events: none;
+  height: 90%;
+  left: -35;
+
+  top: 5%;
+  width: 100%;
+}
+
+.ytp-large-play-button-bg {
+  -webkit-transition: fill 0.25s cubic-bezier(0.4, 0, 1, 1),
+    fill-opacity 0.25s cubic-bezier(0.4, 0, 1, 1);
+  transition: fill 0.25s cubic-bezier(0.4, 0, 1, 1),
+    fill-opacity 0.25s cubic-bezier(0.4, 0, 1, 1);
+  fill: #000;
+  fill-opacity: 0.8;
+}
+
+.poster__trailer-text {
+  height: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 40%;
+  pointer-events: none;
 }
