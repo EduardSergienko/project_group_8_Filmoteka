@@ -4,8 +4,8 @@ import debounce from 'lodash.debounce';
 
 import FilmApiService from './filmApiService';
 import { textModalBtn, addBtnListenet } from './modalBtn';
-import posterNotFound from '../images/desktop/poster-not-found-desktop.png';
-import posterNotFound2x from '../images/desktop/poster-not-found-desktop@2x.png';
+import posterNotFound from '../images/desktop/poster-not-found-desktop.jpg';
+import posterNotFound2x from '../images/desktop/poster-not-found-desktop@2x.jpg';
 
 const DEBOUNCE_DELAY = 200;
 const filmApiService = new FilmApiService();
