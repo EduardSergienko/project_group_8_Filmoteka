@@ -1,10 +1,13 @@
 import * as basicLightbox from 'basiclightbox';
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
+import debounce from 'lodash.debounce';
+
 import FilmApiService from './filmApiService';
 import { textModalBtn, addBtnListenet } from './modalBtn';
 import posterNotFound from '../images/desktop/poster-not-found-desktop.png';
 import posterNotFound2x from '../images/desktop/poster-not-found-desktop@2x.png';
 
+const DEBOUNCE_DELAY = 200;
 const filmApiService = new FilmApiService();
 
 const movieItemRef = document.querySelector('.films-list');
@@ -47,7 +50,7 @@ async function onMovieItemClick(evt) {
     postersArr.length = 0;
     document
       .querySelector('.poster__wrapp')
-      .addEventListener('click', onShowTrailer);
+      .addEventListener('click', debounce(changePosterByClick, DEBOUNCE_DELAY));
   } catch (error) {
     console.log(error.message);
   }
