@@ -546,7 +546,7 @@ function onTeamLinkClick(evt) {
 
   window.addEventListener('keydown', onEscClick);
   // Тёмная тема
-  if (loadStorage('Sun')) {
+  if (loadStorage('Night')) {
     document.querySelector('.modal-team').classList.add('dark-theme');
     document
       .querySelector('.team-modal__close-modal-svg')

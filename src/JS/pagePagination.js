@@ -88,7 +88,7 @@ export function initPagination({
     if (pageName === SEARCH_FILMS) {
       try {
         notiflixLoading();
-        filmApiService.qwery = searchingFilm;
+        filmApiService.query = searchingFilm;
         const resolve = await filmApiService.fetchMovies();
         const genres = await filmApiService.getGenreName();
         const filmArray = resolve.data.results;
