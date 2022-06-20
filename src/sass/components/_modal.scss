@@ -99,6 +99,9 @@ $basicLightbox__timing: ease !default;
 
   @media screen and (max-width: 767px) {
     left: 50%;
+
+    margin-top: 5px;
+
     transform: translateX(-50%);
   }
 
