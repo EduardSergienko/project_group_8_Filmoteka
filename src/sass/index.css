@@ -300,7 +300,7 @@ button {
   color: var(--complementary-text-color);
 }
 
-.film-info__rait {
+.film-info__rating {
   width: 36px;
   height: 16px;
   font-weight: 500;
@@ -322,7 +322,7 @@ button {
   margin-left: 8px;
 }
 
-.rait-hidden {
+.rating-hidden {
   opacity: 0;
 }
 

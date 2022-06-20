@@ -3,7 +3,7 @@ import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 import debounce from 'lodash.debounce';
 
 import FilmApiService from './filmApiService';
-import { textModalBtn, addBtnListenet } from './modalBtn';
+import { textModalBtn, addBtnListener } from './modalBtn';
 import posterNotFound from '../images/desktop/poster-not-found-desktop.png';
 import posterNotFound2x from '../images/desktop/poster-not-found-desktop@2x.png';
 
@@ -41,7 +41,7 @@ async function onMovieItemClick(evt) {
       posterTrailerBtn.classList.add('is-show');
     }, 1000);
 
-    addBtnListenet(filmApiService.queryID);
+    addBtnListener(filmApiService.queryID);
     textModalBtn(filmApiService.queryID);
 
     document

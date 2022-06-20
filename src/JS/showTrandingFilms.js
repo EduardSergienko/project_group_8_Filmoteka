@@ -9,7 +9,7 @@ const filmApiService = new FilmApiService();
 
 const filmsWrap = document.querySelector('.films-wrap');
 const filmList = document.querySelector('.films-list');
-const filmRait = document.querySelector('.film-info__rait');
+const filmRating = document.querySelector('.film-info__rating');
 const searchForm = document.getElementById('search-form');
 const pagination = document.getElementById('pagination');
 const footer = document.querySelector('.footer');
@@ -45,4 +45,4 @@ export async function showTranding() {
   }
 }
 showTranding();
-// ===<div class = 'film-info__rait'>${item.vote_average}</div>  -  Рейтинг всталять после года
+// ===<div class = 'film-info__rating'>${item.vote_average}</div>  -  Рейтинг всталять после года

@@ -34,7 +34,7 @@ function textModalBtn(id) {
   }
 }
 
-function addBtnListenet(id) {
+function addBtnListener(id) {
   const BTNWatched = document.querySelector('.feature-button__watched');
   const BTNQueue = document.querySelector('.feature-button__queue');
 
@@ -144,4 +144,4 @@ function inLocalStorage(id, key) {
   return includesID;
 }
 
-export { addBtnListenet, textModalBtn };
+export { addBtnListener, textModalBtn };

@@ -71,7 +71,7 @@
 
   color: var(--complementary-text-color);
 }
-.film-info__rait {
+.film-info__rating {
   width: 36px;
   height: 16px;
 
@@ -88,6 +88,6 @@
   border-radius: 5px;
   margin-left: 8px;
 }
-.rait-hidden {
+.rating-hidden {
   opacity: 0;
 }

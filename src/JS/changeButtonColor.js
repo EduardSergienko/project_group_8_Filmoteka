@@ -2,7 +2,7 @@ import { loadStorage } from './localStorage';
 
 const buttonColorChange = {
   CallButtonColorChange() {
-    if (loadStorage('Sun')) {
+    if (loadStorage('Night')) {
       this.changeButtonColor(true);
     } else {
       this.changeButtonColor(false);

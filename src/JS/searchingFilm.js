@@ -15,9 +15,9 @@ searchBtn.addEventListener('click', onSearchBtnClick);
 async function onSearchBtnClick(evt) {
   evt.preventDefault();
 
-  filmApiService.qwery = inputEl.value.trim();
+  filmApiService.query = inputEl.value.trim();
   filmApiService.resetPage();
-  if (filmApiService.qwery !== '') {
+  if (filmApiService.query !== '') {
     try {
       const resolve = await filmApiService.fetchMovies();
       const genres = await filmApiService.getGenreName();

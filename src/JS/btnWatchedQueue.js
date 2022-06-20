@@ -85,7 +85,7 @@ export function libraryFilmCardRender(arg) {
         item.first_air_date = 'n/a';
       }
 
-      let darkTheme = JSON.parse(localStorage.getItem('Sun'))
+      let darkTheme = JSON.parse(localStorage.getItem('Night'))
         ? ' dark-theme'
         : '';
 
