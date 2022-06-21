@@ -415,9 +415,9 @@ $basicLightbox__timing: ease !default;
     background-color 350ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
-    fill: var(--complementary-text-color);
-    // fill: #000;
-    // background-color: #f6c700;
+    // fill: var(--complementary-text-color);
+    fill: #000;
+    background-color: #f6c700;
     // fill: #fff;
     // background-color: var(--complementary-text-color);
   }
