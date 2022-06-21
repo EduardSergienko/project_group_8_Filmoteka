@@ -226,12 +226,17 @@ $basicLightbox__timing: ease !default;
 }
 .movie-info__value {
   display: flex;
+
   font-size: 12px;
   line-height: 1.167em;
 }
 .movie-info__value--vote-left {
   // padding: 1px 9px 1px 10px;
   // display: inline;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   width: 36px;
   height: 16px;
@@ -247,7 +252,7 @@ $basicLightbox__timing: ease !default;
 }
 
 .movie-info__value > .movie-info__value--vote-left {
-  margin-right: 9px;
+  margin-right: 3px;
 }
 
 .movie-info__value--vote-right {
