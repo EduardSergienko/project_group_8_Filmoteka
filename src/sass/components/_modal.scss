@@ -1,3 +1,9 @@
+:root {
+  --s1: red;
+  --s2: green;
+  --s3: blue;
+}
+
 // basicLightbox
 // Vars ---------------------------------------------------------------- //
 $basicLightbox__background: rgba(0, 0, 0, 0.25) !default;
@@ -368,7 +374,7 @@ $basicLightbox__timing: ease !default;
 
   @media screen and (min-width: 1024px) {
     max-width: 287px;
-    justify-content: start;
+    // justify-content: start;
   }
 }
 
@@ -380,17 +386,44 @@ $basicLightbox__timing: ease !default;
   transition: 350ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
-    transform: scale(1.15);
+    transform: scale(1.05);
   }
 
   &:not(:last-child) {
-    margin-right: 10px;
+    margin-right: 15px;
   }
 }
 
 .movie-social-link-icon {
-  width: 33px;
-  height: 33px;
+  display: flex;
+  width: 55px;
+  // height: 30px;
+}
+
+.imdb-logo {
+  // padding: 2px;
+  border-radius: 5px;
+}
+
+.tmdb-logo {
+  padding: 4px;
+  // background-color: #f6c700;
+  border-radius: 5px;
+}
+
+.tmdb-logo,
+.imdb-logo {
+  fill: #8c8c8c;
+  transition: 350ms fill cubic-bezier(0.165, 0.84, 0.44, 1),
+    background-color 350ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  &:hover,
+  &:focus {
+    // fill: var(--complementary-text-color);
+    fill: #000;
+    background-color: #f6c700;
+    // fill: #fff;
+    // background-color: var(--complementary-text-color);
+  }
 }
 
 // for iframe
@@ -502,7 +535,6 @@ $basicLightbox__timing: ease !default;
   line-height: 19px;
   text-transform: uppercase;
   color: var(--main-text-color);
-  transition: color 250ms cubic-bezier(0.4, 0, 1, 1);
   border-radius: 5px 5px 0px 0px;
 
   background-color: var(--main-background-color);
@@ -519,7 +551,7 @@ $basicLightbox__timing: ease !default;
       transition: fill 0.25s cubic-bezier(0.4, 0, 1, 1),
         fill-opacity 0.25s cubic-bezier(0.4, 0, 1, 1);
       fill: var(--youtube-color);
-      fill-opacity: 0.8;
+      fill-opacity: 1;
     }
   }
 
