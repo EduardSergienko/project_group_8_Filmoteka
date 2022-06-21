@@ -432,16 +432,11 @@ $basicLightbox__timing: ease !default;
 
   display: flex;
   justify-content: center;
-  // margin-right: 10px;
   align-items: center;
 
   width: 110px;
-
-  @media screen and (min-width: 1024px) {
-    width: 120px;
-    font-size: 14px;
-  }
-  height: 28px;
+  height: 25px;
+  padding-top: 2px;
 
   font-size: 13px;
   line-height: 19px;
@@ -450,10 +445,6 @@ $basicLightbox__timing: ease !default;
   border-radius: 5px 5px 0px 0px;
 
   background-color: var(--main-background-color);
-
-  // .poster__wrapp:hover & {
-  //   transform: translate(-50%, 0);
-  // }
 
   &:hover {
     // color: var(--youtube-color);
@@ -473,13 +464,11 @@ $basicLightbox__timing: ease !default;
 }
 
 .ytp-large-play-button {
-  position: absolute;
-  pointer-events: none;
-  height: 90%;
-  left: -35;
+  width: 32px;
+  height: 21px;
+  margin-right: 5px;
 
-  top: 5%;
-  width: 100%;
+  pointer-events: none;
 }
 
 .ytp-large-play-button-bg {
@@ -492,11 +481,14 @@ $basicLightbox__timing: ease !default;
 }
 
 .poster__trailer-text {
-  height: 100%;
-  position: absolute;
   display: flex;
   align-items: center;
-  justify-content: center;
-  left: 40%;
+  padding-top: 2px;
+
+  font-size: 13px;
   pointer-events: none;
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
 }
