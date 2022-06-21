@@ -8,7 +8,11 @@
         <p class="header-logo__text">Filmoteka</p>
       </div>
       <div class="toolbarContainer container">
-        <button class="toolbarContainer__Btn rot">
+        <button
+          aria-label="color theme switcher"
+          type="button"
+          class="toolbarContainer__Btn rot"
+        >
           <svg class="toolbarContainer__sun">
             <use
               class="toolbarContainer__sun-svg"
@@ -40,7 +44,7 @@
           autocomplete="off"
           placeholder="Search movies..."
         />
-        <button class="search-submit" type="submit">
+        <button class="search-submit" type="submit" aria-label="search button">
           <svg height="12px" width="12px" class="search-svg">
             <use href="./images/sprite.svg#icon-search-logo"></use>
           </svg>
