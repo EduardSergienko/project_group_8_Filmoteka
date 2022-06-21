@@ -47,7 +47,7 @@ export function initPagination({
       currentPage:
         '<strong class="tui-page-btn tui-is-selected tui-page-number">{{page}}</strong>',
       moveButton:
-        '<a href="#" class="tui-page-btn tui-{{type}} custom-{{type}}" aria-label="Next page">' +
+        '<a href="#" class="tui-page-btn tui-{{type}} custom-{{type}}" aria-label="{{type}} page">' +
         `<svg class="tui-ico-{{type}} pagination__arrow" width="16" height="16"><use href="${arrow}-{{type}}"></use></svg>` +
         '</a>',
       disabledMoveButton:
@@ -55,7 +55,7 @@ export function initPagination({
         `<svg class="tui-ico-{{type}} pagination__arrow" width="16" height="16"><use href="${arrow}-{{type}}"></use></svg>` +
         '</span>',
       moreButton:
-        '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip" aria-label="Next page">' +
+        '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip" aria-label="{{type}} page">' +
         `<svg class="tui-ico-ellip dotte"><use href="${dotte}"></use></svg>` +
         '</a>',
     },
