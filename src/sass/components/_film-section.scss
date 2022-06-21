@@ -43,17 +43,9 @@
 }
 .films-list__poster {
   border-radius: 5px;
-  margin-bottom: 8px;
-  width: 280px;
-  height: 402px;
-  @media screen and (min-width: 768px) {
-    width: 336px;
-    height: 455px;
-  }
-  @media screen and (min-width: 1024px) {
-    width: 309px;
-    height: 449px;
-  }
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .film-info__name {
   font-weight: 500;
@@ -92,4 +84,19 @@
 }
 .rating-hidden {
   opacity: 0;
+}
+
+.poster-wrap {
+  margin-bottom: 8px;
+  width: 280px;
+  height: 402px;
+  object-fit: cover;
+  @media screen and (min-width: 768px) {
+    width: 336px;
+    height: 455px;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 309px;
+    height: 449px;
+  }
 }
