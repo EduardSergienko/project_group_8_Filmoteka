@@ -78,7 +78,7 @@ $basicLightbox__timing: ease !default;
   }
 }
 
-.basicLightbox-block {
+.basicLightbox-center {
   display: block;
 
   @media screen and (min-width: 768px) {
@@ -299,8 +299,6 @@ $basicLightbox__timing: ease !default;
 
   @media screen and (min-width: 1024px) {
     justify-content: start;
-
-    // margin-left: 8px;
   }
 }
 .feature-button__item:not(:last-child) {
@@ -429,86 +427,6 @@ $basicLightbox__timing: ease !default;
 // for iframe
 .basicLightbox--iframe {
   background: rgba(0, 0, 0, 0.9);
-}
-// .iframe__placeholder {
-//   width: 650px;
-//   height: 420px;
-//   background-color: #f7f7f7;
-
-//   transform: scale(0.9);
-//   transition: transform $basicLightbox__duration $basicLightbox__timing;
-//   z-index: 1;
-//   will-change: transform;
-
-//   > img:first-child:last-child,
-//   > video:first-child:last-child,
-//   > iframe:first-child:last-child {
-//     display: block;
-//     position: absolute;
-//     top: 0;
-//     right: 0;
-//     bottom: 0;
-//     left: 0;
-//     margin: auto;
-//     max-width: 95%;
-//     max-height: 95%;
-//   }
-
-//   > video:first-child:last-child,
-//   > iframe:first-child:last-child {
-//     pointer-events: auto;
-//   }
-
-//   > img:first-child:last-child,
-//   > video:first-child:last-child {
-//     width: auto;
-//     height: auto;
-//   }
-// }
-.iframe__circle-btn {
-  position: fixed;
-  top: 0;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 0;
-
-  // outline: none;
-  border: none;
-  border-radius: 5px;
-  background-color: transparent;
-  fill: var(--main-background-color);
-  transition: background-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.iframe__circle-btn:hover,
-.iframe__circle-btn:focus {
-  fill: var(--main-background-color);
-  background-color: var(--complementary-text-color);
-}
-
-@media screen and (max-width: 692px) {
-  .iframe__circle-btn {
-    top: 90px;
-    right: calc(((100vw - 324px) / 2));
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .iframe__circle-btn {
-    top: 100px;
-    right: calc(((100vw - 668px) / 2));
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .iframe__circle-btn {
-    top: 100px;
-    right: calc(((100vw - 824px) / 2));
-  }
 }
 .poster__trailer-btn {
   position: absolute;

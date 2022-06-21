@@ -7,7 +7,7 @@ import { textModalBtn, addBtnListener } from './modalBtn';
 import posterNotFound from '../images/desktop/poster-not-found-desktop.jpg';
 import posterNotFound2x from '../images/desktop/poster-not-found-desktop@2x.jpg';
 
-const DEBOUNCE_DELAY = 200;
+const DEBOUNCE_DELAY = 250;
 const filmApiService = new FilmApiService();
 
 const movieItemRef = document.querySelector('.films-list');
@@ -177,7 +177,7 @@ async function createMovieItemClick({
 </div>
 `,
     {
-      className: 'basicLightbox-block',
+      className: 'basicLightbox-center',
       onClose: () => {
         window.removeEventListener('keydown', onCloseModalEscape);
         enablePageScroll();
@@ -186,7 +186,7 @@ async function createMovieItemClick({
   );
   modalMovie.show();
 
-  const scrollableModal = document.querySelector('.basicLightbox-block');
+  const scrollableModal = document.querySelector('.basicLightbox-center');
   disablePageScroll(scrollableModal);
 
   postersArr.length = 0;
@@ -282,9 +282,6 @@ async function onShowTrailer() {
 
     window.removeEventListener('keydown', onCloseModalEscape);
     window.addEventListener('keydown', onCloseTrailerEsc);
-
-    renderIframeBtn();
-    closeIframeBtn(trailerIframe);
   } catch (error) {
     console.log(error.message);
   }
@@ -294,34 +291,4 @@ function onCloseTrailerEsc(evt) {
   if (evt.code === 'Escape') {
     trailerIframe.close();
   }
-}
-
-function renderIframeBtn() {
-  const modalBox = document.querySelector('.basicLightbox--iframe');
-  modalBox.insertAdjacentHTML(
-    'afterbegin',
-    `<button
-        type="button"
-        class="iframe__circle-btn"
-        data-action="close-iframe"
-        >
-          <svg
-          class="iframe__circle-svg"
-          width="30"
-          height="30"
-          xmlns="http://www.w3.org/2000/svg"
-            >
-            <path
-              d="m7.975 8-.699.701 3.149 3.149 3.15 3.15-3.138 3.138L7.3 21.275l.712.713.713.712 3.137-3.137L15 16.425l3.138 3.138 3.137 3.137.713-.712.712-.713-3.137-3.137L16.425 15l3.15-3.15 3.15-3.15-.713-.712-.712-.713-3.15 3.15-3.15 3.15-3.138-3.138C10.137 8.712 8.713 7.3 8.699 7.3c-.014 0-.34.315-.724.7"
-              fill-rule="evenodd"
-            />
-          </svg>
-    </button>`
-  );
-}
-
-function closeIframeBtn(trailer) {
-  document
-    .querySelector('[data-action="close-iframe"]')
-    .addEventListener('click', () => trailer.close());
 }
