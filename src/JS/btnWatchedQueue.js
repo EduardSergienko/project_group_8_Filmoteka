@@ -92,12 +92,13 @@ export function libraryFilmCardRender(arg) {
       return `<li class="films-list__card${darkTheme}" 
       data-id="${item.id}"
       data-media-type="${item.media_type}">
-      <img class = 'films-list__poster' src="${src}" alt="${
+        <div class = 'poster-wrap'>
+        <img class = 'films-list__poster' src="${src}" alt="${
         item.name || item.original_title
       }" srcset="${src} 1x, ${src2x} 2x" loading="lazy" />
-
-  <div class="film-info">
-  <h2 class="film-info__name">
+      </div>
+    <div class="film-info">
+    <h2 class="film-info__name">
       ${cutFilmTitle(item.name || item.original_title)}  
     </h2>
     <div class="film-info__wrap">
