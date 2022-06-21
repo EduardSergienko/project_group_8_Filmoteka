@@ -34,7 +34,7 @@
   &__sun-lib,
   &__moon-lib {
     height: inherit;
-    // fill: black;
+    fill: black;
     width: 24px;
     @media screen and (min-width: 768px) {
       width: 31px;
@@ -47,19 +47,22 @@
   fill: black;
 }
 
-.toolbarContainer__Btn {
-  &.rot {
-    &:hover,
-    &:focus {
-      .toolbarContainer__sun,
-      .toolbarContainer__sun-lib {
-        animation: 5s linear 0s normal none infinite running rot;
-        -webkit-animation: 5s linear 0s normal none infinite running rot;
-      }
-      .toolbarContainer__moon,
-      .toolbarContainer__moon-lib {
-        animation: 2s linear 0s normal none infinite running rot;
-        -webkit-animation: 3s linear 0s normal none infinite running rot;
+.toolbarContainer__ {
+  &Btn,
+  &Lib {
+    &.rot {
+      &:hover,
+      &:focus {
+        .toolbarContainer__sun,
+        .toolbarContainer__sun-lib {
+          animation: 5s linear 0s normal none infinite running rot;
+          -webkit-animation: 5s linear 0s normal none infinite running rot;
+        }
+        .toolbarContainer__moon,
+        .toolbarContainer__moon-lib {
+          animation: 3s linear 0s normal none infinite running rot;
+          -webkit-animation: 3s linear 0s normal none infinite running rot;
+        }
       }
     }
   }

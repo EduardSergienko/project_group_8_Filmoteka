@@ -1,8 +1,8 @@
 import FilmApiService from './filmApiService';
 import { cutFilmTitle } from './renderCards';
 import { getGenreModalMovie } from './modal';
-import posterNotFound from '../images/desktop/poster-not-found-desktop.png';
-import posterNotFound2x from '../images/desktop/poster-not-found-desktop@2x.png';
+import posterNotFound from '../images/desktop/poster-not-found-desktop.jpg';
+import posterNotFound2x from '../images/desktop/poster-not-found-desktop@2x.jpg';
 import { notiflixLoading, notiflixLoadingRemove } from './loading';
 import {
   initPagination,
