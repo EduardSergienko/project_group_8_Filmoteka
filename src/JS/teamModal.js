@@ -61,7 +61,7 @@ const contactLink = {
     hanna: 'mailto:pilipenkog679@gmail.com',
     denys: 'mailto:tutov1987@gmail.com',
     tetiana: '#',
-    vitalii: '#',
+    vitalii: 'mailto:balutavili@gmail.com',
     yurii: 'mailto:mega_se7en@ukr.net',
     volodymyr: '#',
     roman: 'mailto:romanmaksimenkodev@gmail.com',
@@ -71,7 +71,7 @@ const contactLink = {
     hanna: 'https://www.linkedin.com/in/hanna-pylypenko-081857200',
     denys: 'https://www.linkedin.com/in/denys-tutov-1b0449a8/',
     tetiana: '#',
-    vitalii: '#',
+    vitalii: 'https://www.linkedin.com/in/vitalii-baluta-a78065241/',
     yurii:
       'https://www.linkedin.com/in/yurii-dvornichenko-5948a1241/?trk=public-profile-join-page',
     volodymyr: '#',
