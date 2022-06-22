@@ -59,7 +59,7 @@ const contactLink = {
   },
   email: {
     eduard: '#',
-    hanna: '#',
+    hanna: 'mailto:pilipenkog679@gmail.com',
     denys: '#',
     tetiana: '#',
     vitalii: '#',
@@ -70,7 +70,7 @@ const contactLink = {
   },
   linkedin: {
     eduard: '#',
-    hanna: '#',
+    hanna: 'https://www.linkedin.com/in/hanna-pylypenko-081857200',
     denys: '#',
     tetiana: '#',
     vitalii: '#',
