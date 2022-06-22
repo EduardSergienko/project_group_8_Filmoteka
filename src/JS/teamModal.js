@@ -64,7 +64,7 @@ const contactLink = {
     tetiana: '#',
     vitalii: '#',
     yakov: '#',
-    yurii: '#',
+    yurii: 'mailto:mega_se7en@ukr.net',
     volodymyr: '#',
     roman: 'mailto:romanmaksimenkodev@gmail.com',
   },
@@ -75,7 +75,8 @@ const contactLink = {
     tetiana: '#',
     vitalii: '#',
     yakov: '#',
-    yurii: '#',
+    yurii:
+      'https://www.linkedin.com/in/yurii-dvornichenko-5948a1241/?trk=public-profile-join-page',
     volodymyr: '#',
     roman: '#',
   },
