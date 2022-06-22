@@ -4,6 +4,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { initPagination, paginationProperties } from './pagePagination';
 import { SEARCH_FILMS } from './searchType';
 import { notiflixLoading, notiflixLoadingRemove } from './loading';
+import buttonColorChange from './changeButtonColor';
 
 const filmApiService = new FilmApiService();
 
@@ -37,6 +38,7 @@ async function onSearchBtnClick(evt) {
           filmList.innerHTML = filmCardRender(filmArray, gengeArray);
           initPagination(paginationProperties);
           notiflixLoadingRemove();
+          buttonColorChange.CallButtonColorChange();
         }, 500);
       } else {
         Notify.failure(
