@@ -22,14 +22,11 @@ const refs = {
   footer: document.querySelector('.footer'),
 };
 
-refs.libraryBtn.addEventListener('click', onClicLibrary);
+refs.libraryBtn.addEventListener('click', onClickWatched);
 refs.watched.addEventListener('click', onClickWatched);
 refs.queue.addEventListener('click', onClickQueue);
 
-async function onClicLibrary() {
-  onClickWatched();
-  // refs.paginationHidden.classList.add('is-hidden');
-}
+
 
 async function onClickWatched() {
   refs.watched.classList.add('currentbtn');
