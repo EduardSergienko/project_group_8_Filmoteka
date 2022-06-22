@@ -57,7 +57,7 @@ const contactLink = {
     roman: 'https://github.com/rmnmaksimenko',
   },
   email: {
-    eduard: '#',
+    eduard: 'mailto:katleraster@gmail.com',
     hanna: 'mailto:pilipenkog679@gmail.com',
     denys: 'mailto:tutov1987@gmail.com',
     tetiana: '#',
@@ -67,7 +67,7 @@ const contactLink = {
     roman: 'mailto:romanmaksimenkodev@gmail.com',
   },
   linkedin: {
-    eduard: '#',
+    eduard: 'https://www.linkedin.com/in/eduard-sergienko-79b443227/',
     hanna: 'https://www.linkedin.com/in/hanna-pylypenko-081857200',
     denys: 'https://www.linkedin.com/in/denys-tutov-1b0449a8/',
     tetiana: '#',
