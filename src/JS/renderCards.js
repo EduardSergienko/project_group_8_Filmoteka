@@ -24,7 +24,7 @@ export function filmCardRender(arg, genresArrObj) {
       <div class = 'poster-wrap'>
        <img class = 'films-list__poster' src="${src}" alt="${
         item.name || item.original_title
-      }" srcset="${src} 1x, ${src2x} 2x" loading="lazy" />
+      }" srcset="${src} 1x, ${src2x} 2x"/>
       </div>
      
 
