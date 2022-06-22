@@ -45,4 +45,3 @@ export async function showTranding() {
   }
 }
 showTranding();
-// ===<div class = 'film-info__rating'>${item.vote_average}</div>  -  Рейтинг всталять после года
