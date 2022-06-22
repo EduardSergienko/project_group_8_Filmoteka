@@ -106,6 +106,7 @@ export function initPagination({
 
     if (pageName === MY_LIBRARY) {
       paginationProperties.page = page;
+
       //тёмная тема
       buttonColorChange.CallButtonColorChange();
 

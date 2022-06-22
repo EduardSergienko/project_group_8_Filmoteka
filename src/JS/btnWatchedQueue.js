@@ -26,7 +26,7 @@ refs.libraryBtn.addEventListener('click', onClickWatched);
 refs.watched.addEventListener('click', onClickWatched);
 refs.queue.addEventListener('click', onClickQueue);
 
-async function onClickWatched() {
+export async function onClickWatched() {
   refs.watched.classList.add('currentbtn');
   refs.queue.classList.remove('currentbtn');
   const watched = JSON.parse(localStorage.getItem('watched'));

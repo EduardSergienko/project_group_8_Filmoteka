@@ -1,7 +1,13 @@
 import { loadStorage, saveStorage } from './localStorage';
+import { initPagination, paginationProperties } from './pagePagination';
+import { libraryFilmCardRender } from './btnWatchedQueue';
+import FilmApiService from './filmApiService';
+import { onClickWatched } from './btnWatchedQueue';
+const filmApiService = new FilmApiService();
 
 const WATCHED = 'watched';
 const QUEUE = 'queue';
+const gallery = document.querySelector('.films-list');
 
 function textModalBtn(id) {
   const BTNQueue = document.querySelector('.feature-button__queue');
@@ -42,11 +48,38 @@ function addBtnListener(id) {
   BTNQueue.addEventListener('click', () => addQueueList(id));
 }
 
-function addWatchList(id) {
+async function addWatchList(id) {
   const btnWatch = document.querySelector('.feature-button__watched');
   if (btnWatch.classList.contains('active')) {
     removeFromWatchedList(id);
     textModalBtn(id);
+
+    //Rerender films after delete
+    const page = paginationProperties.page;
+    const watched = JSON.parse(localStorage.getItem('watched'));
+    const libraryArraySlice = [];
+
+    for (let i = 0; i < watched.length; i += 9) {
+      const chunk = watched.slice(i, i + 9);
+      libraryArraySlice.push(chunk);
+    }
+
+    paginationProperties.libraryArr = libraryArraySlice;
+    paginationProperties.libraryArr = libraryArraySlice.length;
+    const libraryArrayRender = [];
+
+    if (libraryArraySlice.length === 1) {
+      onClickWatched();
+    } else {
+      for (let id of libraryArraySlice[page - 1]) {
+        filmApiService.ID = id;
+        const resolve = await filmApiService.fetchMovieID();
+        const filmArray = resolve.data;
+        libraryArrayRender.push(filmArray);
+      }
+    }
+
+    gallery.innerHTML = libraryFilmCardRender(libraryArrayRender);
   } else {
     let watchList = [];
     let localWatchListJson = loadStorage(WATCHED);
