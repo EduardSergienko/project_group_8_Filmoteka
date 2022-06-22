@@ -435,6 +435,11 @@ $basicLightbox__timing: ease !default;
 
   &.dark-theme {
     fill: #bcbcbc;
+    &:hover,
+    &:focus {
+      background-color: #0000;
+      fill: var(--complementary-text-color);
+    }
   }
   &:hover,
   &:focus {
