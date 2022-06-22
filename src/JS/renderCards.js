@@ -59,8 +59,8 @@ export function getGenresNames(genreArray, dataIds) {
 }
 
 export function cutFilmTitle(title) {
-  if (title.length > 40) {
-    return title.slice(0, 40) + '...';
+  if (title.length > 37) {
+    return title.slice(0, 37) + '...';
   } else {
     return title;
   }
