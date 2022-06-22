@@ -26,8 +26,6 @@ refs.libraryBtn.addEventListener('click', onClickWatched);
 refs.watched.addEventListener('click', onClickWatched);
 refs.queue.addEventListener('click', onClickQueue);
 
-
-
 async function onClickWatched() {
   refs.watched.classList.add('currentbtn');
   refs.queue.classList.remove('currentbtn');
@@ -117,6 +115,7 @@ async function renderMovies(array) {
 
   const libraryArraySlice = [];
   try {
+    notiflixLoading();
     for (let i = 0; i < array.length; i += 9) {
       const chunk = array.slice(i, i + 9);
       libraryArraySlice.push(chunk);
@@ -135,8 +134,6 @@ async function renderMovies(array) {
     paginationProperties.page = 1;
     paginationProperties.totalPages = libraryArraySlice.length;
     paginationProperties.libraryArr = libraryArraySlice;
-
-    notiflixLoading();
 
     setTimeout(() => {
       refs.gallery.innerHTML = libraryFilmCardRender(libraryArrayRender);
