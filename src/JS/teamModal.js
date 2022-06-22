@@ -92,17 +92,18 @@ const teamModal = basicLightbox.create(
 			${eduardUrlTab} 1x,
 			${eduardUrlTab2} 2x"
 			type="image/png"
-			media="(max-width: 1023px)"/>
+			media="(max-width: 1023px)" loading="lazy" />
        <source
 			srcset="
 			${eduardUrl} 1x,
 			${eduardUrl2} 2x"
 			type="image/png"
-			media="(min-width: 1024px)"/>
+			media="(min-width: 1024px)" loading="lazy" />
       <img
         src="${eduardUrl}"
         alt="Eduard"
         class="team-modal__img"  
+        loading="lazy" 
       />
       </picture>
       <div class="social-box">
@@ -143,17 +144,18 @@ const teamModal = basicLightbox.create(
 			${hannaUrltab} 1x,
 			${hannaUrltab2} 2x"
 			type="image/png"
-			media="(max-width: 1023px)"/>
+			media="(max-width: 1023px)" loading="lazy" />
        <source
 			srcset="
 			${hannaUrl} 1x,
 			${hannaUrl2} 2x"
 			type="image/png"
-			media="(min-width: 1024px)"/>
+			media="(min-width: 1024px)" loading="lazy" />
       <img
         src="${hannaUrl}"
         alt="Hanna"
-        class="team-modal__img"  
+        class="team-modal__img"
+        loading="lazy"   
       />
       </picture>
       <div class="social-box">
@@ -194,17 +196,18 @@ const teamModal = basicLightbox.create(
 			${denysUrlTab} 1x,
 			${denysUrlTab2} 2x"
 			type="image/png"
-			media="(max-width: 1023px)"/>
+			media="(max-width: 1023px)" loading="lazy" />
        <source
 			srcset="
 			${denysUrl} 1x,
 			${denysUrl2} 2x"
 			type="image/png"
-			media="(min-width: 1024px)"/>
+			media="(min-width: 1024px)" loading="lazy" />
       <img
         src="${denysUrl}"
         alt="Denys"
         class="team-modal__img"  
+        loading="lazy" 
       />
       </picture>
        <div class="social-box">
@@ -245,17 +248,18 @@ const teamModal = basicLightbox.create(
 			${tetianaUrlTab} 1x,
 			${tetianaUrlTab2} 2x"
 			type="image/png"
-			media="(max-width: 1023px)"/>
+			media="(max-width: 1023px)" loading="lazy" />
        <source
 			srcset="
 			${tetianaUrl} 1x,
 			${tetianaUrl2} 2x"
 			type="image/png"
-			media="(min-width: 1024px)"/>
+			media="(min-width: 1024px)" loading="lazy" />
       <img
         src="${tetianaUrl}"
         alt="Tetiana"
         class="team-modal__img"  
+        loading="lazy" 
       />
       </picture>
        <div class="social-box">
@@ -296,17 +300,18 @@ const teamModal = basicLightbox.create(
 			${vitaliiUrlTab} 1x,
 			${vitaliiUrlTab2} 2x"
 			type="image/png"
-			media="(max-width: 1023px)"/>
+			media="(max-width: 1023px)" loading="lazy" />
        <source
 			srcset="
 			${vitaliiUrl} 1x,
 			${vitaliiUrl2} 2x"
 			type="image/png"
-			media="(min-width: 1024px)"/>
+			media="(min-width: 1024px)" loading="lazy" />
       <img
         src="${vitaliiUrl}"
         alt="Vitalii"
         class="team-modal__img"  
+        loading="lazy" 
       />
       </picture>
        <div class="social-box">
@@ -347,17 +352,18 @@ const teamModal = basicLightbox.create(
 			${volodymyrUrlTab} 1x,
 			${volodymyrUrlTab2} 2x"
 			type="image/png"
-			media="(max-width: 1023px)"/>
+			media="(max-width: 1023px)" loading="lazy" />
        <source
 			srcset="
 			${volodymyrUrl} 1x,
 			${volodymyrUrl2} 2x"
 			type="image/png"
-			media="(min-width: 1024px)"/>
+			media="(min-width: 1024px)" loading="lazy" />
       <img
         src="${volodymyrUrl}"
         alt="Volodymyr"
         class="team-modal__img"  
+        loading="lazy" 
       />
       </picture>
       <div class="social-box">
@@ -399,17 +405,18 @@ const teamModal = basicLightbox.create(
 			${yuriiUrlTab} 1x,
 			${yuriiUrlTab2} 2x"
 			type="image/png"
-			media="(max-width: 1023px)"/>
+			media="(max-width: 1023px)" loading="lazy" />
        <source
 			srcset="
 			${yuriiUrl} 1x,
 			${yuriiUrl2} 2x"
 			type="image/png"
-			media="(min-width: 1024px)"/>
+			media="(min-width: 1024px)" loading="lazy" />
       <img
         src="${yuriiUrl}"
         alt="Yurii"
         class="team-modal__img"  
+        loading="lazy" 
       />
       </picture>
        <div class="social-box">
@@ -450,17 +457,18 @@ const teamModal = basicLightbox.create(
 			${romanUrlTab} 1x,
 			${romanUrlTab2} 2x"
 			type="image/png"
-			media="(max-width: 1023px)"/>
+			media="(max-width: 1023px)" loading="lazy" />
        <source
 			srcset="
 			${romanUrl} 1x,
 			${romanUrl2} 2x"
 			type="image/png"
-			media="(min-width: 1024px)"/>
+			media="(min-width: 1024px)" loading="lazy" />
       <img
         src="${romanUrl}"
         alt="Roman"
         class="team-modal__img"  
+        loading="lazy" 
       />
       </picture>
        <div class="social-box">
