@@ -17,8 +17,6 @@ movieItemRef.addEventListener('click', onMovieItemClick);
 let postersArr = [];
 
 async function onMovieItemClick(evt) {
-  evt.preventDefault();
-
   const isMovieItemEl =
     evt.target.classList.contains('films-list__poster') ||
     evt.target.closest('.film-info');
@@ -111,7 +109,7 @@ async function createMovieItemClick({
       </svg>
     </button>
     <div class="modal-item poster">
-      <div class="poster__wrapp">
+      <div class="poster__wrapp" tabindex="0">
         <img
           class="poster__movie"
           data-action="poster"
