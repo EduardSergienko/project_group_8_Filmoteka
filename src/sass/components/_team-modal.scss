@@ -3,7 +3,7 @@
   background-color: var(--footer-background-color);
   width: 280px;
   padding: 8px 7px;
-  border: 3px solid #716272;
+  border: 2px solid #949194d7;
   border-radius: 20px;
   color: var(--main-text-color);
 
@@ -171,7 +171,7 @@
 }
 .team-modal__img {
   transition: transform 250ms;
-  &:hover {
-    // transform: scale(1.05);
-  }
+  // &:hover {
+  //   // transform: scale(1.05);
+  // }
 }
