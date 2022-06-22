@@ -118,7 +118,6 @@ export function initPagination({
           const filmArray = resolve.data;
           libraryArrayRender.push(filmArray);
         }
-        console.log('in pag', libraryArrayRender);
 
         notiflixLoading();
         setTimeout(() => {
