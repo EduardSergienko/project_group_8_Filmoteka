@@ -120,6 +120,12 @@ $basicLightbox__timing: ease !default;
     padding-left: 16px;
     padding-right: 16px;
   }
+
+  &.dark-theme {
+    background-color: #1f1e1e;
+    color: var(--modal-form-dark-text-color);
+    fill: var(--modal-form-dark-text-color);
+  }
 }
 .modal__circle-btn {
   position: absolute;
@@ -223,6 +229,9 @@ $basicLightbox__timing: ease !default;
   @media screen and (min-width: 1024px) {
     max-width: 35%;
   }
+  &.dark-theme {
+    color: #bbb;
+  }
 }
 .movie-info__value {
   display: flex;
@@ -261,6 +270,9 @@ $basicLightbox__timing: ease !default;
 
   border-radius: 5px;
   background-color: #f7f7f7;
+  &.dark-theme {
+    background-color: #3f3e3e;
+  }
 }
 .movie-info__value--text-title {
   max-width: 55%;
@@ -341,7 +353,11 @@ $basicLightbox__timing: ease !default;
   @media screen and (min-width: 1024px) {
     width: 136px;
   }
-
+  &.dark-theme {
+    background-color: #0000;
+    border-color: var(--modal-form-dark-text-color);
+    color: var(--modal-form-dark-text-color);
+  }
   &:hover {
     color: var(--complementary-text-color);
     border: 1px solid var(--complementary-text-color);
@@ -349,9 +365,12 @@ $basicLightbox__timing: ease !default;
 }
 
 .BtnActive {
-  border: 1px solid var(--complementary-text-color);
-  background-color: var(--complementary-text-color);
-  color: var(--secondary-text-color);
+  &,
+  &.dark-theme {
+    border: 1px solid var(--complementary-text-color);
+    background-color: var(--complementary-text-color);
+    color: var(--secondary-text-color);
+  }
 
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -413,6 +432,10 @@ $basicLightbox__timing: ease !default;
   fill: #8c8c8c;
   transition: 350ms fill cubic-bezier(0.4, 0, 0.2, 1),
     background-color 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.dark-theme {
+    fill: #bcbcbc;
+  }
   &:hover,
   &:focus {
     // fill: var(--complementary-text-color);
@@ -450,6 +473,12 @@ $basicLightbox__timing: ease !default;
   border-radius: 5px 5px 0px 0px;
 
   background-color: var(--main-background-color);
+
+  &.dark-theme {
+    background-color: #1f1e1e;
+    color: var(--modal-form-dark-text-color);
+    fill: #bcbcbc;
+  }
 
   &:hover {
     // color: var(--youtube-color);
