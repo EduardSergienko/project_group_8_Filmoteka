@@ -30,7 +30,6 @@ async function onClickWatched() {
   refs.watched.classList.add('currentbtn');
   refs.queue.classList.remove('currentbtn');
   const watched = JSON.parse(localStorage.getItem('watched'));
-  console.log(watched);
 
   refs.gallery.innerHTML = '';
   if (watched === null || watched.length === 0) {
@@ -47,7 +46,6 @@ async function onClickQueue() {
   refs.watched.classList.remove('currentbtn');
   refs.queue.classList.add('currentbtn');
   const queue = JSON.parse(localStorage.getItem('queue'));
-  console.log(queue);
   refs.gallery.innerHTML = '';
 
   if (queue === null || queue.length === 0) {
