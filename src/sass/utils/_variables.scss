@@ -13,9 +13,16 @@
     rgba(0, 0, 0, 0.56)
   );
   --dark-linear-gradient: linear-gradient(
+    #0007,
+    #0008 50%,
+    #000b 90%,
+    #000f 100%
+  );
+  --dark-linear-gradient-main: linear-gradient(
     #0008,
-    #0006 50%,
-    #000c 85%,
+    #0008 75%,
+    #00000095 90%,
+    #000b 95%,
     #000f 100%
   );
 }
