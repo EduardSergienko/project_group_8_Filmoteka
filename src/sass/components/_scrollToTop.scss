@@ -20,6 +20,10 @@
       background-color: #ffff;
     }
   }
+
+  @media screen and (max-width: 380px) {
+    bottom: 50px;
+  }
 }
 .scroll-process__value {
   display: flex;

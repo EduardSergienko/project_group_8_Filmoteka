@@ -42,7 +42,7 @@ export async function onClickWatched() {
   }
 }
 
-async function onClickQueue() {
+export async function onClickQueue() {
   refs.watched.classList.remove('currentbtn');
   refs.queue.classList.add('currentbtn');
   const queue = JSON.parse(localStorage.getItem('queue'));
@@ -133,18 +133,17 @@ async function renderMovies(array) {
     paginationProperties.totalPages = libraryArraySlice.length;
     paginationProperties.libraryArr = libraryArraySlice;
 
-    setTimeout(() => {
-      refs.gallery.innerHTML = libraryFilmCardRender(libraryArrayRender);
+    refs.gallery.innerHTML = libraryFilmCardRender(libraryArrayRender);
 
-      pagination.classList.remove('is-hidden');
+    pagination.classList.remove('is-hidden');
 
-      initPagination(paginationProperties); //Add Pagination
-      notiflixLoadingRemove();
-      refs.footer.classList.remove('is-hidden');
+    initPagination(paginationProperties); //Add Pagination
+    notiflixLoadingRemove();
+    refs.footer.classList.remove('is-hidden');
 
-      //тёмная тема
-      buttonColorChange.CallButtonColorChange();
-    }, 300);
+    //тёмная тема
+    buttonColorChange.CallButtonColorChange();
+
     scrollToTop();
 
     //тёмная тема
