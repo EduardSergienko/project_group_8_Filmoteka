@@ -356,6 +356,7 @@ async function rerenderLibraryAfterDelete(libraryArraySlice, page) {
   filmList.innerHTML = libraryFilmCardRender(libraryArrayRender);
   initPagination(paginationProperties);
   notiflixLoadingRemove();
+  buttonColorChange.CallButtonColorChange();
 }
 
 function renderOnRemove(item, currentBtn, fn, localStoragePlace) {
