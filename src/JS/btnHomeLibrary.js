@@ -12,7 +12,11 @@ libraryNavBtn.addEventListener('click', onLibraryNavBtnClick);
 libraryHeaderHomebtn.addEventListener('click', onLibraryHeaderHomeBtnClick);
 libHeaderLogo.addEventListener('click', onLibHeaderLogoClick);
 headerLogo.addEventListener('click', onHeaderLogoClick);
+homeNavBtn.addEventListener('click', onMainHomeBtnClick);
 
+function onMainHomeBtnClick() {
+  showTranding();
+}
 function onLibraryNavBtnClick() {
   homeHeader.classList.toggle('is-hidden');
   libraryHeader.classList.toggle('is-hidden');
