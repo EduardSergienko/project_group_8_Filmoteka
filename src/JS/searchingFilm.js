@@ -45,9 +45,10 @@ async function onSearchBtnClick(evt) {
           'Search result not successful. Enter the correct movie name and try again.',
           {
             timeout: 3000,
-            position: 'center-center',
+            position: 'center-top',
             cssAnimationStyle: 'zoom',
             width: '500px',
+            showOnlyTheLastOne: true,
           }
         );
       }
@@ -55,14 +56,13 @@ async function onSearchBtnClick(evt) {
       console.log(error);
     }
   } else {
-    Notify.failure(
-      'Search result not successful. Enter the correct movie name and try again. ',
-      {
-        timeout: 3000,
-        position: 'center-center',
-        cssAnimationStyle: 'zoom',
-        width: '500px',
-      }
-    );
+    Notify.info('Please enter something to search.', {
+      timeout: 3000,
+      position: 'center-top',
+      cssAnimationStyle: 'zoom',
+      width: '500px',
+
+      showOnlyTheLastOne: true,
+    });
   }
 }
