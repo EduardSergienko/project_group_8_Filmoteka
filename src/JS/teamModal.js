@@ -239,25 +239,25 @@ const teamModal = basicLightbox.create(
         </ul>
       </div>
     </li>
-    <li class="team-modal__item">
-      <h3 class="team-modal__name">Tetiana Polyvian</h3>
+     <li class="team-modal__item">
+      <h3 class="team-modal__name">Roman Maksimenko</h3>
       <p class="team-modal__position">Developer</p>
-      <picture>
+             <picture>
       <source
 			srcset="
-			${tetianaUrlTab} 1x,
-			${tetianaUrlTab2} 2x"
+			${romanUrlTab} 1x,
+			${romanUrlTab2} 2x"
 			type="image/png"
 			media="(max-width: 1023px)" loading="lazy" />
        <source
 			srcset="
-			${tetianaUrl} 1x,
-			${tetianaUrl2} 2x"
+			${romanUrl} 1x,
+			${romanUrl2} 2x"
 			type="image/png"
 			media="(min-width: 1024px)" loading="lazy" />
       <img
-        src="${tetianaUrl}"
-        alt="Tetiana"
+        src="${romanUrl}"
+        alt="Roman"
         class="team-modal__img"  
         loading="lazy" 
       />
@@ -265,14 +265,14 @@ const teamModal = basicLightbox.create(
        <div class="social-box">
         <ul class="social-box__list">
           <li class="social-box__item">
-            <a class="social-box__link" href="${contactLink.github.tetiana}" target="_blank">
+            <a class="social-box__link" href="${contactLink.github.roman}" target="_blank">
              <svg class="social-box__icon"  viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M8.47427 0.955078C3.82488 0.955078 0.0537109 4.72625 0.0537109 9.37563C0.0537109 13.0951 2.48172 16.2464 5.78795 17.3829C6.20123 17.4346 6.35621 17.1763 6.35621 16.9696C6.35621 16.763 6.35621 16.2464 6.35621 15.5232C4.03152 16.0398 3.51492 14.3866 3.51492 14.3866C3.1533 13.4051 2.58504 13.1468 2.58504 13.1468C1.81015 12.6302 2.6367 12.6302 2.6367 12.6302C3.46326 12.6819 3.9282 13.5084 3.9282 13.5084C4.7031 14.7999 5.89127 14.4383 6.35621 14.2317C6.40787 13.6634 6.66617 13.3018 6.87281 13.0951C5.01306 12.8885 3.04998 12.1653 3.04998 8.9107C3.04998 7.98082 3.35994 7.25758 3.9282 6.63766C3.87654 6.48268 3.56658 5.60447 4.03152 4.46795C4.03152 4.46795 4.75476 4.26131 6.35621 5.34617C7.02779 5.13953 7.75103 5.08787 8.47427 5.08787C9.1975 5.08787 9.92074 5.19119 10.5923 5.34617C12.1938 4.26131 12.917 4.46795 12.917 4.46795C13.382 5.60447 13.072 6.48268 13.0203 6.68932C13.5369 7.25758 13.8985 8.03248 13.8985 8.96236C13.8985 12.2169 11.9355 12.8885 10.0757 13.0951C10.3857 13.3534 10.644 13.87 10.644 14.6449C10.644 15.7815 10.644 16.6597 10.644 16.9696C10.644 17.1763 10.799 17.4346 11.2122 17.3829C14.5701 16.2464 16.9465 13.0951 16.9465 9.37563C16.8948 4.72625 13.1237 0.955078 8.47427 0.955078Z" />
 </svg>
             </a>
           </li>
           <li class="social-box__item">
-            <a class="social-box__link disabled" href="${contactLink.email.tetiana}">
+            <a class="social-box__link" href="${contactLink.email.roman}">
               <svg class="social-box__icon"  viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M16.7775 9.36415C16.7775 8.76522 16.7237 8.18933 16.6239 7.63647H8.66895V10.9037H13.2146C13.0188 11.9595 12.4238 12.854 11.5292 13.453V15.5723H14.2589C15.8561 14.1018 16.7775 11.9365 16.7775 9.36415Z" />
 <path fill-rule="evenodd" clip-rule="evenodd" d="M8.66862 17.6184C10.9491 17.6184 12.8611 16.8621 14.2586 15.5721L11.5289 13.4528C10.7725 13.9596 9.80504 14.2591 8.66862 14.2591C6.46871 14.2591 4.60667 12.7733 3.94247 10.7769H1.12061V12.9652C2.51042 15.7257 5.36684 17.6184 8.66862 17.6184Z" />
@@ -282,15 +282,16 @@ const teamModal = basicLightbox.create(
             </a>
           </li>
           <li class="social-box__item">
-            <a class="social-box__link disabled" href="${contactLink.linkedin.tetiana}" target="_blank">
-             <svg class="social-box__icon"  viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12.8346 7.536V12.1948H10.1075V7.82007C10.1075 6.7406 9.70984 6.00202 8.74399 6.00202C8.00541 6.00202 7.55089 6.51334 7.38045 6.96786C7.32363 7.1383 7.26682 7.36556 7.26682 7.64963V12.1948H4.53974C4.53974 12.1948 4.59655 4.80892 4.53974 4.07033H7.26682V5.20662C7.60771 4.63847 8.28948 3.84307 9.70983 3.84307C11.4711 3.84307 12.8346 5.03617 12.8346 7.536ZM1.69902 0.150146C0.789994 0.150146 0.165039 0.775103 0.165039 1.5705C0.165039 2.3659 0.733181 2.99086 1.64221 2.99086C2.60805 2.99086 3.17619 2.3659 3.17619 1.5705C3.23301 0.718289 2.66487 0.150146 1.69902 0.150146ZM0.335481 12.1948H3.06257V4.07033H0.335481V12.1948Z" />
+            <a class="social-box__link disabled" href="${contactLink.linkedin.roman}" target="_blank">
+             <svg class="social-box__icon"  viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.8346 7.536V12.1948H10.1075V7.82007C10.1075 6.7406 9.70984 6.00202 8.74399 6.00202C8.00541 6.00202 7.55089 6.51334 7.38045 6.96786C7.32363 7.1383 7.26682 7.36556 7.26682 7.64963V12.1948H4.53974C4.53974 12.1948 4.59655 4.80892 4.53974 4.07033H7.26682V5.20662C7.60771 4.63847 8.28948 3.84307 9.70983 3.84307C11.4711 3.84307 12.8346 5.03617 12.8346 7.536ZM1.69902 0.150146C0.789994 0.150146 0.165039 0.775103 0.165039 1.5705C0.165039 2.3659 0.733181 2.99086 1.64221 2.99086C2.60805 2.99086 3.17619 2.3659 3.17619 1.5705C3.23301 0.718289 2.66487 0.150146 1.69902 0.150146ZM0.335481 12.1948H3.06257V4.07033H0.335481V12.1948Z"/>
 </svg>
             </a>
           </li>
         </ul>
       </div>
     </li>
+   
     <li class="team-modal__item">
       <h3 class="team-modal__name">Vitalii Baluta</h3>
       <p class="team-modal__position">Developer</p>
@@ -449,24 +450,24 @@ const teamModal = basicLightbox.create(
       </div>
     </li>
     <li class="team-modal__item">
-      <h3 class="team-modal__name">Roman Maksimenko</h3>
+      <h3 class="team-modal__name">Tetiana Polyvian</h3>
       <p class="team-modal__position">Developer</p>
-             <picture>
+      <picture>
       <source
 			srcset="
-			${romanUrlTab} 1x,
-			${romanUrlTab2} 2x"
+			${tetianaUrlTab} 1x,
+			${tetianaUrlTab2} 2x"
 			type="image/png"
 			media="(max-width: 1023px)" loading="lazy" />
        <source
 			srcset="
-			${romanUrl} 1x,
-			${romanUrl2} 2x"
+			${tetianaUrl} 1x,
+			${tetianaUrl2} 2x"
 			type="image/png"
 			media="(min-width: 1024px)" loading="lazy" />
       <img
-        src="${romanUrl}"
-        alt="Roman"
+        src="${tetianaUrl}"
+        alt="Tetiana"
         class="team-modal__img"  
         loading="lazy" 
       />
@@ -474,14 +475,14 @@ const teamModal = basicLightbox.create(
        <div class="social-box">
         <ul class="social-box__list">
           <li class="social-box__item">
-            <a class="social-box__link" href="${contactLink.github.roman}" target="_blank">
+            <a class="social-box__link" href="${contactLink.github.tetiana}" target="_blank">
              <svg class="social-box__icon"  viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M8.47427 0.955078C3.82488 0.955078 0.0537109 4.72625 0.0537109 9.37563C0.0537109 13.0951 2.48172 16.2464 5.78795 17.3829C6.20123 17.4346 6.35621 17.1763 6.35621 16.9696C6.35621 16.763 6.35621 16.2464 6.35621 15.5232C4.03152 16.0398 3.51492 14.3866 3.51492 14.3866C3.1533 13.4051 2.58504 13.1468 2.58504 13.1468C1.81015 12.6302 2.6367 12.6302 2.6367 12.6302C3.46326 12.6819 3.9282 13.5084 3.9282 13.5084C4.7031 14.7999 5.89127 14.4383 6.35621 14.2317C6.40787 13.6634 6.66617 13.3018 6.87281 13.0951C5.01306 12.8885 3.04998 12.1653 3.04998 8.9107C3.04998 7.98082 3.35994 7.25758 3.9282 6.63766C3.87654 6.48268 3.56658 5.60447 4.03152 4.46795C4.03152 4.46795 4.75476 4.26131 6.35621 5.34617C7.02779 5.13953 7.75103 5.08787 8.47427 5.08787C9.1975 5.08787 9.92074 5.19119 10.5923 5.34617C12.1938 4.26131 12.917 4.46795 12.917 4.46795C13.382 5.60447 13.072 6.48268 13.0203 6.68932C13.5369 7.25758 13.8985 8.03248 13.8985 8.96236C13.8985 12.2169 11.9355 12.8885 10.0757 13.0951C10.3857 13.3534 10.644 13.87 10.644 14.6449C10.644 15.7815 10.644 16.6597 10.644 16.9696C10.644 17.1763 10.799 17.4346 11.2122 17.3829C14.5701 16.2464 16.9465 13.0951 16.9465 9.37563C16.8948 4.72625 13.1237 0.955078 8.47427 0.955078Z" />
 </svg>
             </a>
           </li>
           <li class="social-box__item">
-            <a class="social-box__link" href="${contactLink.email.roman}">
+            <a class="social-box__link disabled" href="${contactLink.email.tetiana}">
               <svg class="social-box__icon"  viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M16.7775 9.36415C16.7775 8.76522 16.7237 8.18933 16.6239 7.63647H8.66895V10.9037H13.2146C13.0188 11.9595 12.4238 12.854 11.5292 13.453V15.5723H14.2589C15.8561 14.1018 16.7775 11.9365 16.7775 9.36415Z" />
 <path fill-rule="evenodd" clip-rule="evenodd" d="M8.66862 17.6184C10.9491 17.6184 12.8611 16.8621 14.2586 15.5721L11.5289 13.4528C10.7725 13.9596 9.80504 14.2591 8.66862 14.2591C6.46871 14.2591 4.60667 12.7733 3.94247 10.7769H1.12061V12.9652C2.51042 15.7257 5.36684 17.6184 8.66862 17.6184Z" />
@@ -491,9 +492,9 @@ const teamModal = basicLightbox.create(
             </a>
           </li>
           <li class="social-box__item">
-            <a class="social-box__link disabled" href="${contactLink.linkedin.roman}" target="_blank">
-             <svg class="social-box__icon"  viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
-<path d="M12.8346 7.536V12.1948H10.1075V7.82007C10.1075 6.7406 9.70984 6.00202 8.74399 6.00202C8.00541 6.00202 7.55089 6.51334 7.38045 6.96786C7.32363 7.1383 7.26682 7.36556 7.26682 7.64963V12.1948H4.53974C4.53974 12.1948 4.59655 4.80892 4.53974 4.07033H7.26682V5.20662C7.60771 4.63847 8.28948 3.84307 9.70983 3.84307C11.4711 3.84307 12.8346 5.03617 12.8346 7.536ZM1.69902 0.150146C0.789994 0.150146 0.165039 0.775103 0.165039 1.5705C0.165039 2.3659 0.733181 2.99086 1.64221 2.99086C2.60805 2.99086 3.17619 2.3659 3.17619 1.5705C3.23301 0.718289 2.66487 0.150146 1.69902 0.150146ZM0.335481 12.1948H3.06257V4.07033H0.335481V12.1948Z"/>
+            <a class="social-box__link disabled" href="${contactLink.linkedin.tetiana}" target="_blank">
+             <svg class="social-box__icon"  viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.8346 7.536V12.1948H10.1075V7.82007C10.1075 6.7406 9.70984 6.00202 8.74399 6.00202C8.00541 6.00202 7.55089 6.51334 7.38045 6.96786C7.32363 7.1383 7.26682 7.36556 7.26682 7.64963V12.1948H4.53974C4.53974 12.1948 4.59655 4.80892 4.53974 4.07033H7.26682V5.20662C7.60771 4.63847 8.28948 3.84307 9.70983 3.84307C11.4711 3.84307 12.8346 5.03617 12.8346 7.536ZM1.69902 0.150146C0.789994 0.150146 0.165039 0.775103 0.165039 1.5705C0.165039 2.3659 0.733181 2.99086 1.64221 2.99086C2.60805 2.99086 3.17619 2.3659 3.17619 1.5705C3.23301 0.718289 2.66487 0.150146 1.69902 0.150146ZM0.335481 12.1948H3.06257V4.07033H0.335481V12.1948Z" />
 </svg>
             </a>
           </li>
