@@ -15,6 +15,9 @@ import { initPagination, paginationProperties } from './pagePagination';
 
 import posterNotFound from '../images/desktop/poster-not-found-desktop.jpg';
 import posterNotFound2x from '../images/desktop/poster-not-found-desktop@2x.jpg';
+import { saveStorage } from './localStorage';
+
+import buttonColorChange from './changeButtonColor';
 
 const DEBOUNCE_DELAY = 250;
 const filmApiService = new FilmApiService();
@@ -28,6 +31,9 @@ const queueButton = document.querySelector('.queue-button');
 const filmList = document.querySelector('.films-list');
 
 let postersArr = [];
+
+let getLocalStorageWatched = [];
+let getLocalStorageQueue = [];
 
 async function onMovieItemClick(evt) {
   const isMovieItemEl =
@@ -88,6 +94,9 @@ async function createMovieItemClick({
   let darkTheme = JSON.parse(localStorage.getItem('Night'))
     ? ' dark-theme'
     : '';
+
+  getLocalStorageWatched = JSON.parse(localStorage.getItem('watched'));
+  getLocalStorageQueue = JSON.parse(localStorage.getItem('queue'));
 
   if (!poster_path) {
     src = posterNotFound;
@@ -191,56 +200,19 @@ async function createMovieItemClick({
       onClose: () => {
         window.removeEventListener('keydown', onCloseModalEscape);
         enablePageScroll();
-
-        if (
-          !headerLibrary.classList.contains('is-hidden') &&
-          watchedButton.classList.contains('currentbtn')
-        ) {
-          let page = paginationProperties.page;
-          const watched = JSON.parse(localStorage.getItem('watched'));
-
-          const libraryArraySlice = [];
-          for (let i = 0; i < watched.length; i += 9) {
-            const chunk = watched.slice(i, i + 9);
-            libraryArraySlice.push(chunk);
-          }
-
-          if (
-            libraryArraySlice.toString() ===
-            paginationProperties.libraryArr.toString()
-          ) {
-            return;
-          } else if (watched.length <= 9) {
-            onClickWatched();
-          } else {
-            rerenderLibraryAfterDelete(libraryArraySlice, page);
-          }
-        }
-
-        if (
-          !headerLibrary.classList.contains('is-hidden') &&
-          queueButton.classList.contains('currentbtn')
-        ) {
-          let page = paginationProperties.page;
-          const queue = JSON.parse(localStorage.getItem('queue'));
-
-          const libraryArraySlice = [];
-          for (let i = 0; i < queue.length; i += 9) {
-            const chunk = queue.slice(i, i + 9);
-            libraryArraySlice.push(chunk);
-          }
-
-          if (
-            libraryArraySlice.toString() ===
-            paginationProperties.libraryArr.toString()
-          ) {
-            return;
-          } else if (queue.length <= 9) {
-            onClickQueue();
-          } else {
-            rerenderLibraryAfterDelete(libraryArraySlice, page);
-          }
-        }
+        JSON.parse(localStorage.getItem('watched'));
+        renderOnRemove(
+          'watched',
+          watchedButton,
+          onClickWatched,
+          getLocalStorageWatched
+        );
+        renderOnRemove(
+          'queue',
+          queueButton,
+          onClickQueue,
+          getLocalStorageQueue
+        );
       },
     }
   );
@@ -384,4 +356,43 @@ async function rerenderLibraryAfterDelete(libraryArraySlice, page) {
   filmList.innerHTML = libraryFilmCardRender(libraryArrayRender);
   initPagination(paginationProperties);
   notiflixLoadingRemove();
+}
+
+function renderOnRemove(item, currentBtn, fn, localStoragePlace) {
+  if (
+    !headerLibrary.classList.contains('is-hidden') &&
+    currentBtn.classList.contains('currentbtn')
+  ) {
+    let page = paginationProperties.page;
+    const getLocalStorgeObj = JSON.parse(localStorage.getItem(item));
+
+    if (getLocalStorgeObj.length === localStoragePlace.length) {
+      if (
+        JSON.stringify(localStoragePlace) == JSON.stringify(getLocalStorgeObj)
+      ) {
+        return;
+      } else {
+        saveStorage(item, localStoragePlace);
+        return;
+      }
+    }
+
+    const libraryArraySlice = [];
+    for (let i = 0; i < getLocalStorgeObj.length; i += 9) {
+      const chunk = getLocalStorgeObj.slice(i, i + 9);
+      libraryArraySlice.push(chunk);
+    }
+
+    if (
+      libraryArraySlice.toString() ===
+      paginationProperties.libraryArr.toString()
+    ) {
+      return;
+    } else if (getLocalStorgeObj.length <= 9) {
+      fn();
+    } else {
+      rerenderLibraryAfterDelete(libraryArraySlice, page);
+    }
+    buttonColorChange.CallButtonColorChange();
+  }
 }
