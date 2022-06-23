@@ -2,9 +2,17 @@ import * as basicLightbox from 'basiclightbox';
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 import debounce from 'lodash.debounce';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { notiflixLoading, notiflixLoadingRemove } from './loading';
 
 import FilmApiService from './filmApiService';
 import { textModalBtn, addBtnListener } from './modalBtn';
+import {
+  onClickWatched,
+  onClickQueue,
+  libraryFilmCardRender,
+} from './btnWatchedQueue';
+import { initPagination, paginationProperties } from './pagePagination';
+
 import posterNotFound from '../images/desktop/poster-not-found-desktop.jpg';
 import posterNotFound2x from '../images/desktop/poster-not-found-desktop@2x.jpg';
 
@@ -13,6 +21,11 @@ const filmApiService = new FilmApiService();
 
 const movieItemRef = document.querySelector('.films-list');
 movieItemRef.addEventListener('click', onMovieItemClick);
+
+const headerLibrary = document.querySelector('.header-library');
+const watchedButton = document.querySelector('.watched-button');
+const queueButton = document.querySelector('.queue-button');
+const filmList = document.querySelector('.films-list');
 
 let postersArr = [];
 
@@ -178,6 +191,56 @@ async function createMovieItemClick({
       onClose: () => {
         window.removeEventListener('keydown', onCloseModalEscape);
         enablePageScroll();
+
+        if (
+          !headerLibrary.classList.contains('is-hidden') &&
+          watchedButton.classList.contains('currentbtn')
+        ) {
+          let page = paginationProperties.page;
+          const watched = JSON.parse(localStorage.getItem('watched'));
+
+          const libraryArraySlice = [];
+          for (let i = 0; i < watched.length; i += 9) {
+            const chunk = watched.slice(i, i + 9);
+            libraryArraySlice.push(chunk);
+          }
+
+          if (
+            libraryArraySlice.toString() ===
+            paginationProperties.libraryArr.toString()
+          ) {
+            return;
+          } else if (watched.length <= 9) {
+            onClickWatched();
+          } else {
+            rerenderLibraryAfterDelete(libraryArraySlice, page);
+          }
+        }
+
+        if (
+          !headerLibrary.classList.contains('is-hidden') &&
+          queueButton.classList.contains('currentbtn')
+        ) {
+          let page = paginationProperties.page;
+          const queue = JSON.parse(localStorage.getItem('queue'));
+
+          const libraryArraySlice = [];
+          for (let i = 0; i < queue.length; i += 9) {
+            const chunk = queue.slice(i, i + 9);
+            libraryArraySlice.push(chunk);
+          }
+
+          if (
+            libraryArraySlice.toString() ===
+            paginationProperties.libraryArr.toString()
+          ) {
+            return;
+          } else if (queue.length <= 9) {
+            onClickQueue();
+          } else {
+            rerenderLibraryAfterDelete(libraryArraySlice, page);
+          }
+        }
       },
     }
   );
@@ -200,7 +263,6 @@ async function createMovieItemClick({
 
   const { data } = await filmApiService.fetchMovieTrailer();
   if (data.results.length) {
-
     const posterTrailerBtn = document.querySelector('.poster__trailer-btn');
     setTimeout(() => {
       posterTrailerBtn.classList.add('is-show');
@@ -299,4 +361,27 @@ function onCloseTrailerEsc(evt) {
   if (evt.code === 'Escape') {
     trailerIframe.close();
   }
+}
+
+async function rerenderLibraryAfterDelete(libraryArraySlice, page) {
+  notiflixLoading();
+  const libraryArrayRender = [];
+
+  if (libraryArraySlice[page - 1] === undefined) {
+    page -= 1;
+  }
+
+  for (let id of libraryArraySlice[page - 1]) {
+    filmApiService.ID = id;
+    const resolve = await filmApiService.fetchMovieID();
+    const filmArray = resolve.data;
+    libraryArrayRender.push(filmArray);
+  }
+  paginationProperties.page = page;
+  paginationProperties.totalPages = libraryArraySlice.length;
+  paginationProperties.libraryArr = libraryArraySlice;
+
+  filmList.innerHTML = libraryFilmCardRender(libraryArrayRender);
+  initPagination(paginationProperties);
+  notiflixLoadingRemove();
 }
