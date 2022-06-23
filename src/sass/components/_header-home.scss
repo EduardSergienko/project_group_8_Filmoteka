@@ -45,6 +45,46 @@
   }
 }
 
+.main-page__header.dark-theme {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  @media screen {
+    background-image: var(--dark-linear-gradient-main),
+      url(../images/mobile/main-mobile.jpg);
+    @media screen and (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: var(--dark-linear-gradient-main),
+        url(../images/mobile/main-mobile@2x.jpg);
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    background-image: var(--dark-linear-gradient-main),
+      url(../images/tablet/main-tablet.jpg);
+
+    @media screen and (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: var(--dark-linear-gradient-main),
+        url(../images/tablet/main-tablet@2x.jpg);
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    background-image: var(--dark-linear-gradient-main),
+      url(../images/desktop/main-desktop.jpg);
+
+    @media screen and (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: var(--dark-linear-gradient-main),
+        url(../images/desktop/main-desktop@2x.jpg);
+    }
+  }
+}
+
 .header-container {
   padding-top: 40px;
   padding-bottom: 92px;

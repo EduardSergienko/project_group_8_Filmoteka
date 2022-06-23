@@ -197,8 +197,10 @@ async function createMovieItemClick({
   window.addEventListener('keydown', onCloseModalEscape);
 
   //Watch the trailer button
+
   const { data } = await filmApiService.fetchMovieTrailer();
   if (data.results.length) {
+
     const posterTrailerBtn = document.querySelector('.poster__trailer-btn');
     setTimeout(() => {
       posterTrailerBtn.classList.add('is-show');

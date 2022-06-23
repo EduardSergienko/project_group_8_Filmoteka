@@ -27,7 +27,7 @@ function onLibraryHeaderHomeBtnClick() {
 }
 
 function onLibHeaderLogoClick() {
-  console.log('click');
+  // console.log('click');
   libraryHeader.classList.add('is-hidden');
   homeHeader.classList.remove('is-hidden');
   showTranding();

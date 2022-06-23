@@ -12,6 +12,7 @@ const refs = {
   theme: {
     body: document.querySelector('body'),
     libHeader: document.querySelector('.header-library'),
+    mainHeader: document.querySelector('.main-page__header'),
     footer: document.querySelector('.footer'),
     footerLink: document.querySelector('.team__link'),
     scroll: document.querySelector('.scroll-process'),

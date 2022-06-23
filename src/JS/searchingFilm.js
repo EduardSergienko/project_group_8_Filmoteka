@@ -45,13 +45,11 @@ async function onSearchBtnClick(evt) {
           'Search result not successful. Enter the correct movie name and try again.',
           {
             timeout: 3000,
-            position: 'center-top',
+            position: 'center-center',
             cssAnimationStyle: 'zoom',
             width: '500px',
-            distance: '150px',
           }
         );
-        Notify.failure.remove();
       }
     } catch (error) {
       console.log(error);
@@ -61,12 +59,10 @@ async function onSearchBtnClick(evt) {
       'Search result not successful. Enter the correct movie name and try again. ',
       {
         timeout: 3000,
-        position: 'center-top',
+        position: 'center-center',
         cssAnimationStyle: 'zoom',
         width: '500px',
-        distance: '150px',
       }
     );
-    Notify.failure.remove();
   }
 }
