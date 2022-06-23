@@ -63,7 +63,7 @@ const contactLink = {
     tetiana: '#',
     vitalii: 'mailto:balutavili@gmail.com',
     yurii: 'mailto:mega_se7en@ukr.net',
-    volodymyr: '#',
+    volodymyr: 'mailto:vbzvar@gmail.com',
     roman: 'mailto:romanmaksimenkodev@gmail.com',
   },
   linkedin: {
@@ -74,7 +74,7 @@ const contactLink = {
     vitalii: 'https://www.linkedin.com/in/vitalii-baluta-a78065241/',
     yurii:
       'https://www.linkedin.com/in/yurii-dvornichenko-5948a1241/?trk=public-profile-join-page',
-    volodymyr: '#',
+    volodymyr: 'https://www.linkedin.com/in/volodymyr-zvarych-246441b1/',
     roman: '#',
   },
 };
