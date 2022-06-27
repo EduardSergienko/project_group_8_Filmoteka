@@ -18,7 +18,7 @@ const refs = {
   },
 };
 
-const active = '.is-hidden';
+const active = 'is-hidden';
 const SUN = 'Sun';
 const NIGHT = 'Night';
 
