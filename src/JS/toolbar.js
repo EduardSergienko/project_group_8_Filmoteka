@@ -18,7 +18,7 @@ const refs = {
   },
 };
 
-const active = 'active-toolbar';
+const active = '.is-hidden';
 const SUN = 'Sun';
 const NIGHT = 'Night';
 

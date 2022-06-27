@@ -16,15 +16,17 @@
     border-radius: 50%;
     border: none;
     border-color: aliceblue;
+    z-index: 2;
   }
 
   @media screen and (min-width: 768px) {
     margin-right: auto;
     &__Btn,
     &__Lib {
+      z-index: 3;
       width: 31px;
       height: 31px;
-      // fill: #444;
+      fill: #444;
     }
   }
 }
@@ -41,10 +43,6 @@
     }
   }
 }
-
-// .toolbarContainer__sun-svg,
-// .toolbarContainer__moon-svg {
-// }
 
 .toolbarContainer__ {
   &Btn,
