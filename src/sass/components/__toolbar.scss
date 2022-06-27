@@ -8,15 +8,21 @@
 
   &__Btn,
   &__Lib {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-left: 6px;
+    padding: 0;
     width: 24px;
     height: 24px;
     border-radius: 50%;
     border: none;
     background-color: #0000;
     fill: #f6f6f6;
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    @media screen and (max-width: 767px) {
+      &:hover,
+      &:focus {
+        fill: var(--complementary-text-color);
+      }
+    }
   }
 
   @media screen and (min-width: 768px) {
@@ -35,9 +41,11 @@
   &__sun-lib,
   &__moon-lib {
     height: inherit;
-    width: 24px;
+    width: 20px;
+    height: 20px;
     @media screen and (min-width: 768px) {
-      width: 31px;
+      width: 28px;
+      height: 28px;
     }
   }
 }
@@ -46,17 +54,18 @@
   &Btn,
   &Lib {
     &.rot {
-      &:hover,
-      &:focus {
-        .toolbarContainer__sun,
-        .toolbarContainer__sun-lib {
-          animation: 5s linear 0s normal none infinite running rot;
-          -webkit-animation: 5s linear 0s normal none infinite running rot;
-        }
-        .toolbarContainer__moon,
-        .toolbarContainer__moon-lib {
-          animation: 3s linear 0s normal none infinite running rot;
-          -webkit-animation: 3s linear 0s normal none infinite running rot;
+      &:hover {
+        @media screen and (min-width: 768px) {
+          .toolbarContainer__sun,
+          .toolbarContainer__sun-lib {
+            animation: 5s linear 0s normal none infinite running rot;
+            -webkit-animation: 5s linear 0s normal none infinite running rot;
+          }
+          .toolbarContainer__moon,
+          .toolbarContainer__moon-lib {
+            animation: 3s linear 0s normal none infinite running rot;
+            -webkit-animation: 3s linear 0s normal none infinite running rot;
+          }
         }
       }
     }
