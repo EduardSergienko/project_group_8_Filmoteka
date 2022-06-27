@@ -15,7 +15,7 @@
     height: 24px;
     border-radius: 50%;
     border: none;
-    border-color: aliceblue;
+    fill: #444;
     z-index: 2;
   }
 
@@ -26,7 +26,6 @@
       z-index: 3;
       width: 31px;
       height: 31px;
-      fill: #444;
     }
   }
 }
