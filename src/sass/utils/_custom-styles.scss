@@ -48,7 +48,11 @@ body.dark-theme::before {
   -o-background-size: cover;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+
+  background-position: top;
+  @media (min-width: 768px) {
+    background-position: center;
+  }
 }
 
 html {
