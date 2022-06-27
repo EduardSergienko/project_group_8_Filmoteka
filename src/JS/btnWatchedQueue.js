@@ -77,6 +77,9 @@ export function libraryFilmCardRender(arg) {
       if (!item.first_air_date & !item.release_date) {
         item.first_air_date = 'n/a';
       }
+      !item.vote_average
+        ? item.vote_average
+        : (item.vote_average = item.vote_average.toFixed(1));
 
       let darkTheme = JSON.parse(localStorage.getItem('Night'))
         ? ' dark-theme'

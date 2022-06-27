@@ -85,11 +85,14 @@ async function createMovieItemClick({
   id,
   imdb_id,
 }) {
+  // console.log(poster_path);
   let src = `https://image.tmdb.org/t/p/w500${poster_path}`;
   let src2x = `https://image.tmdb.org/t/p/w780${poster_path}`;
-  let src3x = `https://image.tmdb.org/t/p/w1280${poster_path}`;
+  let src3x = `https://image.tmdb.org/t/p/w780${poster_path}`;
   let imdbLink = '';
   let tmdbLink = '';
+
+  !vote_average ? vote_average : (vote_average = vote_average.toFixed(1));
 
   let darkTheme = JSON.parse(localStorage.getItem('Night'))
     ? ' dark-theme'

@@ -9,7 +9,7 @@ const filmApiService = new FilmApiService();
 
 const filmsWrap = document.querySelector('.films-wrap');
 const filmList = document.querySelector('.films-list');
-const filmRating = document.querySelector('.film-info__rating');
+// const filmRating = document.querySelector('.film-info__rating');
 const searchForm = document.getElementById('search-form');
 const pagination = document.getElementById('pagination');
 const footer = document.querySelector('.footer');

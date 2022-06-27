@@ -1,4 +1,3 @@
-import { Pagination } from 'tui-pagination';
 import { loadStorage, saveStorage, removeStorage } from './localStorage';
 import buttonColorChange from './changeButtonColor';
 const refs = {
