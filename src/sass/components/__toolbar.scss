@@ -16,6 +16,13 @@
     border: none;
     background-color: #0000;
     fill: #f6f6f6;
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    @media screen and (max-width: 767px) {
+      &:hover,
+      &:focus {
+        fill: var(--complementary-text-color);
+      }
+    }
   }
 
   @media screen and (min-width: 768px) {
@@ -48,15 +55,17 @@
   &Lib {
     &.rot {
       &:hover {
-        .toolbarContainer__sun,
-        .toolbarContainer__sun-lib {
-          animation: 5s linear 0s normal none infinite running rot;
-          -webkit-animation: 5s linear 0s normal none infinite running rot;
-        }
-        .toolbarContainer__moon,
-        .toolbarContainer__moon-lib {
-          animation: 3s linear 0s normal none infinite running rot;
-          -webkit-animation: 3s linear 0s normal none infinite running rot;
+        @media screen and (min-width: 768px) {
+          .toolbarContainer__sun,
+          .toolbarContainer__sun-lib {
+            animation: 5s linear 0s normal none infinite running rot;
+            -webkit-animation: 5s linear 0s normal none infinite running rot;
+          }
+          .toolbarContainer__moon,
+          .toolbarContainer__moon-lib {
+            animation: 3s linear 0s normal none infinite running rot;
+            -webkit-animation: 3s linear 0s normal none infinite running rot;
+          }
         }
       }
     }
