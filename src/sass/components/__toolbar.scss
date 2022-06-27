@@ -47,8 +47,7 @@
   &Btn,
   &Lib {
     &.rot {
-      &:hover,
-      &:focus {
+      &:hover {
         .toolbarContainer__sun,
         .toolbarContainer__sun-lib {
           animation: 5s linear 0s normal none infinite running rot;
