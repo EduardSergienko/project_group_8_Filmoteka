@@ -15,15 +15,14 @@
     height: 24px;
     border-radius: 50%;
     border: none;
-    fill: #444;
-    z-index: 2;
+    background-color: #0000;
+    fill: #f6f6f6;
   }
 
   @media screen and (min-width: 768px) {
     margin-right: auto;
     &__Btn,
     &__Lib {
-      z-index: 3;
       width: 31px;
       height: 31px;
     }
