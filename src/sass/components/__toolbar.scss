@@ -24,6 +24,7 @@
     &__Lib {
       width: 31px;
       height: 31px;
+      fill: #444;
     }
   }
 }
@@ -34,7 +35,6 @@
   &__sun-lib,
   &__moon-lib {
     height: inherit;
-    fill: black;
     width: 24px;
     @media screen and (min-width: 768px) {
       width: 31px;
@@ -42,10 +42,9 @@
   }
 }
 
-.toolbarContainer__sun-svg,
-.toolbarContainer__moon-svg {
-  fill: black;
-}
+// .toolbarContainer__sun-svg,
+// .toolbarContainer__moon-svg {
+// }
 
 .toolbarContainer__ {
   &Btn,

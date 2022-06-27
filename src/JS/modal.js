@@ -92,6 +92,8 @@ async function createMovieItemClick({
   let imdbLink = '';
   let tmdbLink = '';
 
+  !vote_average ? vote_average : (vote_average = vote_average.toFixed(1));
+
   let darkTheme = JSON.parse(localStorage.getItem('Night'))
     ? ' dark-theme'
     : '';
