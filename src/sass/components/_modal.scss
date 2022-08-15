@@ -303,6 +303,11 @@ $basicLightbox__timing: ease !default;
   font-size: 12px;
   line-height: 1.667em;
 }
+.cast-link {
+  &:hover {
+    color: var(--complementary-text-color);
+  }
+}
 .feature-button__list {
   display: flex;
   justify-content: space-between;
