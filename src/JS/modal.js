@@ -95,11 +95,8 @@ async function createMovieItemClick(
   let src3x = `https://image.tmdb.org/t/p/w780${poster_path}`;
   let imdbLink = '';
   let tmdbLink = '';
-  console.log(id);
-  console.log(cast);
-  const creditsLength = cast.length > 20 ? 20 : cast.length;
-  console.log(creditsLength);
   let credits = ``;
+  const creditsLength = cast.length > 20 ? 20 : cast.length;
   if (cast.length > 0) {
     credits += `
       <div class="movie-desc__item movie-overview">
@@ -112,7 +109,6 @@ async function createMovieItemClick(
     }
     credits += `</div>`;
   }
-  console.log(credits);
 
   !vote_average ? vote_average : (vote_average = vote_average.toFixed(1));
 
