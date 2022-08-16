@@ -48,8 +48,9 @@ async function onMovieItemClick(evt) {
 
   try {
     const { data } = await filmApiService.fetchMovieID();
+    const { cast } = await (await filmApiService.fetchCredits()).data;
     getGenreModalMovie(data.genres);
-    createMovieItemClick(data);
+    createMovieItemClick(data, cast);
 
     addBtnListener(filmApiService.queryID);
     textModalBtn(filmApiService.queryID);
@@ -71,26 +72,47 @@ export function getGenreModalMovie(genreArr) {
 }
 
 let modalMovie;
-async function createMovieItemClick({
-  poster_path,
-  title,
-  vote_average,
-  vote_count,
-  popularity,
-  original_title,
-  genres,
-  overview,
-  name,
-  original_name,
-  id,
-  imdb_id,
-}) {
+async function createMovieItemClick(
+  {
+    poster_path,
+    title,
+    vote_average,
+    vote_count,
+    popularity,
+    original_title,
+    genres,
+    overview,
+    name,
+    original_name,
+    id,
+    imdb_id,
+  },
+  cast
+) {
   // console.log(poster_path);
   let src = `https://image.tmdb.org/t/p/w500${poster_path}`;
   let src2x = `https://image.tmdb.org/t/p/w780${poster_path}`;
   let src3x = `https://image.tmdb.org/t/p/w780${poster_path}`;
   let imdbLink = '';
   let tmdbLink = '';
+  console.log(id);
+  console.log(cast);
+  const creditsLength = cast.length > 20 ? 20 : cast.length;
+  console.log(creditsLength);
+  let credits = ``;
+  if (cast.length > 0) {
+    credits += `
+      <div class="movie-desc__item movie-overview">
+        <p class="movie-overview__title">Cast</p>`;
+    for (let i = 0; i < creditsLength; i++) {
+      if (i) {
+        credits += `, `;
+      }
+      credits += `<a class="cast-link" href="https://www.themoviedb.org/person/${cast[i].id}" target="_blank">${cast[i].name}</a>`;
+    }
+    credits += `</div>`;
+  }
+  console.log(credits);
 
   !vote_average ? vote_average : (vote_average = vote_average.toFixed(1));
 
@@ -175,6 +197,7 @@ async function createMovieItemClick({
             ${getGenreModalMovie(genres)}</p>
           </div>
         </div>
+        ${credits}
         <div class="movie-desc__item movie-overview">
           <p class="movie-overview__title">About</p>
           <p class="movie-overview__text">${overview}</p>

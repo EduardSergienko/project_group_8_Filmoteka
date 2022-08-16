@@ -32,6 +32,14 @@ export default class FilmApiService {
     return await axios.get(`${BASE_URL}${this.ID}?${API_KEY}&language=en-US`);
   }
 
+  async fetchCredits() {
+    const BASE_URL = 'https://api.themoviedb.org/3/movie/';
+    const API_KEY = 'api_key=5f364d2fc6b25c805674b50a1c63d59e';
+    return await axios.get(
+      `${BASE_URL}${this.ID}/credits?${API_KEY}&language=en-US`
+    );
+  }
+
   async getExternalID() {
     const BASE_URL = 'https://api.themoviedb.org/3/movie/';
     const API_KEY = 'api_key=5f364d2fc6b25c805674b50a1c63d59e';
