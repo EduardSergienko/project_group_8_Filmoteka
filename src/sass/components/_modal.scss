@@ -207,7 +207,47 @@ $basicLightbox__timing: ease !default;
     font-size: 30px;
     line-height: 1.167em;
   }
+  width: fit-content;
 }
+
+.movie-title:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.movie-title:before {
+  content: attr(data-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: fit-content;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 0px 10px;
+  transition: opacity 0.25s ease-in-out;
+  transform: translate(-50%, 0%);
+  display: flex;
+
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 2px;
+  font-size: 14px;
+}
+
+.movie-title:active {
+  // color: var(--complementary-text-color);
+  text-decoration: none;
+}
+
+.movie-title:hover:before {
+  @media screen and (min-width: 768px) {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
 .movie-info__item {
   display: flex;
 

@@ -167,7 +167,9 @@ async function createMovieItemClick(
     </div>
     <div class="modal-item">
       <div class="movie-desc">
-        <h1 class="movie-desc__item movie-title">${title || name}</h1>
+        <h1 class="movie-desc__item movie-title" data-hover='Copy'>${
+          title || name
+        }</h1>
         <div class="movie-desc__item movie-info">
           <div class="movie-info__item movie__vote">
             <p class="movie-info__param${darkTheme}">Vote / Votes</p>
@@ -239,7 +241,6 @@ async function createMovieItemClick(
     }
   );
   modalMovie.show();
-
   const scrollableModal = document.querySelector('.basicLightbox-center');
   disablePageScroll(scrollableModal);
 
@@ -252,6 +253,10 @@ async function createMovieItemClick(
     .querySelector('[data-action="close-modal"]')
     .addEventListener('click', onCloseModalBtn);
   window.addEventListener('keydown', onCloseModalEscape);
+
+  const copyToClipboard = document.querySelector('.movie-title');
+  copyToClipboard.addEventListener('click', clipboardFunc);
+  copyToClipboard.addEventListener('mouseover', outFunc);
 
   //Watch the trailer button
 
@@ -418,4 +423,24 @@ function renderOnRemove(item, currentBtn, fn, localStoragePlace) {
     }
     buttonColorChange.CallButtonColorChange();
   }
+}
+
+// copy to clipboard
+
+function clipboardFunc(e) {
+  let copyText = e.currentTarget.innerText;
+  navigator.clipboard.writeText(copyText).then(
+    () => {
+      /* clipboard successfully set */
+      document.querySelector('.movie-title').dataset.hover = 'Copied!';
+    },
+    () => {
+      /* clipboard write failed */
+      document.querySelector('.movie-title').hover = 'Error!';
+    }
+  );
+}
+
+function outFunc(e) {
+  document.querySelector('.movie-title').dataset.hover = 'Copy';
 }
