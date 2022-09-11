@@ -70,7 +70,12 @@ export function initPagination({
     if (pageName === SHOW_TRANDING_FILMS) {
       try {
         notiflixLoading();
-        const resolve = await filmApiService.fetchTranding();
+        const currentGenre = document.querySelector('#genres').value;
+        filmApiService.genre = currentGenre;
+        const resolve =
+          currentGenre == 0
+            ? await filmApiService.fetchTranding()
+            : await filmApiService.fetchGenres();
         const genres = await filmApiService.getGenreName();
         const filmArray = resolve.data.results;
         const genreArray = genres.data.genres;
