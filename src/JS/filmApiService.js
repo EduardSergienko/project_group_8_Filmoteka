@@ -7,6 +7,7 @@ export default class FilmApiService {
     this.page = 1;
   }
   async fetchMovies() {
+    // https://api.themoviedb.org/3/genre/movie/list?api_key=1234&language=en-GB
     const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
     const API_KEY = 'api_key=5f364d2fc6b25c805674b50a1c63d59e';
     return await axios.get(
@@ -37,6 +38,14 @@ export default class FilmApiService {
     const API_KEY = 'api_key=5f364d2fc6b25c805674b50a1c63d59e';
     return await axios.get(
       `${BASE_URL}${this.ID}/credits?${API_KEY}&language=en-US`
+    );
+  }
+
+  async fetchGenres() {
+    const BASE_URL = 'https://api.themoviedb.org/3/discover/movie';
+    const API_KEY = 'api_key=5f364d2fc6b25c805674b50a1c63d59e';
+    return await axios.get(
+      `${BASE_URL}?${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&with_genres=${this.genre}&with_watch_monetization_types=flatrate&page=${this.page}`
     );
   }
 

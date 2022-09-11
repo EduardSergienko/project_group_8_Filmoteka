@@ -87,9 +87,9 @@
 
 .header-container {
   padding-top: 40px;
-  padding-bottom: 92px;
+  padding-bottom: 48px;
   @media screen and (min-width: 768px) {
-    padding-bottom: 80px;
+    padding-bottom: 77px;
   }
 }
 
@@ -180,9 +180,17 @@
 
 .form-container {
   display: flex;
-  //flex-direction: row;
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    height: 63px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  height: 23px;
+  flex-direction: row;
   align-items: top;
-  justify-content: center;
+  justify-content: space-around;
   padding: 0%;
   //min-height: 68px;
   // @media screen and (min-width:321px){
@@ -225,4 +233,13 @@
     background: transparent;
     border: none;
   }
+}
+
+.genres {
+  color: #fff;
+}
+
+.genres-dropdowm {
+  color: #fff;
+  background-color: #222;
 }

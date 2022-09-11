@@ -6,6 +6,7 @@ import './JS/renderCards';
 import './JS/pagePagination';
 import './JS/modal';
 import './JS/searchingFilm';
+import './JS/genres';
 
 import './JS/scrollToTop';
 import './JS/localStorage';
